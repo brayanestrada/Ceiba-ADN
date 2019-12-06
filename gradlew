@@ -170,8 +170,3 @@ if [ "$(uname)" = "Darwin" ] && [ "$HOME" = "$PWD" ]; then
 fi
 
 exec "$JAVACMD" "$@"
-
-./gradlew sonarqube \
-  -Dsonar.projectKey=co.com.ceiba:ventadepasajes.brayan.estrada \
-  -Dsonar.host.url=https://sonar.ceiba.com.co \
-  -Dsonar.login=977e273e090a57ed80914573b969862ef9c18677
