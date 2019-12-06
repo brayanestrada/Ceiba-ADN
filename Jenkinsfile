@@ -21,42 +21,24 @@ pipeline {
     stage('Checkout') {
       steps{
         echo "------------>Checkout<------------"
-        checkout([
-        $class: 'GitSCM',
-        branches: [[name: '*/master']],
-        doGenerateSubmoduleConfigurations: false,
-        extensions: [],
-        gitTool: 'Git_Centos',
-        submoduleCfg: [],
-        userRemoteConfigs: [[
-        credentialsId: 'GitHub_brayanestrada',
-        url:'https://https://github.com/brayanestrada/Ceiba-ADN'
-        ]]
-        ])
-
       }
     }
 
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-        sh 'gradle --b ./build.gradle test'
       }
     }
 
     stage('Static Code Analysis') {
-    steps{
+      steps{
         echo '------------>Análisis de código estático<------------'
-            withSonarQubeEnv('Sonar') {
-                sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
-            }
-        }
+      }
     }
 
     stage('Build') {
         steps{
             echo "------------>Build<------------"
-            sh 'gradle --b ./build.gradle build -x test'
         }
     }
 
@@ -67,7 +49,7 @@ pipeline {
     }
     success {
      echo 'This will run only if successful'
-     junit 'build/test-results/test/*.xml'
+
     }
 
     failure {
