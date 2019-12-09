@@ -16,7 +16,7 @@ public class UserController {
     public IUserService userService;
 
     @GetMapping("/users")
-    public List<User> findUsers(){
-        return userService.findAll();
+    public String findUsers(){
+        return "Testing successful Brayan";
     }
 }

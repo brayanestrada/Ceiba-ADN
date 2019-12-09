@@ -38,13 +38,13 @@ pipeline {
     }
 
     stage('Compile & Unit Tests') {
-      steps{
-        echo "------------>Cleaning previous compilations<------------"
-        sh 'gradle --b ./build.gradle clean compileJava'
+       steps{
+         echo "------------>Cleaning previous compilations<------------"
+           sh 'gradle --b ./build.gradle clean'
 
-        echo "------------>Unit Tests<------------"
-
-      }
+           echo "------------>Unit Tests<------------"
+           sh 'gradle --b ./build.gradle test'
+       }
     }
 
     stage('Static Code Analysis') {
@@ -57,8 +57,9 @@ pipeline {
     }
 
     stage('Build') {
-      steps {
-        echo "------------>Build<------------"
+       steps {
+         echo "------------>Build<------------"
+         sh 'gradle --b ./build.gradle build -x test'
       }
     }
   }

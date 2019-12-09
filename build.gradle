@@ -25,6 +25,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+    testCompile('org.mockito:mockito-junit-jupiter:2.23.0')
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
