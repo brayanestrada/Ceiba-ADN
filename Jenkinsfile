@@ -39,6 +39,8 @@ pipeline {
 
     stage('Compile & Unit Tests') {
       steps{
+        echo "------------>Cleaning previous compilations<------------"
+        sh 'gradle --b ./proyecto1/build.gradle clean compileJava'
         echo "------------>Unit Tests<------------"
 
       }
