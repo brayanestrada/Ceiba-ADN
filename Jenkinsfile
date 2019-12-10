@@ -1,34 +1,46 @@
 pipeline {
-  //Donde se va a ejecutar el Pipeline
   agent {
     label 'Slave_Induccion'
   }
 
-  //Opciones específicas de Pipeline dentro del Pipeline
   options {
     	buildDiscarder(logRotator(numToKeepStr: '3'))
  	disableConcurrentBuilds()
   }
 
-  //Una sección que define las herramientas “preinstaladas” en Jenkins
   tools {
-    jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
-    gradle 'Gradle5.6_Centos' //Preinstalada en la Configuración del Master
+    jdk 'JDK8_Centos'
+    gradle 'Gradle5.6_Centos'
   }
 
-  //Aquí comienzan los “items” del Pipeline
   stages{
     stage('Checkout') {
       steps{
-        echo "------------>Checkout<------------"
+          echo "------------>Checkout<------------"
+              checkout([
+                  $class: 'GitSCM',
+                  branches: [[name: '*/develop']],
+                  doGenerateSubmoduleConfigurations: false,
+                  extensions: [],
+                  gitTool: 'Git_Centos',
+                  submoduleCfg: [],
+                  userRemoteConfigs: [[
+                  credentialsId: 'GitHub_brayanestrada',
+                  url:'https://github.com/brayanestrada/Ceiba-ADN'
+              ]]
+          ])
       }
+
     }
 
     stage('Compile & Unit Tests') {
-      steps{
-        echo "------------>Unit Tests<------------"
+       steps{
+         echo "------------>Cleaning previous compilations<------------"
+           sh 'gradle --b ./build.gradle clean'
 
-      }
+           echo "------------>Unit Tests<------------"
+           sh 'gradle --b ./build.gradle test'
+       }
     }
 
     stage('Static Code Analysis') {
@@ -41,8 +53,9 @@ pipeline {
     }
 
     stage('Build') {
-      steps {
-        echo "------------>Build<------------"
+       steps {
+         echo "------------>Build<------------"
+         sh 'gradle --b ./build.gradle build -x test'
       }
     }
   }
