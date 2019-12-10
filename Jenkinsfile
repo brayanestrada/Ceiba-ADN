@@ -1,22 +1,18 @@
 pipeline {
-  //Donde se va a ejecutar el Pipeline
   agent {
     label 'Slave_Induccion'
   }
 
-  //Opciones específicas de Pipeline dentro del Pipeline
   options {
     	buildDiscarder(logRotator(numToKeepStr: '3'))
  	disableConcurrentBuilds()
   }
 
-  //Una sección que define las herramientas “preinstaladas” en Jenkins
   tools {
-    jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
-    gradle 'Gradle5.6_Centos' //Preinstalada en la Configuración del Master
+    jdk 'JDK8_Centos'
+    gradle 'Gradle5.6_Centos'
   }
 
-  //Aquí comienzan los “items” del Pipeline
   stages{
     stage('Checkout') {
       steps{

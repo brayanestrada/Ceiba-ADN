@@ -16,4 +16,10 @@ public class UserService implements IUserService{
     public List<User> findAll() {
         return userRepo.findAll();
     }
+
+    @Override
+    public User saveUser(User user) {
+        return userRepo.save(user);
+    }
+
 }

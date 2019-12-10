@@ -1,11 +1,10 @@
 package com.ventas.ventadepasajes.controller;
 
+import com.ventas.ventadepasajes.dto.UserDto;
 import com.ventas.ventadepasajes.entity.User;
 import com.ventas.ventadepasajes.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,10 +12,15 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    public IUserService userService;
+    private IUserService userService;
 
     @GetMapping("/users")
-    public String findUsers(){
-        return "Testing successful Brayan";
+    public List<User> findUsers(){
+        return userService.findAll();
+    }
+
+    @PostMapping("/add_user")
+    public User addUser(@RequestBody User user){
+        return userService.saveUser(user);
     }
 }
