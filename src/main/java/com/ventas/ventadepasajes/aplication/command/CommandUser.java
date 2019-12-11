@@ -1,8 +1,10 @@
 package com.ventas.ventadepasajes.aplication.command;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class CommandUser {
 
     private Long id;

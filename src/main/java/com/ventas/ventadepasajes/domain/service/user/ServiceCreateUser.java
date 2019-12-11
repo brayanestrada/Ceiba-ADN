@@ -1,4 +1,4 @@
-package com.ventas.ventadepasajes.domain.service.client;
+package com.ventas.ventadepasajes.domain.service.user;
 
 import com.ventas.ventadepasajes.domain.model.User;
 import com.ventas.ventadepasajes.port.repository.RepositoryUser;

@@ -1,6 +1,6 @@
 package com.ventas.ventadepasajes.infrastructure.configuration;
 
-import com.ventas.ventadepasajes.domain.service.client.ServiceCreateUser;
+import com.ventas.ventadepasajes.domain.service.user.ServiceCreateUser;
 import com.ventas.ventadepasajes.port.repository.RepositoryUser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

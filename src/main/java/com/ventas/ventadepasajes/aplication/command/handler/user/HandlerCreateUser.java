@@ -3,7 +3,7 @@ package com.ventas.ventadepasajes.aplication.command.handler.user;
 import com.ventas.ventadepasajes.aplication.command.CommandUser;
 import com.ventas.ventadepasajes.aplication.command.factory.FactoryUser;
 import com.ventas.ventadepasajes.domain.model.User;
-import com.ventas.ventadepasajes.domain.service.client.ServiceCreateUser;
+import com.ventas.ventadepasajes.domain.service.user.ServiceCreateUser;
 import org.springframework.stereotype.Component;
 
 @Component
