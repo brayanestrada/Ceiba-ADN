@@ -10,5 +10,10 @@ public class CommandDestinationDataBuilder {
         this.name = "Barranquilla";
     }
 
+    public CommandDestinationDataBuilder withName(String name){
+        this.name = name;
+        return this;
+    }
+
     public CommandDestination build(){return new CommandDestination(name);}
 }
