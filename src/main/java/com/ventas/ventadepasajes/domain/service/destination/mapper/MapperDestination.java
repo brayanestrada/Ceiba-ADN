@@ -12,10 +12,6 @@ public class MapperDestination {
         return new DtoDestination(entity.getId(), entity.getName());
     }
 
-    public Destination dtoToEntity(DtoDestination dto){
-        return new Destination(dto.getId(), dto.getName());
-    }
-
     public List<DtoDestination> entityListToDtoList(List<Destination> list){
         return list.stream().map(e -> DtoDestination.valueOf(e)).collect(Collectors.toList());
     }

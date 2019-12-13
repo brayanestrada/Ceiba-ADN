@@ -1,18 +1,31 @@
 package com.ventas.ventadepasajes.aplication.command.handler.command;
 
-import lombok.Getter;
+import lombok.ToString;
 
-@Getter
+@ToString
 public class CommandDriver {
-    private Long id;
+
     private String name;
     private String lastName;
     private String identification;
 
-    public CommandDriver(Long id, String name, String lastName, String identification){
-        this.id = id;
+    public CommandDriver(){}
+
+    public CommandDriver(String name, String lastName, String identification){
         this.name = name;
         this.lastName = lastName;
         this.identification = identification;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getIdentification() {
+        return identification;
     }
 }

@@ -9,10 +9,10 @@ import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ServiceCreateDestinationTest {
+public class TestServiceCreateDestination {
 
     @Test
-    public void validateCreatedUser(){
+    public void validateCreatedDestination(){
         Destination destination = new DestinationTestDataBuilder().build();
         RepositoryDestination repositoryDestination = Mockito.mock(RepositoryDestination.class);
         Mockito.when(repositoryDestination.createDestination(Mockito.any())).thenReturn(destination);
