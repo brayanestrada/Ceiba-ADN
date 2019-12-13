@@ -19,12 +19,12 @@ public class Destination {
     public Destination(Long id, String name){
         this.id = id;
         this.name = name;
-        validateName();
+        dataValidatorDestination();
     }
 
     public Destination(String name){
         this.name = name;
-        validateName();
+        dataValidatorDestination();
     }
 
     public Long getId() {
@@ -43,7 +43,7 @@ public class Destination {
         this.name = name;
     }
 
-    private void validateName(){
+    private void dataValidatorDestination(){
         validateMandatory(name, NAME_IS_MANDATORY);
         validateMaximumValue(name, DESTINATION_MAX_LENGTH, ERROR_NAME_MAX_LENGTH);
         validateMinimumValue(name, DESTINATION_MIN_LENGTH, ERROR_NAME_MIN_LENGTH);

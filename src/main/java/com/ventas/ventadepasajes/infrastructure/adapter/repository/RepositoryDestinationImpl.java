@@ -22,7 +22,7 @@ public class RepositoryDestinationImpl implements RepositoryDestination {
     public Destination createDestination(Destination destination) {
         EntityDestination entityDestination = this.modelMapper.map(destination, EntityDestination.class);
         EntityDestination entityDestinationSaved = this.jpaDestinationRepository.save(entityDestination);
-        return new Destination(entityDestinationSaved.getId(), entityDestination.getName());
+        return new Destination(entityDestinationSaved.getId(), entityDestinationSaved.getName());
     }
 
     @Override

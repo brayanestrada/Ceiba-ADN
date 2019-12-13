@@ -3,11 +3,10 @@ package com.ventas.ventadepasajes.domain.model.destination;
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
 import com.ventas.ventadepasajes.domain.testdatabuilder.DestinationTestDataBuilder;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
-public class
-TestDestinationModel {
+public class TestDestinationModel {
 
     private DestinationTestDataBuilder dataBuilder = new DestinationTestDataBuilder();
 
