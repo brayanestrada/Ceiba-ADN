@@ -18,6 +18,6 @@ public class ServiceCreateDestinationTest {
         Mockito.when(repositoryDestination.createDestination(Mockito.any())).thenReturn(destination);
         ServiceCreateDestination serviceCreateDestination = new ServiceCreateDestination(repositoryDestination);
         DtoDestination dtoDestination = serviceCreateDestination.run(destination);
-        assertEquals(destination.getName().equals(dtoDestination.getName()),"Error creating destination");
+        assertTrue(destination.getName().equals(dtoDestination.getName()),"Error creating destination");
     }
 }
