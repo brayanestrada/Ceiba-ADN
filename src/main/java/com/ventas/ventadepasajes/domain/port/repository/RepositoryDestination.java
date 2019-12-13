@@ -1,7 +1,11 @@
-package com.ventas.ventadepasajes.infrastructure.port.repository;
+package com.ventas.ventadepasajes.domain.port.repository;
 
-import com.ventas.ventadepasajes.domain.model.Destination;
+import com.ventas.ventadepasajes.domain.model.entity.Destination;
+
+import java.util.List;
 
 public interface RepositoryDestination {
-    void createDestination(Destination destination);
+    Destination createDestination(Destination destination);
+
+    List<Destination> listDestination();
 }

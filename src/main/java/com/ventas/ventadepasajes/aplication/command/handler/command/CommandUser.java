@@ -1,10 +1,8 @@
-package com.ventas.ventadepasajes.aplication.command;
+package com.ventas.ventadepasajes.aplication.command.handler.command;
 
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
-@ToString
 public class CommandUser {
 
     private Long id;
@@ -16,5 +14,4 @@ public class CommandUser {
         this.name = name;
         this.lastName = lastName;
     }
-    public CommandUser(){}
 }

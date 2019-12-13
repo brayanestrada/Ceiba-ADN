@@ -1,8 +1,8 @@
 package com.ventas.ventadepasajes.infrastructure.controller;
 
-import com.ventas.ventadepasajes.aplication.command.CommandUser;
+import com.ventas.ventadepasajes.aplication.command.handler.command.CommandUser;
 import com.ventas.ventadepasajes.aplication.command.handler.user.HandlerCreateUser;
-import com.ventas.ventadepasajes.domain.model.User;
+import com.ventas.ventadepasajes.domain.model.entity.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

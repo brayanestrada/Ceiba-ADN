@@ -5,14 +5,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserDto {
+public class DtoUser {
     private Long id;
     private String name;
     private String lastName;
 
-    public UserDto(){}
+    public DtoUser(){}
 
-    public UserDto(Long id, String name, String lastName){
+    public DtoUser(Long id, String name, String lastName){
         this.id = id;
         this.name = name;
         this.lastName = lastName;

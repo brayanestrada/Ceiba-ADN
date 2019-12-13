@@ -1,7 +1,7 @@
 package com.ventas.ventadepasajes.domain.service.user;
 
-import com.ventas.ventadepasajes.domain.model.User;
-import com.ventas.ventadepasajes.port.repository.RepositoryUser;
+import com.ventas.ventadepasajes.domain.model.entity.User;
+import com.ventas.ventadepasajes.domain.port.repository.RepositoryUser;
 
 public class ServiceCreateUser {
 
@@ -11,7 +11,7 @@ public class ServiceCreateUser {
         this.repositoryUser = repositoryUser;
     }
 
-    public void run(User user){
-        this.repositoryUser.createUser(user);
+    public User run(User user){
+        return this.repositoryUser.createUser(user);
     }
 }

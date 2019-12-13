@@ -7,16 +7,15 @@ import com.ventas.ventadepasajes.domain.service.destination.mapper.MapperDestina
 
 import java.util.List;
 
-public class ServiceSelectDestination {
+public class ServiceListDestination {
 
     private RepositoryDestination repositoryDestination;
 
-    public ServiceSelectDestination(RepositoryDestination repositoryDestination){ this.repositoryDestination = repositoryDestination; }
+    public ServiceListDestination(RepositoryDestination repositoryDestination){ this.repositoryDestination = repositoryDestination; }
 
     public List<DtoDestination> run() {
         MapperDestination mapper = new MapperDestination();
         List<Destination> listDestination = this.repositoryDestination.listDestination();
-        List<DtoDestination> listDto = mapper.entityListToDtoList(listDestination);
-        return listDto;
+        return mapper.entityListToDtoList(listDestination);
     }
 }

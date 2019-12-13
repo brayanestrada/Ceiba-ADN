@@ -1,7 +1,7 @@
-package com.ventas.ventadepasajes.infrastructure.port.repository;
+package com.ventas.ventadepasajes.domain.port.repository;
 
-import com.ventas.ventadepasajes.domain.model.User;
-//TODO: poner puestos dentro de dominio
+import com.ventas.ventadepasajes.domain.model.entity.User;
+
 public interface RepositoryUser {
-    void createUser(User user);
+    User createUser(User user);
 }

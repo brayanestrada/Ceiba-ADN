@@ -1,20 +1,12 @@
 package com.ventas.ventadepasajes.infrastructure.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 
-@Getter
-@Setter
 @Entity
-@EqualsAndHashCode
 @Table(name = "tbl_user")
 public class EntityUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String lastName;
@@ -27,5 +19,21 @@ public class EntityUser {
         this.lastName = lastName;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setId(Long id) { this.id = id; }
+
+    public void setName(String name) { this.name = name; }
+
+    public void setLastName(String lastName) { this.lastName = lastName; }
 }
