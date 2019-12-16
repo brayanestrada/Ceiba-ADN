@@ -7,6 +7,9 @@ import com.ventas.ventadepasajes.domain.port.repository.RepositoryUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Repository
 public class RepositoryUserImpl implements RepositoryUser {
 
@@ -19,6 +22,45 @@ public class RepositoryUserImpl implements RepositoryUser {
     public User createUser(User user) {
         EntityUser entityUser = modelMapper.map(user, EntityUser.class);
         entityUser = jpaUserRepository.save(entityUser);
-        return new User(entityUser.getId(),entityUser.getName(), entityUser.getLastName());
+        return new User(entityUser.getId(),entityUser.getName(), entityUser.getLastName(), entityUser.getEmail(), entityUser.getPhone());
+    }
+
+    @Override
+    public List<User> listUser() {
+        List<EntityUser> listEntity = this.jpaUserRepository.findAll();
+        return listEntity.stream().map(e -> User.valueOf(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean deleteUser(long id) {
+        try{
+            this.jpaUserRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    @Override
+    public User updateUser(long id, User newUser) {
+        EntityUser entityUser = this.modelMapper.map(newUser, EntityUser.class);
+        EntityUser entityUserUpdated = this.jpaUserRepository.findById(id)
+                .map(user ->{
+                    user.setId(newUser.getId());
+                    user.setName(newUser.getName());
+                    user.setLastName(newUser.getLastName());
+                    user.setEmail(newUser.getEmail());
+                    user.setPhone(newUser.getPhone());
+                    return jpaUserRepository.save(user);
+                }).orElseGet(()->{
+                    entityUser.setId(id);
+                    entityUser.setName(newUser.getName());
+                    entityUser.setLastName(newUser.getName());
+                    entityUser.setEmail(newUser.getName());
+                    entityUser.setPhone(newUser.getName());
+                    return jpaUserRepository.save(entityUser);
+                });
+        return new User(entityUserUpdated.getId(), entityUserUpdated.getName(), entityUserUpdated.getLastName(), entityUserUpdated.getEmail(), entityUserUpdated.getPhone());
     }
 }

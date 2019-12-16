@@ -10,13 +10,17 @@ public class EntityUser {
     private Long id;
     private String name;
     private String lastName;
+    private String email;
+    private String phone;
 
     public EntityUser(){}
 
-    public EntityUser(Long id, String name, String lastName){
+    public EntityUser(Long id, String name, String lastName, String email, String phone){
         this.id = id;
         this.name = name;
         this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
     }
 
     public Long getId() {
@@ -36,4 +40,20 @@ public class EntityUser {
     public void setName(String name) { this.name = name; }
 
     public void setLastName(String lastName) { this.lastName = lastName; }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }

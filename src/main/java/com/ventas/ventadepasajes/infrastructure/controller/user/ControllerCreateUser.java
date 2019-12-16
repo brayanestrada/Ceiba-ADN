@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/user")
-public class ControllerUser {
+public class ControllerCreateUser {
     private final HandlerCreateUser handlerCreateUser;
 
-    public ControllerUser(HandlerCreateUser handlerCreateUser){
+    public ControllerCreateUser(HandlerCreateUser handlerCreateUser){
         this.handlerCreateUser = handlerCreateUser;
     }
 
