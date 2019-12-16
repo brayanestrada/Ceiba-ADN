@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 public class ControllerUpdateDriver {
     private HandlerUpdateDriver handlerUpdateDriver;
 
-    public ControllerUpdateDriver(HandlerUpdateDriver handlerCreateDriver){
-        this.handlerUpdateDriver = handlerCreateDriver;
+    public ControllerUpdateDriver(HandlerUpdateDriver handlerUpdateDriver){
+        this.handlerUpdateDriver = handlerUpdateDriver;
     }
 
     @PutMapping("/update/{id}")

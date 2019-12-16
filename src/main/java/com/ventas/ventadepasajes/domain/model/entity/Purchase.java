@@ -12,12 +12,15 @@ public class Purchase {
 
     public Purchase(){}
 
-    public Purchase(long id,
-                    int numberPurchasedTickets,
-                    double ticketAmount,
-                    int discountPercentage,
-                    double totalPurchaseAmount){
+    public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount){
         this.id = id;
+        this.numberPurchasedTickets = numberPurchasedTickets;
+        this.ticketAmount = ticketAmount;
+        this.discountPercentage = discountPercentage;
+        this.totalPurchaseAmount = totalPurchaseAmount;
+    }
+
+    public Purchase(int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount){
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
         this.discountPercentage = discountPercentage;

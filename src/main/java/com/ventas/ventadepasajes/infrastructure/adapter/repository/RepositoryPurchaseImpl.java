@@ -23,7 +23,7 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
     public Purchase createPurchase(Purchase purchase) {
         EntityPurchase entityPurchase = this.modelMapper.map(purchase, EntityPurchase.class);
         EntityPurchase entityPurchaseSaved = this.jpaPurchaseRepository.save(entityPurchase);
-        return new Purchase(entityPurchaseSaved.getId(), entityPurchase.getNumberPurchasedTickets(), entityPurchase.getTicketAmount());
+        return new Purchase(entityPurchaseSaved.getId(), entityPurchase.getNumberPurchasedTickets(), entityPurchase.getTicketAmount(), purchase.getDiscountPercentage(), purchase.getTotalPurchaseAmount());
     }
 
     @Override
@@ -51,11 +51,15 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
                     purchase.setId(newPurchase.getId());
                     purchase.setNumberPurchasedTickets(newPurchase.getNumberPurchasedTickets());
                     purchase.setTicketAmount(newPurchase.getTicketAmount());
+                    purchase.setDiscountPercentage(newPurchase.getDiscountPercentage());
+                    purchase.setTotalPurchaseAmount(newPurchase.getTotalPurchaseAmount());
                     return jpaPurchaseRepository.save(purchase);
                 }).orElseGet(() ->{
                     entityPurchase.setId(id);
                     entityPurchase.setNumberPurchasedTickets(newPurchase.getNumberPurchasedTickets());
                     entityPurchase.setTicketAmount(newPurchase.getTicketAmount());
+                    entityPurchase.setDiscountPercentage(newPurchase.getDiscountPercentage());
+                    entityPurchase.setTotalPurchaseAmount(newPurchase. getTotalPurchaseAmount());
                     return jpaPurchaseRepository.save(entityPurchase);
                 });
         return new Purchase(entityPurchaseUpdated.getId(), entityPurchaseUpdated.getNumberPurchasedTickets(), entityPurchaseUpdated.getTicketAmount(), entityPurchaseUpdated.getDiscountPercentage(), entityPurchaseUpdated.getTotalPurchaseAmount());

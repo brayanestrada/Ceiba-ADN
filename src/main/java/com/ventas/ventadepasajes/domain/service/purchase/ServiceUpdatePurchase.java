@@ -13,8 +13,17 @@ public class ServiceUpdatePurchase {
         this.repositoryPurchase = repositoryPurchase;
     }
 
-    public DtoPurchase run(long id, Purchase purchase){
-        MapperPurchase mapperPurchase = new MapperPurchase();
-        return mapperPurchase.entityToDto(this.repositoryPurchase.updatePurchase(id, purchase));
+    public DtoPurchase run(long id, Purchase newPurchase){
+        MapperPurchase mapper = new MapperPurchase();
+        double totalWithoutDiscount = newPurchase.getNumberPurchasedTickets() * newPurchase.getTicketAmount();
+        if(newPurchase.getNumberPurchasedTickets()>4){
+            newPurchase.setDiscountPercentage(10);
+            double discountAmount = totalWithoutDiscount*(newPurchase.getDiscountPercentage())/100;
+            newPurchase.setTotalPurchaseAmount(totalWithoutDiscount-discountAmount);
+        }else{
+            newPurchase.setDiscountPercentage(0);
+            newPurchase.setTotalPurchaseAmount(totalWithoutDiscount);
+        }
+        return mapper.entityToDto(this.repositoryPurchase.updatePurchase(id, newPurchase));
     }
 }

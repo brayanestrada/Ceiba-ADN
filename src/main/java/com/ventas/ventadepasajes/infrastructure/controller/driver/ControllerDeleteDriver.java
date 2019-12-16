@@ -17,10 +17,8 @@ public class ControllerDeleteDriver{
         this.handlerDeleteDriver = handlerDeleteDriver;
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = "application/json")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteDriver(@PathVariable Long id) {
-        final HttpHeaders httpHeaders= new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         if(handlerDeleteDriver.run(id)){
             return new ResponseEntity(HttpStatus.OK);
         }else{

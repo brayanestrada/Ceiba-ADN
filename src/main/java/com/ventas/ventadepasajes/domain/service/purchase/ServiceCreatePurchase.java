@@ -16,12 +16,11 @@ public class ServiceCreatePurchase {
         double totalWithoutDiscount = purchase.getNumberPurchasedTickets() * purchase.getTicketAmount();
         if(purchase.getNumberPurchasedTickets()>4){
             purchase.setDiscountPercentage(10);
-            purchase.setTotalPurchaseAmount(totalWithoutDiscount-(totalWithoutDiscount*(purchase.getDiscountPercentage()/100)));
-            System.out.println(purchase.getTotalPurchaseAmount());
+            double discountAmount = totalWithoutDiscount*(purchase.getDiscountPercentage())/100;
+            purchase.setTotalPurchaseAmount(totalWithoutDiscount-discountAmount);
         }else{
             purchase.setDiscountPercentage(0);
             purchase.setTotalPurchaseAmount(totalWithoutDiscount);
-            System.out.println(purchase.getTotalPurchaseAmount());
         }
         return mapperPurchase.entityToDto(this.repositoryPurchase.createPurchase(purchase));
     }

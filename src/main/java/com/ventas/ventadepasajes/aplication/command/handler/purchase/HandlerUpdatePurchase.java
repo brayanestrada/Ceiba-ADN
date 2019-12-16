@@ -4,7 +4,9 @@ import com.ventas.ventadepasajes.aplication.command.factory.FactoryPurchase;
 import com.ventas.ventadepasajes.aplication.command.handler.command.CommandPurchase;
 import com.ventas.ventadepasajes.domain.model.dto.DtoPurchase;
 import com.ventas.ventadepasajes.domain.service.purchase.ServiceUpdatePurchase;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HandlerUpdatePurchase {
 
     private final FactoryPurchase factoryPurchase;

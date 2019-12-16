@@ -17,10 +17,8 @@ public class ControllerDeleteTrip {
         this.handlerDeleteTrip = handlerDeleteTrip;
     }
 
-    @RequestMapping(value = "/delete/{id}", produces = "application/json", method = RequestMethod.DELETE)
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteTrip(@PathVariable long id){
-        final HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         if(handlerDeleteTrip.run(id)){
             return new ResponseEntity(HttpStatus.OK);
         }else{
