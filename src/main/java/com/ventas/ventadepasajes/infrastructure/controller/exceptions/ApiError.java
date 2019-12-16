@@ -1,4 +1,4 @@
-package com.ventas.ventadepasajes.domain.exceptions;
+package com.ventas.ventadepasajes.infrastructure.controller.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.http.HttpStatus;
@@ -33,5 +33,13 @@ public class ApiError {
         this.status = status;
         this.message = message;
         this.debugMessage = ex.getLocalizedMessage();
+    }
+
+    public HttpStatus getStatus(){
+        return this.status;
+    }
+
+    public void setMessage(String message){
+        this.message = message;
     }
 }

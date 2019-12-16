@@ -23,4 +23,16 @@ public class DataValidator {
             throw new ExceptionGeneral(message);
         }
     }
+
+    public static void validateMinimumValue(double value, int minValue, String message){
+        if (value < minValue){
+            throw new ExceptionGeneral(message);
+        }
+    }
+
+    public static void validateMinimumValue(int value, int minValue, String message){
+        if (value < minValue){
+            throw new ExceptionGeneral(message);
+        }
+    }
 }

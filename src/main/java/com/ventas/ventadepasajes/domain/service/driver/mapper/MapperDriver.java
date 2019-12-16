@@ -1,6 +1,5 @@
 package com.ventas.ventadepasajes.domain.service.driver.mapper;
 
-import com.ventas.ventadepasajes.domain.model.dto.DtoDestination;
 import com.ventas.ventadepasajes.domain.model.dto.DtoDriver;
 import com.ventas.ventadepasajes.domain.model.entity.Driver;
 

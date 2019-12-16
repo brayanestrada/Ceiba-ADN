@@ -5,13 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tbl_driver")
 public class EntityDriver {
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +22,11 @@ public class EntityDriver {
         this.identification = identification;
     }
 
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
+
     public String getName() {
         return name;
     }
@@ -41,16 +39,12 @@ public class EntityDriver {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    public void setLastName(String lastName) { this.lastName = lastName; }
 
     public String getIdentification() {
         return identification;
     }
 
-    public void setIdentification(String identification) {
-        this.identification = identification;
-    }
+    public void setIdentification(String identification) { this.identification = identification; }
 
 }

@@ -8,4 +8,8 @@ public interface RepositoryDriver {
     Driver createDriver(Driver driver);
 
     List<Driver> listDriver();
+
+    boolean deleteDriver(Long id);
+
+    Driver updateDriver(Long id, Driver driver);
 }

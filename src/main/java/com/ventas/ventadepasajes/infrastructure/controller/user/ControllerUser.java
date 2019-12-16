@@ -1,4 +1,4 @@
-package com.ventas.ventadepasajes.infrastructure.controller;
+package com.ventas.ventadepasajes.infrastructure.controller.user;
 
 import com.ventas.ventadepasajes.aplication.command.handler.command.CommandUser;
 import com.ventas.ventadepasajes.aplication.command.handler.user.HandlerCreateUser;

@@ -30,4 +30,37 @@ public class RepositoryDriverImpl implements RepositoryDriver {
         List<EntityDriver> listEntity = this.jpaDriverRepository.findAll();
         return listEntity.stream().map(e->Driver.valueOf(e)).collect(Collectors.toList());
     }
+
+    @Override
+    public boolean deleteDriver(Long id) {
+        try{
+            this.jpaDriverRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    @Override
+    public Driver updateDriver(Long id, Driver newDriver) {
+        EntityDriver entityDriver = this.modelMapper.map(newDriver, EntityDriver.class);
+        EntityDriver entityDriverUpdated =  jpaDriverRepository.findById(id)
+                .map(driver ->{
+                    driver.setName(newDriver.getName());
+                    driver.setLastName(newDriver.getLastName());
+                    driver.setIdentification(newDriver.getIdentification());
+                    return jpaDriverRepository.save(driver);
+                })
+                .orElseGet(()->{
+                    entityDriver.setId(id);
+                    entityDriver.setName(newDriver.getName());
+                    entityDriver.setLastName(newDriver.getLastName());
+                    entityDriver.setIdentification(newDriver.getIdentification());
+                    return jpaDriverRepository.save(entityDriver);
+                });
+        return new Driver(entityDriverUpdated.getId(), entityDriverUpdated.getName(), entityDriverUpdated.getLastName(), entityDriverUpdated.getIdentification());
+    }
+
+
 }

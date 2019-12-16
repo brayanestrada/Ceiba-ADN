@@ -5,11 +5,14 @@ import com.ventas.ventadepasajes.aplication.command.handler.command.CommandDesti
 import com.ventas.ventadepasajes.domain.model.dto.DtoDestination;
 import com.ventas.ventadepasajes.domain.model.entity.Destination;
 import com.ventas.ventadepasajes.domain.service.destination.ServiceCreateDestination;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class HandlerCreateDestination {
+    @Autowired
     private final FactoryDestination factoryDestination;
+    @Autowired
     private final ServiceCreateDestination serviceCreateDestination;
 
     public HandlerCreateDestination(ServiceCreateDestination serviceCreateDestination, FactoryDestination factoryDestination){

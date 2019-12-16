@@ -12,4 +12,8 @@ public class FactoryDriver {
     public Driver create(CommandDriver commandDriver){
         return new Driver(commandDriver.getName(), commandDriver.getLastName(), commandDriver.getIdentification());
     }
+
+    public Driver update(long id, CommandDriver commandDriver){
+        return new Driver(id, commandDriver.getName(), commandDriver.getLastName(), commandDriver.getIdentification());
+    }
 }
