@@ -1,7 +1,6 @@
 package com.ventas.ventadepasajes.infrastructure.configuration;
 
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryDriver;
-import com.ventas.ventadepasajes.domain.service.destination.ServiceCreateDestination;
 import com.ventas.ventadepasajes.domain.service.driver.ServiceCreateDriver;
 import com.ventas.ventadepasajes.domain.service.driver.ServiceDeleteDriver;
 import com.ventas.ventadepasajes.domain.service.driver.ServiceListDriver;
