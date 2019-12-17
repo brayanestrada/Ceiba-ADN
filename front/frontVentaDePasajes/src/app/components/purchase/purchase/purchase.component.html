@@ -1,0 +1,27 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Number of purchased tickets</th>
+        <th scope="col">Ticket amout</th>
+        <th scope="col">Discount percentagee</th>
+        <th scope="col">Total</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let purchase of purchases">
+      <tr>
+        <th>{{ purchase.id }}</th>
+        <td>{{ purchase.numberPurchasedTickets }}</td>
+        <td>{{ purchase.ticketAmount }}</td>
+        <td>{{ purchase.discountPercentage }}</td>
+        <td>{{ purchase.totalPurchaseAmount }}</td>
+        <td>
+          <button class="btn btn-primary" routerLink="/updatePurchase">Update</button>
+          <button class="btn btn-danger" routerLink="/deletePurchase">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

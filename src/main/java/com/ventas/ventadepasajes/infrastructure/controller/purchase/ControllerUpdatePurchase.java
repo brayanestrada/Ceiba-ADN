@@ -14,6 +14,7 @@ public class ControllerUpdatePurchase {
         this.handlerUpdatePurchase = handlerUpdatePurchase;
     }
 
+    @CrossOrigin
     @PutMapping("/update/{id}")
     public DtoPurchase update(@RequestBody CommandPurchase commandPurchase, @PathVariable long id){
         return this.handlerUpdatePurchase.run(id, commandPurchase);

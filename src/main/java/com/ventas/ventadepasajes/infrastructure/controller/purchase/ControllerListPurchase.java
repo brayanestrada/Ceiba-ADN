@@ -2,6 +2,7 @@ package com.ventas.ventadepasajes.infrastructure.controller.purchase;
 
 import com.ventas.ventadepasajes.aplication.command.handler.purchase.HandlerListPurchase;
 import com.ventas.ventadepasajes.domain.model.dto.DtoPurchase;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,7 @@ public class ControllerListPurchase {
         this.handlerListPurchase = handlerListPurchase;
     }
 
+    @CrossOrigin
     @GetMapping("/list")
     public List<DtoPurchase> listPurchase(){
         return handlerListPurchase.run();
