@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [],
+  providers: [],
   imports: [
     CommonModule
   ]
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
 export class PurchaseModule {
   id: number;
   numberPurchasedTickets: number;
+  ticketAmount: number;
   discountPercentage: number;
-  totalPurchaseAmout: number;
-
+  totalPurchaseAmount: number;
  }

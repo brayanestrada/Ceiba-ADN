@@ -8,9 +8,13 @@ import { HomeService } from '../../service/home/home.service';
 })
 export class HomeComponent {
 
+  TRM: any;
+
   constructor(private home: HomeService) {
     console.log('Se ejecutó el constructor del home component');
-    this.home.getTRM();
+    this.home.getTRM().subscribe(data => {
+      this.TRM = data['data']['value'];
+    });
   }
 
 }

@@ -6,12 +6,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeService {
 
+  value: number;
   constructor(private http: HttpClient) { console.log('Se ejecutó el constructor del Home Service'); }
 
   getTRM() {
-    return this.http.get('http://app.docm.co/prod/Dmservices/Utilities.svc/GetTRM')
-    .subscribe(data => {
-      console.log(data);
-    });
+    return this.http.get('https://trm-colombia.makaw-dev.now.sh/?date=2019-12-18');
   }
 }

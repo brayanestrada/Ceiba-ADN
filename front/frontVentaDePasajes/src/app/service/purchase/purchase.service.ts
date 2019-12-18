@@ -6,12 +6,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PurchaseService {
 
+  url = 'http://localhost:8181/purchase/list';
   constructor(private http: HttpClient) {
     console.log('Se ejecutó el constructor del Service purchase');
   }
 
   getPurchase() {
-    return this.http.get('http://localhost:8181/purchase/list');
+    return this.http.get(this.url);
   }
 
 }

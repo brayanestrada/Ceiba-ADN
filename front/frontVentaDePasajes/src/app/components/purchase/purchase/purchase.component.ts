@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PurchaseService } from 'src/app/service/purchase/purchase.service';
 
 @Component({
