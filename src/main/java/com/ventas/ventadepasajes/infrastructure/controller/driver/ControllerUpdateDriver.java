@@ -15,6 +15,7 @@ public class ControllerUpdateDriver {
         this.handlerUpdateDriver = handlerUpdateDriver;
     }
 
+    @CrossOrigin
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public DtoDriver updateDriver(@RequestBody CommandDriver commandDriver, @PathVariable long id){

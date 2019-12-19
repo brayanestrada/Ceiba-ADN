@@ -7,6 +7,7 @@ public class CommandPurchase {
     private long id;
     private int numberPurchasedTickets;
     private double ticketAmount;
+    private long idTrip;
 
     public CommandPurchase(){}
 
@@ -20,5 +21,9 @@ public class CommandPurchase {
 
     public double getTicketAmount() {
         return ticketAmount;
+    }
+
+    public long getIdTrip() {
+        return idTrip;
     }
 }

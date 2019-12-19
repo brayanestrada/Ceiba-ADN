@@ -1,5 +1,7 @@
 package com.ventas.ventadepasajes.infrastructure.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,15 +14,20 @@ public class EntityUser {
     private String lastName;
     private String email;
     private String phone;
+    private long role;
+    @JsonIgnore
+    private String password;
 
     public EntityUser(){}
 
-    public EntityUser(Long id, String name, String lastName, String email, String phone){
+    public EntityUser(Long id, String name, String lastName, String email, String phone, long roleId, String password){
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+        this.role = roleId;
+        this.password = password;
     }
 
     public Long getId() {
@@ -55,5 +62,21 @@ public class EntityUser {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public long getRole() {
+        return role;
+    }
+
+    public void setRole(long role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

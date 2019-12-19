@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class MapperUser {
 
     public DtoUser entityToDto(User user){
-        return new DtoUser(user.getId(), user.getName(), user.getLastName(), user.getEmail(), user.getPhone());
+        return new DtoUser(user.getId(), user.getName(), user.getLastName(), user.getEmail(), user.getPhone(), user.getRole());
     }
 
     public List<DtoUser> entityListToDtoList(List<User> listUser){

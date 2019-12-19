@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError  } from 'rxjs/operators';
-import { PurchaseModule } from 'src/app/model/purchase/purchase.module';
 import { throwError } from 'rxjs';
 
 @Injectable({
@@ -9,7 +8,7 @@ import { throwError } from 'rxjs';
 })
 export class CreateService {
 
-  constructor(private http: HttpClient, private purchaseBody: PurchaseModule) { console.log('Se ejecutó el constructor del create service')}
+  constructor(private http: HttpClient) { console.log('Se ejecutó el constructor del create service'); }
 
   url = 'http://localhost:8181/purchase/create';
 
@@ -20,7 +19,7 @@ export class CreateService {
     };
     return this.http.post(this.url, purchaseBody)
       .pipe(
-        map((data: PurchaseModule) => {
+        map((data: any) => {
         return data;
       }), catchError( error => {
         return throwError( 'Something went wrong!' );

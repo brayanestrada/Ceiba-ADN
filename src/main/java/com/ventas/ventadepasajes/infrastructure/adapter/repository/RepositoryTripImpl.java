@@ -23,7 +23,7 @@ public class RepositoryTripImpl implements RepositoryTrip {
     public Trip createTrip(Trip trip) {
         EntityTrip entityTrip = this.modelMapper.map(trip, EntityTrip.class);
         EntityTrip entityTripSaved = this.jpaTripRepository.save(entityTrip);
-        return new Trip(entityTripSaved.getId(), entityTripSaved.getCost(), entityTripSaved.getSeats_available(), entityTripSaved.getSeats_sold());
+        return new Trip(entityTripSaved.getId(), entityTripSaved.getCost(), entityTripSaved.getSeats_available(), entityTripSaved.getSeats_sold(), entityTripSaved.getStartCity(), entityTripSaved.getEndCity(), entityTripSaved.getIdDriver());
     }
 
     @Override
@@ -52,14 +52,20 @@ public class RepositoryTripImpl implements RepositoryTrip {
                     trip.setCost(newTrip.getCost());
                     trip.setSeats_available(newTrip.getSeats_available());
                     trip.setSeats_sold(newTrip.getSeats_sold());
+                    trip.setStartCity(newTrip.getStartCity());
+                    trip.setEndCity(newTrip.getEndCity());
+                    trip.setIdDriver(newTrip.getIdDriver());
                     return jpaTripRepository.save(trip);
                 }).orElseGet(()->{
                     entityTrip.setId(id);
                     entityTrip.setCost(newTrip.getCost());
                     entityTrip.setSeats_available(newTrip.getSeats_available());
                     entityTrip.setSeats_sold(newTrip.getSeats_sold());
+                    entityTrip.setStartCity(newTrip.getStartCity());
+                    entityTrip.setEndCity(newTrip.getEndCity());
+                    entityTrip.setIdDriver(newTrip.getIdDriver());
                     return jpaTripRepository.save(entityTrip);
                 });
-        return new Trip(entityTripUpdated.getId(), entityTrip.getCost(), entityTrip.getSeats_available(), entityTrip.getSeats_sold());
+        return new Trip(entityTripUpdated.getId(), entityTrip.getCost(), entityTrip.getSeats_available(), entityTrip.getSeats_sold(), entityTripUpdated.getStartCity(), entityTrip.getEndCity(), entityTrip.getIdDriver());
     }
 }

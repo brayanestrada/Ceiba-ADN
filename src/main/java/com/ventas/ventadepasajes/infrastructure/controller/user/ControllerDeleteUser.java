@@ -15,6 +15,7 @@ public class ControllerDeleteUser {
         this.handlerDeleteUser = handlerDeleteUser;
     }
 
+    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteUse(@PathVariable long id){
         if(handlerDeleteUser.run(id)){

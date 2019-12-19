@@ -12,4 +12,6 @@ public interface RepositoryUser {
     boolean deleteUser(long id);
 
     User updateUser(long id, User user);
+
+    User logIn(String email, String password);
 }

@@ -9,37 +9,42 @@ public class Purchase {
     private double ticketAmount;
     private int discountPercentage;
     private double totalPurchaseAmount;
+    private long idTrip;
 
     public Purchase(){}
 
-    public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount){
+    public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip){
         this.id = id;
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
         this.discountPercentage = discountPercentage;
         this.totalPurchaseAmount = totalPurchaseAmount;
+        this.idTrip = idTrip;
     }
 
-    public Purchase(int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount){
+    public Purchase(int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip){
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
         this.discountPercentage = discountPercentage;
         this.totalPurchaseAmount = totalPurchaseAmount;
+        this.idTrip = idTrip;
     }
 
-    public Purchase(long id, int numberPurchasedTickets, double ticketAmount){
+    public Purchase(long id, int numberPurchasedTickets, double ticketAmount, long idTrip){
         this.id = id;
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
         this.discountPercentage = 0;
         this.totalPurchaseAmount = 0;
+        this.idTrip = idTrip;
     }
 
-    public Purchase(int numberPurchasedTickets, double ticketAmount){
+    public Purchase(int numberPurchasedTickets, double ticketAmount, long idTrip){
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
         this.discountPercentage = 0;
         this.totalPurchaseAmount = 0;
+        this.idTrip = idTrip;
     }
 
     public long getId() {
@@ -78,12 +83,21 @@ public class Purchase {
 
     public void setDiscountPercentage(int discountPercentage) { this.discountPercentage = discountPercentage; }
 
+    public long getIdTrip() {
+        return idTrip;
+    }
+
+    public void setIdTrip(long idTrip) {
+        this.idTrip = idTrip;
+    }
+
     public static Purchase valueOf(EntityPurchase entityPurchase){
         Purchase purchase = new Purchase();
         purchase.setId(entityPurchase.getId());
         purchase.setNumberPurchasedTickets(entityPurchase.getNumberPurchasedTickets());
         purchase.setTicketAmount(entityPurchase.getTicketAmount());
         purchase.setTotalPurchaseAmount(entityPurchase.getTotalPurchaseAmount());
+        purchase.setIdTrip(entityPurchase.getIdTrip());
         return purchase;
     }
 }

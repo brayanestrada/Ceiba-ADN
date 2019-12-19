@@ -1,5 +1,6 @@
 package com.ventas.ventadepasajes.domain.model.entity;
 
+import com.ventas.ventadepasajes.infrastructure.entity.EntityRole;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityUser;
 
 import static com.ventas.ventadepasajes.domain.model.entity.DataValidator.*;
@@ -21,22 +22,28 @@ public class User{
     private String lastName;
     private String email;
     private String phone;
+    private long role;
+    private String password;
 
     public User(){}
 
-    public User(Long id, String name, String lastName, String email, String phone){
+    public User(Long id, String name, String lastName, String email, String phone, long role, String password){
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+        this.role = role;
+        this.password = password;
         validate();
     }
-    public User(String name, String lastName, String email, String phone){
+    public User(String name, String lastName, String email, String phone, long role, String password){
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+        this.role = role;
+        this.password = password;
         validate();
     }
 
@@ -68,6 +75,22 @@ public class User{
         this.phone = phone;
     }
 
+    public long getRole() {
+        return role;
+    }
+
+    public void setRole(long role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     private void validate(){
         validateMandatory(name, NAME_IS_MANDATORY);
         validateMaximumValue(name, NAME_MAX_LENGTH, ERROR_NAME_MAX_LENGTH);
@@ -78,12 +101,14 @@ public class User{
     }
 
     public static User valueOf(EntityUser entityUser){
-        User user = new User();
-        user.setId(entityUser.getId());
-        user.setName(entityUser.getName());
-        user.setLastName(entityUser.getLastName());
-        user.setEmail(entityUser.getEmail());
-        user.setPhone(entityUser.getPhone());
-        return user;
+        User userEntity = new User();
+        userEntity.setId(entityUser.getId());
+        userEntity.setName(entityUser.getName());
+        userEntity.setLastName(entityUser.getLastName());
+        userEntity.setEmail(entityUser.getEmail());
+        userEntity.setPhone(entityUser.getPhone());
+        userEntity.setRole(entityUser.getRole());
+        userEntity.setPassword(entityUser.getPassword());
+        return userEntity;
     }
 }

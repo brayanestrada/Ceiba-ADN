@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class MapperTrip {
 
     public DtoTrip entityToDto(Trip entity){
-        return new DtoTrip(entity.getId(), entity.getCost(), entity.getSeats_available(), entity.getSeats_sold());
+        return new DtoTrip(entity.getId(), entity.getCost(), entity.getSeats_available(), entity.getSeats_sold(), entity.getStartCity(), entity.getEndCity(), entity.getIdDriver());
     }
 
     public List<DtoTrip> entityListToDtoList(List<Trip> listTrip){

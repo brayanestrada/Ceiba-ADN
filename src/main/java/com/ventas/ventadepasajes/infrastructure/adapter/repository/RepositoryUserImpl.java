@@ -1,6 +1,9 @@
 package com.ventas.ventadepasajes.infrastructure.adapter.repository;
 
+import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
+import com.ventas.ventadepasajes.domain.model.entity.Role;
 import com.ventas.ventadepasajes.domain.model.entity.User;
+import com.ventas.ventadepasajes.infrastructure.entity.EntityRole;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityUser;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaUserRepository;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryUser;
@@ -22,7 +25,7 @@ public class RepositoryUserImpl implements RepositoryUser {
     public User createUser(User user) {
         EntityUser entityUser = modelMapper.map(user, EntityUser.class);
         entityUser = jpaUserRepository.save(entityUser);
-        return new User(entityUser.getId(),entityUser.getName(), entityUser.getLastName(), entityUser.getEmail(), entityUser.getPhone());
+        return new User(entityUser.getId(),entityUser.getName(), entityUser.getLastName(), entityUser.getEmail(), entityUser.getPhone(), entityUser.getRole(), user.getPassword());
     }
 
     @Override
@@ -61,6 +64,16 @@ public class RepositoryUserImpl implements RepositoryUser {
                     entityUser.setPhone(newUser.getName());
                     return jpaUserRepository.save(entityUser);
                 });
-        return new User(entityUserUpdated.getId(), entityUserUpdated.getName(), entityUserUpdated.getLastName(), entityUserUpdated.getEmail(), entityUserUpdated.getPhone());
+        return new User(entityUserUpdated.getId(), entityUserUpdated.getName(), entityUserUpdated.getLastName(), entityUserUpdated.getEmail(), entityUserUpdated.getPhone(), entityUserUpdated.getRole(), entityUserUpdated.getPassword());
+    }
+
+    @Override
+    public User logIn(String email, String password) {
+        EntityUser entityUser = this.jpaUserRepository.logIn(email, password);
+        try{
+            return this.modelMapper.map(entityUser, User.class);
+        }catch (Exception e){
+            throw new ExceptionGeneral("There are no users with email " + email);
+        }
     }
 }

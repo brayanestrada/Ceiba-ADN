@@ -1,5 +1,6 @@
 package com.ventas.ventadepasajes.infrastructure.adapter.repository;
 
+import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
 import com.ventas.ventadepasajes.domain.model.entity.Role;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryRole;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityRole;
@@ -59,5 +60,15 @@ public class RepositoryRoleImpl implements RepositoryRole {
                 });
 
         return new Role(entityRoleUpdated.getId(), entityRoleUpdated.getName());
+    }
+
+    @Override
+    public Role searchRole(long id) {
+        EntityRole entityRole = this.jpaRoleRepository.searchRole(id);
+        try{
+            return this.modelMapper.map(entityRole, Role.class);
+        }catch (Exception e){
+            throw new ExceptionGeneral("There are no roles with id " + id);
+        }
     }
 }

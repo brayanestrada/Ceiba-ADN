@@ -9,30 +9,42 @@ import lombok.Setter;
 public class DtoTrip {
     private long id;
     private double cost;
-    private int seats_available;
-    private int seats_sold;
+    private int seatsAvailable;
+    private int seatsSold;
+    private String startCity;
+    private String endCity;
+    private long idDriver;
 
     public DtoTrip(){}
 
-    public DtoTrip(Long id, double cost, int seats_available, int seats_sold){
+    public DtoTrip(Long id, double cost, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver){
         this.id = id;
         this.cost = cost;
-        this.seats_available = seats_available;
-        this.seats_sold = seats_sold;
+        this.seatsAvailable = seatsAvailable;
+        this.seatsSold = seatsSold;
+        this.startCity = startCity;
+        this.endCity = endCity;
+        this.idDriver = idDriver;
     }
 
-    public DtoTrip(double cost, int seats_available, int seats_sold){
+    public DtoTrip(double cost, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver){
         this.cost = cost;
-        this.seats_available = seats_available;
-        this.seats_sold = seats_sold;
+        this.seatsAvailable = seatsAvailable;
+        this.seatsSold = seatsSold;
+        this.startCity = startCity;
+        this.endCity = endCity;
+        this.idDriver = idDriver;
     }
 
     public static DtoTrip valueOf(Trip trip){
-        DtoTrip dto = new DtoTrip();
-        dto.setId(trip.getId());
-        dto.setCost(trip.getCost());
-        dto.setSeats_available(trip.getSeats_available());
-        dto.setSeats_sold(trip.getSeats_sold());
-        return dto;
+        DtoTrip dtoTrip = new DtoTrip();
+        dtoTrip.setId(trip.getId());
+        dtoTrip.setCost(trip.getCost());
+        dtoTrip.setSeatsAvailable(trip.getSeats_available());
+        dtoTrip.setSeatsSold(trip.getSeats_sold());
+        dtoTrip.setStartCity(trip.getStartCity());
+        dtoTrip.setEndCity(trip.getEndCity());
+        dtoTrip.setIdDriver(trip.getIdDriver());
+        return dtoTrip;
     }
 }

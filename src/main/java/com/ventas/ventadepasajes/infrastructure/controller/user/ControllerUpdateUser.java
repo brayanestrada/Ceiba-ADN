@@ -15,6 +15,7 @@ public class ControllerUpdateUser {
         this.handlerUpdateUser = handlerUpdateUser;
     }
 
+    @CrossOrigin
     @PutMapping("/update/{id}")
     public DtoUser updateUser(@RequestBody CommandUser commandUser, @PathVariable long id){
         return this.handlerUpdateUser.run(id, commandUser);

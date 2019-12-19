@@ -13,30 +13,34 @@ public class DtoPurchase {
     private double ticketAmount;
     private int discountPercentage;
     private double totalPurchaseAmount;
+    private long idTrip;
 
     public DtoPurchase(){}
 
-    public DtoPurchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount){
+    public DtoPurchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip){
         this.id = id;
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
         this.discountPercentage = discountPercentage;
         this.totalPurchaseAmount = totalPurchaseAmount;
+        this.idTrip = idTrip;
     }
 
-    public DtoPurchase(long id, int numberPurchasedTickets, double ticketAmount){
+    public DtoPurchase(long id, int numberPurchasedTickets, double ticketAmount, long idTrip){
         this.id = id;
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
         this.discountPercentage = 0;
         this.totalPurchaseAmount = 0;
+        this.idTrip = idTrip;
     }
 
-    public DtoPurchase(int numberPurchasedTickets, double ticketAmount){
+    public DtoPurchase(int numberPurchasedTickets, double ticketAmount, long idTrip){
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
         this.discountPercentage = 0;
         this.totalPurchaseAmount = 0;
+        this.idTrip = idTrip;
     }
 
     public static DtoPurchase valueOf(Purchase purchase){
@@ -46,6 +50,7 @@ public class DtoPurchase {
         dtoPurchase.setTicketAmount(purchase.getTicketAmount());
         dtoPurchase.setDiscountPercentage(purchase.getDiscountPercentage());
         dtoPurchase.setTotalPurchaseAmount(purchase.getTotalPurchaseAmount());
+        dtoPurchase.setIdTrip(purchase.getIdTrip());
         return dtoPurchase;
     }
 }

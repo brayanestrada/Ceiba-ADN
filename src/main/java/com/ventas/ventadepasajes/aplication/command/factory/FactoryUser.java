@@ -10,8 +10,8 @@ public class FactoryUser {
     public FactoryUser(){}
 
     public User create(CommandUser commandUser){
-        return new User(commandUser.getName(), commandUser.getLastName(), commandUser.getEmail(), commandUser.getPhone());
+        return new User(commandUser.getName(), commandUser.getLastName(), commandUser.getEmail(), commandUser.getPhone(), commandUser.getRole(), commandUser.getPassword());
     }
 
-    public User update(long id, CommandUser commandUser){return new User(id, commandUser.getName(), commandUser.getLastName(), commandUser.getEmail(), commandUser.getPhone());}
+    public User update(long id, CommandUser commandUser){return new User(id, commandUser.getName(), commandUser.getLastName(), commandUser.getEmail(), commandUser.getPhone(), commandUser.getRole(), commandUser.getPassword());}
 }

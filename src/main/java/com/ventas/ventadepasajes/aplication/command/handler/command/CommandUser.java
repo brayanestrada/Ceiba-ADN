@@ -10,11 +10,17 @@ public class CommandUser {
     private String lastName;
     private String email;
     private String phone;
+    private long role;
+    private String password;
 
-    public CommandUser(Long id, String name, String lastName){
+    public CommandUser(Long id, String name, String lastName, String email, String phone, long role, String password){
         this.id = id;
         this.name = name;
         this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.role = role;
+        this.password = password;
     }
 
     public Long getId() {
@@ -35,5 +41,13 @@ public class CommandUser {
 
     public String getPhone() {
         return phone;
+    }
+
+    public long getRole() {
+        return role;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

@@ -15,6 +15,7 @@ public class ControllerCreateDriver {
     public ControllerCreateDriver(HandlerCreateDriver handlerCreateDriver){
         this.handlerCreateDriver = handlerCreateDriver; }
 
+    @CrossOrigin
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public DtoDriver createDriver(@RequestBody CommandDriver commandDriver){

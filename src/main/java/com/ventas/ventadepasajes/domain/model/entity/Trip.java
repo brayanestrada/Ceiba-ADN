@@ -16,22 +16,30 @@ public class Trip {
     private double cost;
     private int seats_available;
     private int seats_sold;
+    private String startCity;
+    private String endCity;
+    private long idDriver;
 
     public Trip(){}
 
-    public Trip(long id, double cost, int seats_available, int seats_sold){
+    public Trip(long id, double cost, int seats_available, int seats_sold, String startCity, String endCity, long idDriver){
         this.id = id;
         this.cost = cost;
         this.seats_available = seats_available;
         this.seats_sold = seats_sold;
+        this.startCity = startCity;
+        this.endCity = endCity;
+        this.idDriver = idDriver;
         dataValidatorTrip();
     }
 
-    public Trip(double cost, int seats_available, int seats_sold){
+    public Trip(double cost, int seats_available, int seats_sold, String startCity, String endCity, long idDriver){
         this.cost = cost;
         this.seats_available = seats_available;
         this.seats_sold = seats_sold;
-
+        this.startCity = startCity;
+        this.endCity = endCity;
+        this.idDriver = idDriver;
         dataValidatorTrip();
     }
 
@@ -67,6 +75,30 @@ public class Trip {
         this.seats_sold = seats_sold;
     }
 
+    public String getStartCity() {
+        return startCity;
+    }
+
+    public void setStartCity(String startCity) {
+        this.startCity = startCity;
+    }
+
+    public String getEndCity() {
+        return endCity;
+    }
+
+    public void setEndCity(String endCity) {
+        this.endCity = endCity;
+    }
+
+    public long getIdDriver() {
+        return idDriver;
+    }
+
+    public void setIdDriver(long idDriver) {
+        this.idDriver = idDriver;
+    }
+
     private void dataValidatorTrip(){
         DataValidator.validateMandatory(cost, ERROR_MANDATORY_COST);
         DataValidator.validateMandatory(seats_available, ERROR_MANDATORY_SEATS_AVAILABLE);
@@ -81,6 +113,9 @@ public class Trip {
         trip.setCost(entityTrip.getCost());
         trip.setSeats_available(entityTrip.getSeats_available());
         trip.setSeats_sold(entityTrip.getSeats_sold());
+        trip.setStartCity(entityTrip.getStartCity());
+        trip.setEndCity(entityTrip.getEndCity());
+        trip.setIdDriver(entityTrip.getIdDriver());
         return trip;
     }
 }

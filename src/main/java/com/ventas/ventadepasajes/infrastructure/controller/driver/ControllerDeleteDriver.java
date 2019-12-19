@@ -17,6 +17,7 @@ public class ControllerDeleteDriver{
         this.handlerDeleteDriver = handlerDeleteDriver;
     }
 
+    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteDriver(@PathVariable Long id) {
         if(handlerDeleteDriver.run(id)){

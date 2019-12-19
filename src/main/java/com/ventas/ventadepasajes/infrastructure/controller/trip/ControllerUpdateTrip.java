@@ -15,6 +15,7 @@ public class ControllerUpdateTrip {
         this.handlerUpdateTrip = handlerUpdateTrip;
     }
 
+    @CrossOrigin
     @PutMapping("/update/{id}")
     public DtoTrip updateTrip(@RequestBody CommandTrip commandTrip, @PathVariable long id){
         return this.handlerUpdateTrip.run(id, commandTrip);
