@@ -52,7 +52,6 @@ public class ServiceCreatePurchase {
             }else{
                 discountPercentage = 10;
             }
-
             purchase.setDiscountPercentage(discountPercentage);
             purchase.setPurchaseDate(getDateNow());
             double discountAmount = totalWithoutDiscount*(discountPercentage)/100;

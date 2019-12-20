@@ -13,6 +13,12 @@ public class Purchase {
     private long idTrip;
     private String tripDate;
     private static final String ERROR_DATE_FORMAT = "Error: Date hasn't the correct format, it's dd-MM-yyyy";
+    private static final String ERROR_NUMBER_PURCHASED_TICKETS_MANDATORY = "Error: Number of purchased tickets is mandatory";
+    private static final int MAX_ALLOWED_TICKETS = 15;
+    private static final int MIN_ALLOWED_TICKETS = 0;
+    private static final String ERROR_MAX_ALLOWED_TICKETS = "Error: Max number of tickets to purchase are " + MAX_ALLOWED_TICKETS;
+    private static final String ERROR_MIN_ALLOWED_TICKETS = "Error: Min number of tickets to purchase are " + MIN_ALLOWED_TICKETS;
+    private static final String ERROR_ID_TRIP_IS_MANDATORY = "Error: Trip id is mandatory";
 
     public Purchase(){}
 
@@ -26,6 +32,9 @@ public class Purchase {
         this.idTrip = idTrip;
         this.purchaseDate = purchaseDate;
         this.tripDate = tripDate;
+        validate();
+        DataValidator.validateDateFormat(purchaseDate, ERROR_DATE_FORMAT);
+        DataValidator.validateDateFormat(tripDate, ERROR_DATE_FORMAT);
     }
 
     public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip){
@@ -132,7 +141,12 @@ public class Purchase {
         this.tripDate = tripDate;
     }
 
-
+    private void validate(){
+        DataValidator.validateMandatory(numberPurchasedTickets, ERROR_NUMBER_PURCHASED_TICKETS_MANDATORY);
+        DataValidator.validateMandatory(idTrip, ERROR_ID_TRIP_IS_MANDATORY);
+        DataValidator.validateMaximumValue(numberPurchasedTickets, MAX_ALLOWED_TICKETS, ERROR_MAX_ALLOWED_TICKETS);
+        DataValidator.validateMaximumValue(numberPurchasedTickets, MIN_ALLOWED_TICKETS, ERROR_MIN_ALLOWED_TICKETS);
+    }
 
     public static Purchase valueOf(EntityPurchase entityPurchase){
         Purchase purchase = new Purchase();

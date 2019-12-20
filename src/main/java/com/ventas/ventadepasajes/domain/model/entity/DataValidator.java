@@ -20,6 +20,10 @@ public class DataValidator {
         if (value.length() > length){
             throw new ExceptionGeneral(message);
         }
+    }public static void validateMaximumValue(int value, int maxValue, String message){
+        if (value > maxValue){
+            throw new ExceptionGeneral(message);
+        }
     }
 
     public static void validateMinimumValue(String value, int length, String message){

@@ -7,6 +7,7 @@ import com.ventas.ventadepasajes.domain.testdatabuilder.DriverTestDataBuilder;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestServiceCreateDriver {
@@ -18,8 +19,9 @@ public class TestServiceCreateDriver {
         Mockito.when(repositoryDriver.createDriver(Mockito.any())).thenReturn(driver);
         ServiceCreateDriver serviceCreateDriver = new ServiceCreateDriver(repositoryDriver);
         DtoDriver dtoDriver = serviceCreateDriver.run(driver);
-        assertTrue(driver.getName().equals(dtoDriver.getName()), "Error creating user, no name");
-        assertTrue(driver.getLastName().equals(dtoDriver.getLastName()), "Error creating user, no last name");
-        assertTrue(driver.getIdentification().equals(dtoDriver.getIdentification()), "Error creating user, no identification");
+        assertEquals(driver.getName(), dtoDriver.getName(), "Error creating user, no name");
+        assertEquals(driver.getLastName(), dtoDriver.getLastName(), "Error creating user, no name");
+        assertEquals(driver.getIdentification(), dtoDriver.getIdentification(), "Error creating user, no name");
+
     }
 }

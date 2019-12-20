@@ -2,6 +2,9 @@ package com.ventas.ventadepasajes.domain.model.entity;
 
 import com.ventas.ventadepasajes.infrastructure.entity.EntityTrip;
 
+import static com.ventas.ventadepasajes.domain.model.entity.DataValidator.*;
+import static com.ventas.ventadepasajes.domain.model.entity.DataValidator.validateMinimumValue;
+
 public class Trip {
 
     private static final int MIN_SEATS_AVAILABLE = 0;
@@ -12,6 +15,9 @@ public class Trip {
     private static final String ERROR_MANDATORY_SEATS_AVAILABLE = "Error: Seats available value is mandatory";
     private static final String ERROR_MANDATORY_SEATS_SOLD = "Error: Seats sold value is mandatory";
     private static final String ERROR_DATE_FORMAT = "Error: Date format is not correct, it must be dd-MM-yyyy";
+    private static final String ERROR_START_CITY_MANDATORY = "Error: Start city is mandatory";
+    private static final String ERROR_END_CITY_MANDATORY = "Error: End city is mandatory";
+    private static final String ERROR_ID_DRIVER_MANDATORY = "Error: End city is mandatory";
 
     private long id;
     private double cost;
@@ -129,6 +135,9 @@ public class Trip {
         DataValidator.validateMinimumValue(cost, MIN_SEATS_AVAILABLE, ERROR_MIN_COST);
         DataValidator.validateMinimumValue(seatsAvailable, MIN_SEATS_AVAILABLE, ERROR_MIN_SEATS_AVAILABLE);
         DataValidator.validateDateFormat(tripDate, ERROR_DATE_FORMAT);
+        DataValidator.validateMandatory(startCity, ERROR_START_CITY_MANDATORY);
+        DataValidator.validateMandatory(endCity, ERROR_END_CITY_MANDATORY);
+        DataValidator.validateMandatory(idDriver, ERROR_ID_DRIVER_MANDATORY);
     }
 
     public static Trip valueOf(EntityTrip entityTrip){

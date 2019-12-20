@@ -13,7 +13,16 @@ public class CommandTrip {
     private long idDriver;
     private double ticketAmount;
 
-    public CommandTrip() {}
+    public CommandTrip(double cost, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
+        this.cost = cost;
+        this.seatsAvailable = seatsAvailable;
+        this.seatsSold = seatsSold;
+        this.startCity = startCity;
+        this.endCity = endCity;
+        this.idDriver = idDriver;
+        this.tripDate = tripDate;
+        this.ticketAmount = ticketAmount;
+    }
 
     public double getCost() {
         return cost;
