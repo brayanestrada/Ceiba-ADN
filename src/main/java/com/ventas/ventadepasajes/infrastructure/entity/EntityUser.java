@@ -1,7 +1,5 @@
 package com.ventas.ventadepasajes.infrastructure.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
@@ -15,7 +13,6 @@ public class EntityUser {
     private String email;
     private String phone;
     private long role;
-    @JsonIgnore
     private String password;
 
     public EntityUser(){}

@@ -1,7 +1,10 @@
 package com.ventas.ventadepasajes.infrastructure.adapter.repository;
 
+import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
+import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.model.entity.Trip;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryTrip;
+import com.ventas.ventadepasajes.infrastructure.entity.EntityPurchase;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityTrip;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaTripRepository;
 import org.modelmapper.ModelMapper;
@@ -18,12 +21,11 @@ public class RepositoryTripImpl implements RepositoryTrip {
 
     public RepositoryTripImpl(JpaTripRepository jpaTripRepository){this.jpaTripRepository = jpaTripRepository;}
 
-
     @Override
     public Trip createTrip(Trip trip) {
         EntityTrip entityTrip = this.modelMapper.map(trip, EntityTrip.class);
         EntityTrip entityTripSaved = this.jpaTripRepository.save(entityTrip);
-        return new Trip(entityTripSaved.getId(), entityTripSaved.getCost(), entityTripSaved.getSeats_available(), entityTripSaved.getSeats_sold(), entityTripSaved.getStartCity(), entityTripSaved.getEndCity(), entityTripSaved.getIdDriver());
+        return new Trip(entityTripSaved.getId(), entityTripSaved.getCost(), entityTripSaved.getSeatsAvailable(), entityTripSaved.getSeatsSold(), entityTripSaved.getStartCity(), entityTripSaved.getEndCity(), entityTripSaved.getIdDriver(), entityTripSaved.getTripDate(), entityTrip.getTicketAmount());
     }
 
     @Override
@@ -50,8 +52,8 @@ public class RepositoryTripImpl implements RepositoryTrip {
                 .map(trip ->{
                     trip.setId(newTrip.getId());
                     trip.setCost(newTrip.getCost());
-                    trip.setSeats_available(newTrip.getSeats_available());
-                    trip.setSeats_sold(newTrip.getSeats_sold());
+                    trip.setSeatsAvailable(newTrip.getSeatsAvailable());
+                    trip.setSeatsSold(newTrip.getSeatsSold());
                     trip.setStartCity(newTrip.getStartCity());
                     trip.setEndCity(newTrip.getEndCity());
                     trip.setIdDriver(newTrip.getIdDriver());
@@ -59,13 +61,23 @@ public class RepositoryTripImpl implements RepositoryTrip {
                 }).orElseGet(()->{
                     entityTrip.setId(id);
                     entityTrip.setCost(newTrip.getCost());
-                    entityTrip.setSeats_available(newTrip.getSeats_available());
-                    entityTrip.setSeats_sold(newTrip.getSeats_sold());
+                    entityTrip.setSeatsAvailable(newTrip.getSeatsAvailable());
+                    entityTrip.setSeatsSold(newTrip.getSeatsSold());
                     entityTrip.setStartCity(newTrip.getStartCity());
                     entityTrip.setEndCity(newTrip.getEndCity());
                     entityTrip.setIdDriver(newTrip.getIdDriver());
                     return jpaTripRepository.save(entityTrip);
                 });
-        return new Trip(entityTripUpdated.getId(), entityTrip.getCost(), entityTrip.getSeats_available(), entityTrip.getSeats_sold(), entityTripUpdated.getStartCity(), entityTrip.getEndCity(), entityTrip.getIdDriver());
+        return new Trip(entityTripUpdated.getId(), entityTrip.getCost(), entityTrip.getSeatsAvailable(), entityTrip.getSeatsSold(), entityTripUpdated.getStartCity(), entityTrip.getEndCity(), entityTrip.getIdDriver(), entityTrip.getTripDate(), entityTrip.getTicketAmount());
+    }
+
+    @Override
+    public Trip searchTrip(long id){
+        EntityTrip entityTrip = this.jpaTripRepository.searchTrip(id);
+        try{
+            return this.modelMapper.map(entityTrip, Trip.class);
+        }catch (Exception e){
+            throw new ExceptionGeneral("There are not trips with id " + id);
+        }
     }
 }

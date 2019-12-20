@@ -13,17 +13,21 @@ public class EntityPurchase {
     private double ticketAmount;
     private int discountPercentage;
     private double totalPurchaseAmount;
+    private String purchaseDate;
+    private String tripDate;
     private long idTrip;
 
     public EntityPurchase(){}
 
-    public EntityPurchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip){
+    public EntityPurchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip, String purchaseDate, String tripDate){
         this.id = id;
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
         this.discountPercentage = discountPercentage;
         this.totalPurchaseAmount = totalPurchaseAmount;
         this.idTrip = idTrip;
+        this.purchaseDate = purchaseDate;
+        this.tripDate = tripDate;
     }
 
     public long getId() {
@@ -66,5 +70,21 @@ public class EntityPurchase {
 
     public void setIdTrip(long idTrip) {
         this.idTrip = idTrip;
+    }
+
+    public String getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(String purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public String getTripDate() {
+        return tripDate;
+    }
+
+    public void setTripDate(String tripDate) {
+        this.tripDate = tripDate;
     }
 }

@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class FactoryUser {
 
-    public FactoryUser(){}
-
     public User create(CommandUser commandUser){
         return new User(commandUser.getName(), commandUser.getLastName(), commandUser.getEmail(), commandUser.getPhone(), commandUser.getRole(), commandUser.getPassword());
     }

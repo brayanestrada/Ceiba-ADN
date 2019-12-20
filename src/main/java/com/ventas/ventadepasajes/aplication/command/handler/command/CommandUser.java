@@ -13,15 +13,7 @@ public class CommandUser {
     private long role;
     private String password;
 
-    public CommandUser(Long id, String name, String lastName, String email, String phone, long role, String password){
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.role = role;
-        this.password = password;
-    }
+    public CommandUser(){}
 
     public Long getId() {
         return id;

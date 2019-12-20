@@ -9,7 +9,7 @@ public class CommandPurchase {
     private double ticketAmount;
     private long idTrip;
 
-    public CommandPurchase(){}
+    public CommandPurchase() { }
 
     public long getId() {
         return id;

@@ -8,7 +8,7 @@ public class CommandRole {
     private long id;
     private String name;
 
-    public CommandRole(){}
+    public CommandRole() { }
 
     public long getId() {
         return id;

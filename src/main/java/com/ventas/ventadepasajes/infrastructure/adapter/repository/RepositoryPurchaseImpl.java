@@ -1,9 +1,9 @@
 package com.ventas.ventadepasajes.infrastructure.adapter.repository;
 
+import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
 import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryPurchase;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityPurchase;
-import com.ventas.ventadepasajes.infrastructure.entity.EntityTrip;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaPurchaseRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Repository;
@@ -23,7 +23,7 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
     public Purchase createPurchase(Purchase purchase) {
         EntityPurchase entityPurchase = this.modelMapper.map(purchase, EntityPurchase.class);
         EntityPurchase entityPurchaseSaved = this.jpaPurchaseRepository.save(entityPurchase);
-        return new Purchase(entityPurchaseSaved.getId(), entityPurchase.getNumberPurchasedTickets(), entityPurchase.getTicketAmount(), purchase.getDiscountPercentage(), purchase.getTotalPurchaseAmount(), purchase.getIdTrip());
+        return new Purchase(entityPurchaseSaved.getId(), entityPurchase.getNumberPurchasedTickets(), entityPurchase.getTicketAmount(), purchase.getDiscountPercentage(), purchase.getTotalPurchaseAmount(), purchase.getIdTrip(), purchase.getPurchaseDate(), purchase.getTripDate());
     }
 
     @Override
@@ -46,6 +46,7 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
     @Override
     public Purchase updatePurchase(long id, Purchase newPurchase) {
         EntityPurchase entityPurchase = this.modelMapper.map(newPurchase, EntityPurchase.class);
+        String newPurchaseDate = newPurchase.getPurchaseDate();
         EntityPurchase entityPurchaseUpdated = this.jpaPurchaseRepository.findById(id)
                 .map(purchase ->{
                     purchase.setId(newPurchase.getId());
@@ -54,6 +55,7 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
                     purchase.setDiscountPercentage(newPurchase.getDiscountPercentage());
                     purchase.setTotalPurchaseAmount(newPurchase.getTotalPurchaseAmount());
                     purchase.setIdTrip(newPurchase.getIdTrip());
+                    purchase.setPurchaseDate(newPurchaseDate);
                     return jpaPurchaseRepository.save(purchase);
                 }).orElseGet(() ->{
                     entityPurchase.setId(id);
@@ -62,8 +64,9 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
                     entityPurchase.setDiscountPercentage(newPurchase.getDiscountPercentage());
                     entityPurchase.setTotalPurchaseAmount(newPurchase. getTotalPurchaseAmount());
                     entityPurchase.setIdTrip(newPurchase.getIdTrip());
+                    entityPurchase.setPurchaseDate(newPurchaseDate);
                     return jpaPurchaseRepository.save(entityPurchase);
                 });
-        return new Purchase(entityPurchaseUpdated.getId(), entityPurchaseUpdated.getNumberPurchasedTickets(), entityPurchaseUpdated.getTicketAmount(), entityPurchaseUpdated.getDiscountPercentage(), entityPurchaseUpdated.getTotalPurchaseAmount(), entityPurchaseUpdated.getIdTrip());
+        return new Purchase(entityPurchaseUpdated.getId(), entityPurchaseUpdated.getNumberPurchasedTickets(), entityPurchaseUpdated.getTicketAmount(), entityPurchaseUpdated.getDiscountPercentage(), entityPurchaseUpdated.getTotalPurchaseAmount(), entityPurchaseUpdated.getIdTrip(), entityPurchaseUpdated.getPurchaseDate(), entityPurchaseUpdated.getTripDate());
     }
 }

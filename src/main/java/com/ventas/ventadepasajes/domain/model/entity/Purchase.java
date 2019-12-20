@@ -9,9 +9,24 @@ public class Purchase {
     private double ticketAmount;
     private int discountPercentage;
     private double totalPurchaseAmount;
+    private String purchaseDate;
     private long idTrip;
+    private String tripDate;
+    private static final String ERROR_DATE_FORMAT = "Error: Date hasn't the correct format, it's dd-MM-yyyy";
 
     public Purchase(){}
+
+
+    public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip, String purchaseDate, String tripDate){
+        this.id = id;
+        this.numberPurchasedTickets = numberPurchasedTickets;
+        this.ticketAmount = ticketAmount;
+        this.discountPercentage = discountPercentage;
+        this.totalPurchaseAmount = totalPurchaseAmount;
+        this.idTrip = idTrip;
+        this.purchaseDate = purchaseDate;
+        this.tripDate = tripDate;
+    }
 
     public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip){
         this.id = id;
@@ -22,18 +37,28 @@ public class Purchase {
         this.idTrip = idTrip;
     }
 
-    public Purchase(int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip){
+    public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip, String purchaseDate) {
+        this.id = id;
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
         this.discountPercentage = discountPercentage;
         this.totalPurchaseAmount = totalPurchaseAmount;
         this.idTrip = idTrip;
+        this.purchaseDate = purchaseDate;
     }
 
-    public Purchase(long id, int numberPurchasedTickets, double ticketAmount, long idTrip){
-        this.id = id;
+    public Purchase(int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip, String tripDate){
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
+        this.discountPercentage = discountPercentage;
+        this.totalPurchaseAmount = totalPurchaseAmount;
+        this.idTrip = idTrip;
+        this.tripDate = tripDate;
+    }
+
+    public Purchase(long id, int numberPurchasedTickets, long idTrip){
+        this.id = id;
+        this.numberPurchasedTickets = numberPurchasedTickets;
         this.discountPercentage = 0;
         this.totalPurchaseAmount = 0;
         this.idTrip = idTrip;
@@ -91,13 +116,35 @@ public class Purchase {
         this.idTrip = idTrip;
     }
 
+    public String getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(String purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public String getTripDate() {
+        return tripDate;
+    }
+
+    public void setTripDate(String tripDate) {
+        this.tripDate = tripDate;
+    }
+
+
+
     public static Purchase valueOf(EntityPurchase entityPurchase){
         Purchase purchase = new Purchase();
         purchase.setId(entityPurchase.getId());
-        purchase.setNumberPurchasedTickets(entityPurchase.getNumberPurchasedTickets());
-        purchase.setTicketAmount(entityPurchase.getTicketAmount());
         purchase.setTotalPurchaseAmount(entityPurchase.getTotalPurchaseAmount());
+        purchase.setPurchaseDate(entityPurchase.getPurchaseDate());
+        purchase.setNumberPurchasedTickets(entityPurchase.getNumberPurchasedTickets());
         purchase.setIdTrip(entityPurchase.getIdTrip());
+        purchase.setTicketAmount(entityPurchase.getTicketAmount());
+        purchase.setPurchaseDate(entityPurchase.getPurchaseDate());
+        purchase.setTripDate(entityPurchase.getTripDate());
         return purchase;
     }
+
 }

@@ -9,12 +9,7 @@ public class CommandDriver {
     private String lastName;
     private String identification;
 
-    public CommandDriver(){}
-
-    public CommandDriver(String name, String lastName, String identification){
-        this.name = name;
-        this.lastName = lastName;
-        this.identification = identification;
+    public CommandDriver() {
     }
 
     public String getName() {
