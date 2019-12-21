@@ -1,9 +1,7 @@
 package com.ventas.ventadepasajes.infrastructure.adapter.repository;
 
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
-import com.ventas.ventadepasajes.domain.model.entity.Role;
 import com.ventas.ventadepasajes.domain.model.entity.User;
-import com.ventas.ventadepasajes.infrastructure.entity.EntityRole;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityUser;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaUserRepository;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryUser;
@@ -73,7 +71,7 @@ public class RepositoryUserImpl implements RepositoryUser {
         try{
             return this.modelMapper.map(entityUser, User.class);
         }catch (Exception e){
-            throw new ExceptionGeneral("There are no users with email " + email);
+            throw new ExceptionGeneral("Incorrect user or password");
         }
     }
 }

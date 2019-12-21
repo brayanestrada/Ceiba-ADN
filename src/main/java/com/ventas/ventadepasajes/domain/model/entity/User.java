@@ -1,6 +1,5 @@
 package com.ventas.ventadepasajes.domain.model.entity;
 
-import com.ventas.ventadepasajes.infrastructure.entity.EntityRole;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityUser;
 
 import static com.ventas.ventadepasajes.domain.model.entity.DataValidator.*;
@@ -10,12 +9,15 @@ public class User{
     private static final int NAME_MAX_LENGTH = 30;
     private static final int LAST_NAME_MIN_LENGTH = 3;
     private static final int LAST_NAME_MAX_LENGTH = 30;
+    private static final String MUST_HAVE_MIN = "must have min";
+    private static final String MUST_HAVE_MAX = "must have max";
+    private static final String CHARACTERS = "characters";
     private static final String NAME_IS_MANDATORY = "Name is mandatory";
-    private static final String LAST_NAME_IS_MANDATORY = "Name is mandatory";
-    private static final String ERROR_NAME_MIN_LENGTH = "Name must have min " + NAME_MIN_LENGTH + " characters";
-    private static final String ERROR_NAME_MAX_LENGTH = "Name must have max " + LAST_NAME_MAX_LENGTH + " characters";
-    private static final String ERROR_LAST_NAME_MIN_LENGTH = "Name must have max " + LAST_NAME_MAX_LENGTH + " characters";
-    private static final String ERROR_LAST_NAME_MAX_LENGTH = "Name must have max " + LAST_NAME_MAX_LENGTH + " characters";
+    private static final String LAST_NAME_IS_MANDATORY = "Last name is mandatory";
+    private static final String ERROR_NAME_MIN_LENGTH = "Name "+ MUST_HAVE_MIN + NAME_MIN_LENGTH + CHARACTERS;
+    private static final String ERROR_NAME_MAX_LENGTH = "Name "+ MUST_HAVE_MAX + NAME_MAX_LENGTH + CHARACTERS;
+    private static final String ERROR_LAST_NAME_MIN_LENGTH = "Last name "+ MUST_HAVE_MIN + LAST_NAME_MIN_LENGTH + CHARACTERS;
+    private static final String ERROR_LAST_NAME_MAX_LENGTH = "Last name" + MUST_HAVE_MAX + LAST_NAME_MAX_LENGTH + CHARACTERS;
 
     private Long id;
     private String name;
@@ -93,10 +95,10 @@ public class User{
 
     private void validate(){
         validateMandatory(name, NAME_IS_MANDATORY);
-        validateMaximumValue(name, NAME_MAX_LENGTH, ERROR_NAME_MAX_LENGTH);
-        validateMinimumValue(name, LAST_NAME_MIN_LENGTH, ERROR_NAME_MIN_LENGTH);
         validateMandatory(lastName, LAST_NAME_IS_MANDATORY);
+        validateMaximumValue(name, NAME_MAX_LENGTH, ERROR_NAME_MAX_LENGTH);
         validateMaximumValue(lastName, LAST_NAME_MAX_LENGTH, ERROR_LAST_NAME_MAX_LENGTH);
+        validateMinimumValue(name, LAST_NAME_MIN_LENGTH, ERROR_NAME_MIN_LENGTH);
         validateMinimumValue(lastName, LAST_NAME_MIN_LENGTH, ERROR_LAST_NAME_MIN_LENGTH);
     }
 

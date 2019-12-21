@@ -10,23 +10,13 @@ public class EntityTrip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private double cost;
-    private int seats_available;
-    private int seats_sold;
+    private int seatsAvailable;
+    private int seatsSold;
     private String startCity;
     private String endCity;
+    private String tripDate;
+    private double ticketAmount;
     private long idDriver;
-
-    public EntityTrip(){}
-
-    public EntityTrip(long id, double cost, int seats_available, int seats_sold, String startCity, String endCity, long idDriver){
-        this.id = id;
-        this.cost = cost;
-        this.seats_available = seats_available;
-        this.seats_sold = seats_sold;
-        this.startCity = startCity;
-        this.endCity = endCity;
-        this.idDriver = idDriver;
-    }
 
     public long getId() {
         return id;
@@ -44,20 +34,20 @@ public class EntityTrip {
         this.cost = cost;
     }
 
-    public int getSeats_available() {
-        return seats_available;
+    public int getSeatsAvailable() {
+        return seatsAvailable;
     }
 
-    public void setSeats_available(int seats_available) {
-        this.seats_available = seats_available;
+    public void setSeatsAvailable(int seatsAvailable) {
+        this.seatsAvailable = seatsAvailable;
     }
 
-    public int getSeats_sold() {
-        return seats_sold;
+    public int getSeatsSold() {
+        return seatsSold;
     }
 
-    public void setSeats_sold(int seats_sold) {
-        this.seats_sold = seats_sold;
+    public void setSeatsSold(int seatsSold) {
+        this.seatsSold = seatsSold;
     }
 
     public String getStartCity() {
@@ -82,5 +72,21 @@ public class EntityTrip {
 
     public void setIdDriver(long idDriver) {
         this.idDriver = idDriver;
+    }
+
+    public String getTripDate() {
+        return tripDate;
+    }
+
+    public void setTripDate(String tripDate) {
+        this.tripDate = tripDate;
+    }
+
+    public double getTicketAmount() {
+        return ticketAmount;
+    }
+
+    public void setTicketAmount(double ticketAmount) {
+        this.ticketAmount = ticketAmount;
     }
 }

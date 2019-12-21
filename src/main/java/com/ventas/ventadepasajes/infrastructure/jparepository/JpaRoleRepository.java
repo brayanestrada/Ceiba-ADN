@@ -1,6 +1,5 @@
 package com.ventas.ventadepasajes.infrastructure.jparepository;
 
-import com.ventas.ventadepasajes.domain.model.entity.Role;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

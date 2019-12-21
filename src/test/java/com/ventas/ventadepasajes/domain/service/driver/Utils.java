@@ -11,14 +11,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class Utils {
 
     public RepositoryDriver createDriver(){
-        Driver driver = new DriverTestDataBuilder().build();
-        RepositoryDriver repositoryDriver = Mockito.mock(RepositoryDriver.class);
-        Mockito.when(repositoryDriver.createDriver(Mockito.any())).thenReturn(driver);
-        ServiceCreateDriver serviceCreateDriver = new ServiceCreateDriver(repositoryDriver);
-        DtoDriver dtoDriver = serviceCreateDriver.run(driver);
-        assertTrue(driver.getName().equals(dtoDriver.getName()), "Error creating user, no name");
-        assertTrue(driver.getLastName().equals(dtoDriver.getLastName()), "Error creating user, no last name");
-        assertTrue(driver.getIdentification().equals(dtoDriver.getIdentification()), "Error creating user, no identification");
-        return repositoryDriver;
+            Driver driver = new DriverTestDataBuilder().build();
+            RepositoryDriver repositoryDriver = Mockito.mock(RepositoryDriver.class);
+            Mockito.when(repositoryDriver.createDriver(Mockito.any())).thenReturn(driver);
+            ServiceCreateDriver serviceCreateDriver = new ServiceCreateDriver(repositoryDriver);
+            DtoDriver dtoDriver = serviceCreateDriver.run(driver);
+            assertTrue(driver.getName().equals(dtoDriver.getName()), "Error creating user, no name");
+            assertTrue(driver.getLastName().equals(dtoDriver.getLastName()), "Error creating user, no last name");
+            assertTrue(driver.getIdentification().equals(dtoDriver.getIdentification()), "Error creating user, no identification");
+            return repositoryDriver;
     }
 }

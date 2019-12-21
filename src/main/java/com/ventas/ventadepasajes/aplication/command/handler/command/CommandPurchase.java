@@ -9,7 +9,13 @@ public class CommandPurchase {
     private double ticketAmount;
     private long idTrip;
 
-    public CommandPurchase(){}
+    public CommandPurchase(long id, int numberPurchasedTickets, double ticketAmount, long idTrip){
+        this.id = id;
+        this.numberPurchasedTickets = numberPurchasedTickets;
+        this.ticketAmount = ticketAmount;
+        this.idTrip = idTrip;
+
+    }
 
     public long getId() {
         return id;

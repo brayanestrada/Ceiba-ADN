@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class    MapperPurchase {
 
     public DtoPurchase entityToDto(Purchase purchase){
-        return new DtoPurchase(purchase.getId(), purchase.getNumberPurchasedTickets(), purchase.getTicketAmount(), purchase.getDiscountPercentage(), purchase.getTotalPurchaseAmount(), purchase.getIdTrip());
+        return new DtoPurchase(purchase.getId(), purchase.getNumberPurchasedTickets(), purchase.getTicketAmount(), purchase.getDiscountPercentage(), purchase.getTotalPurchaseAmount(), purchase.getIdTrip(), purchase.getPurchaseDate(), purchase.getTripDate());
     }
 
     public List<DtoPurchase> entityListToDtoList(List<Purchase> listPurchase){

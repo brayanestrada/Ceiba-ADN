@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class FactoryDriver {
 
-    public FactoryDriver(){}
-
     public Driver create(CommandDriver commandDriver){
         return new Driver(commandDriver.getName(), commandDriver.getLastName(), commandDriver.getIdentification());
     }
