@@ -13,10 +13,14 @@ import { CreateService } from 'src/app/service/purchase/create/create.service';
     border: 1px solid red;
   }`]
 })
-export class CreateComponent {
+export class CreateComponent{
 
-  constructor(private router: Router, private createPurchase: CreateService, public purchase: PurchaseModule ) {
+
+  purchase: PurchaseModule = new PurchaseModule();
+
+  constructor(private router: Router, private createPurchase: CreateService) {
   }
+
 
   onSubmit( form: NgForm ) {
     console.log(form.value);

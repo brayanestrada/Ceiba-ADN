@@ -38,7 +38,7 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
             this.jpaPurchaseRepository.deleteById(id);
             return true;
         }catch (Exception e){
-            System.out.println(e);
+            System.err.println(e);
             return false;
         }
     }

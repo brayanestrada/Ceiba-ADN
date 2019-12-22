@@ -40,7 +40,7 @@ public class RepositoryRoleImpl implements RepositoryRole {
             this.jpaRoleRepository.deleteById(id);
             return true;
         }catch (Exception e){
-            System.out.println(e);
+            System.err.println(e);
             return false;
         }
     }

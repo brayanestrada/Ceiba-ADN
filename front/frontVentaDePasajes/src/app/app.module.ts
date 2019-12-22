@@ -17,6 +17,8 @@ import { PurchaseComponent } from './components/purchase/purchase/purchase.compo
 import { HomeComponent } from './components/home/home.component';
 import { CreateComponent } from './components/purchase/create/create.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { CreateTripComponent } from './components/trip/create/create.component';
+import { TripComponent } from './components/trip/trip/trip.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { LoginComponent } from './components/user/login/login.component';
     PurchaseComponent,
     HomeComponent,
     CreateComponent,
-    LoginComponent
+    LoginComponent,
+    CreateTripComponent,
+    TripComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,7 @@
 <div class="container">
+  
+  <button class="btn btn-success" routerLink="/createpurchase">Create</button>
+  
   <table class="table">
     <thead>
       <tr>
@@ -12,14 +15,13 @@
     </thead>
     <tbody *ngFor="let purchase of purchases">
       <tr>
-        <th>{{ purchase.id }}</th>
+        <td>{{ purchase.id }}</td>
         <td>{{ purchase.numberPurchasedTickets }}</td>
         <td>{{ purchase.ticketAmount }}</td>
         <td>{{ purchase.discountPercentage }}</td>
         <td>{{ purchase.totalPurchaseAmount }}</td>
         <td>
-          <button class="btn btn-primary" routerLink="/createPurchase">Update</button>
-          <button class="btn btn-danger" routerLink="/deletePurchase">Delete</button>
+          <button class="btn btn-danger" onclick="onDelete(id)">Delete</button>
         </td>
       </tr>
     </tbody>

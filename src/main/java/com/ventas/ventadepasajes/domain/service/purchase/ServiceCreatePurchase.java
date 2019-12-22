@@ -46,21 +46,24 @@ public class ServiceCreatePurchase {
             throw new ExceptionGeneral("Internal error getting the trip date");
         }
 
-        if(purchase.getNumberPurchasedTickets()>=4){
-            if(weekDay >=1 && weekDay<=4){
+        if(purchase.getNumberPurchasedTickets()>=4 && weekDay>0) {
+            if( weekDay<=4 ){
                 discountPercentage = 20;
             }else{
                 discountPercentage = 10;
             }
-            purchase.setDiscountPercentage(discountPercentage);
-            purchase.setPurchaseDate(getDateNow());
-            double discountAmount = totalWithoutDiscount*(discountPercentage)/100;
-            purchase.setTotalPurchaseAmount(totalWithoutDiscount-discountAmount);
-        }else{
+        }else if(weekDay >=1 && weekDay<=4){
+            discountPercentage = 10;
+        }
+        else{
             purchase.setDiscountPercentage(0);
             purchase.setTotalPurchaseAmount(totalWithoutDiscount);
             purchase.setPurchaseDate(getDateNow());
         }
+        purchase.setPurchaseDate(getDateNow());
+        double discountAmount = totalWithoutDiscount*(discountPercentage)/100;
+        purchase.setDiscountPercentage(discountPercentage);
+        purchase.setTotalPurchaseAmount(totalWithoutDiscount-discountAmount);
         return mapperPurchase.entityToDto(this.repositoryPurchase.createPurchase(purchase));
     }
 

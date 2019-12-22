@@ -145,7 +145,7 @@ public class Purchase {
         DataValidator.validateMandatory(numberPurchasedTickets, ERROR_NUMBER_PURCHASED_TICKETS_MANDATORY);
         DataValidator.validateMandatory(idTrip, ERROR_ID_TRIP_IS_MANDATORY);
         DataValidator.validateMaximumValue(numberPurchasedTickets, MAX_ALLOWED_TICKETS, ERROR_MAX_ALLOWED_TICKETS);
-        DataValidator.validateMaximumValue(numberPurchasedTickets, MIN_ALLOWED_TICKETS, ERROR_MIN_ALLOWED_TICKETS);
+        DataValidator.validateMinimumValue(numberPurchasedTickets, MIN_ALLOWED_TICKETS, ERROR_MIN_ALLOWED_TICKETS);
     }
 
     public static Purchase valueOf(EntityPurchase entityPurchase){

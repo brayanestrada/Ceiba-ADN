@@ -54,4 +54,10 @@ public class DataValidator {
             throw new ExceptionGeneral(message);
         }
     }
+
+    public static void validateNumberMandatory(long value, String message){
+        if(value == 0){
+            throw new ExceptionGeneral(message);
+        }
+    }
 }

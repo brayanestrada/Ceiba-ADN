@@ -17,7 +17,7 @@ public class ControllerLogIn {
     }
 
     @CrossOrigin
-    @PostMapping("/login1")
+    @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
     public DtoUser logIn(@RequestBody CommandUser commandUser){
         return this.handlerLogIn.run(commandUser.getEmail(), commandUser.getPassword());

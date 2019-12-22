@@ -37,7 +37,7 @@ public class RepositoryDriverImpl implements RepositoryDriver {
             this.jpaDriverRepository.deleteById(id);
             return true;
         }catch (Exception e){
-            System.out.println(e);
+            System.err.println(e);
             return false;
         }
     }

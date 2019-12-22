@@ -38,7 +38,7 @@ public class RepositoryUserImpl implements RepositoryUser {
             this.jpaUserRepository.deleteById(id);
             return true;
         }catch (Exception e){
-            System.out.println(e);
+            System.err.println(e);
             return false;
         }
     }

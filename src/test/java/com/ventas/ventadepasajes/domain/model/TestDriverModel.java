@@ -1,4 +1,4 @@
-package com.ventas.ventadepasajes.domain.model.driver;
+package com.ventas.ventadepasajes.domain.model;
 
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
 import com.ventas.ventadepasajes.domain.testdatabuilder.DriverTestDataBuilder;

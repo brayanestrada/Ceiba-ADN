@@ -7,14 +7,22 @@ import { LoginModule } from 'src/app/model/user/login/login.module';
 })
 export class LoginService {
 
+  private executed:any;
   constructor(private http: HttpClient) {
+    
   }
 
   logIn(login: LoginModule) {
     console.log(login.email);
     console.log(login.password);
-    this.http.post('http://localhost:8181/login/login', login).subscribe(data => {
+    return this.http.post('http://localhost:8181/login/login', login).subscribe(data => {
       console.log(data['id']);
+      this.executed=data['id'];
+      if(this.executed != undefined && this.executed != null){
+        return true;
+      }else{
+        return false;
+      }
     });
   }
 }
