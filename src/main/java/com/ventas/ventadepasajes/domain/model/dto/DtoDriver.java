@@ -1,11 +1,7 @@
 package com.ventas.ventadepasajes.domain.model.dto;
 
 import com.ventas.ventadepasajes.domain.model.entity.Driver;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class DtoDriver {
 
     private Long id;
@@ -35,5 +31,37 @@ public class DtoDriver {
         dto.setLastName(String.valueOf(entity.getLastName()));
         dto.setIdentification(String.valueOf(entity.getIdentification()));
         return dto;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(String identification) {
+        this.identification = identification;
     }
 }

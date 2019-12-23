@@ -1,13 +1,7 @@
 package com.ventas.ventadepasajes.domain.model.dto;
 
 import com.ventas.ventadepasajes.domain.model.entity.Trip;
-import lombok.Getter;
-import lombok.Setter;
 
-import java.util.Date;
-
-@Getter
-@Setter
 public class DtoTrip {
     private long id;
     private double cost;
@@ -45,5 +39,77 @@ public class DtoTrip {
         dtoTrip.setIdDriver(trip.getIdDriver());
         dtoTrip.setTicketAmount(trip.getTicketAmount());
         return dtoTrip;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public int getSeatsAvailable() {
+        return seatsAvailable;
+    }
+
+    public void setSeatsAvailable(int seatsAvailable) {
+        this.seatsAvailable = seatsAvailable;
+    }
+
+    public int getSeatsSold() {
+        return seatsSold;
+    }
+
+    public void setSeatsSold(int seatsSold) {
+        this.seatsSold = seatsSold;
+    }
+
+    public String getStartCity() {
+        return startCity;
+    }
+
+    public void setStartCity(String startCity) {
+        this.startCity = startCity;
+    }
+
+    public String getEndCity() {
+        return endCity;
+    }
+
+    public void setEndCity(String endCity) {
+        this.endCity = endCity;
+    }
+
+    public String getTripDate() {
+        return tripDate;
+    }
+
+    public void setTripDate(String tripDate) {
+        this.tripDate = tripDate;
+    }
+
+    public double getTicketAmount() {
+        return ticketAmount;
+    }
+
+    public void setTicketAmount(double ticketAmount) {
+        this.ticketAmount = ticketAmount;
+    }
+
+    public long getIdDriver() {
+        return idDriver;
+    }
+
+    public void setIdDriver(long idDriver) {
+        this.idDriver = idDriver;
     }
 }

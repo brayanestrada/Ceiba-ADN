@@ -1,11 +1,7 @@
 package com.ventas.ventadepasajes.domain.model.dto;
 
 import com.ventas.ventadepasajes.domain.model.entity.Role;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class DtoRole {
     private long id;
     private String name;
@@ -26,5 +22,21 @@ public class DtoRole {
         dtoRole.setId(role.getId());
         dtoRole.setName(role.getName());
         return dtoRole;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
