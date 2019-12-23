@@ -8,14 +8,14 @@ import { throwError } from 'rxjs';
 })
 export class CreateService {
 
-  constructor(private http: HttpClient) { console.log('Se ejecutó el constructor del create service'); }
+  constructor(private http: HttpClient) { }
 
   url = 'http://localhost:8181/purchase/create';
 
-  createPurchase() {
+  createPurchase(numberPurchasedTickets:number, idTrip:number) {
     const purchaseBody = {
-      numberPurchasedTickets: 50,
-      ticketAmount: 100
+      numberPurchasedTickets: numberPurchasedTickets,
+      idTrip: idTrip
     };
     return this.http.post(this.url, purchaseBody)
       .pipe(

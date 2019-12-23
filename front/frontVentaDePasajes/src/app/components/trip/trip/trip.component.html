@@ -14,17 +14,22 @@
                         <p class="card-text col-6">{{trip.tripDate}}</p>
                     </div>
                     <div>
-                        <p class="card-text col-6">Trip seats available</p>
+                        <p class="card-text col-6">Available Seats</p>
                         <p class="card-text col-6">{{trip.seatsAvailable}}</p>
                     </div>
                     </div>
-
-                    <div class="col-12">
-                        <div class="center-content col-6 inline">
+                    <div class="row space-bottom">
+                        <div class="col-12 space-bottom  center">
+                        <form  (ngSubmit)="onCreate( f, trip.id )" #f="ngForm"> 
+                            <input type="text" placeholder="Number of tickets" name="numberPurchasedTickets" [(ngModel)]="purchase.numberPurchasedTickets" class="space-bottom"/>
+                            <input type="submit" class="btn btn-success total" value="Buy tickets"/>
+                        </form>
+                        </div>
+                        <div class="center-content col-6 inline center">
                             <button class="btn btn-primary">Update</button>
                         </div>
-                        <div class="center-content col-6 inline">
-                            <button class="btn btn-danger" >Delete</button>
+                        <div class="center-content col-6 inline center">
+                            <button class="btn btn-danger " (click)="onDelete(trip.id)" >Delete</button>
                         </div>
                     </div>
                 </div>

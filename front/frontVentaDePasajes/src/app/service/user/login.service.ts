@@ -13,10 +13,7 @@ export class LoginService {
   }
 
   logIn(login: LoginModule) {
-    console.log(login.email);
-    console.log(login.password);
     return this.http.post('http://localhost:8181/login/login', login).subscribe(data => {
-      console.log(data['id']);
       this.executed=data['id'];
       if(this.executed != undefined && this.executed != null){
         return true;

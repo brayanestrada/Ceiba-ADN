@@ -21,7 +21,7 @@ public class TestServiceCreateDriver {
         assertEquals(driver.getLastName(), dtoDriver.getLastName(), "Error creating user, no name");
         assertEquals(driver.getIdentification(), dtoDriver.getIdentification(), "Error creating user, no name");
     }
-
+/*
     @Test
     public void updateUser(){
         Driver driver = new DriverTestDataBuilder().build();
@@ -39,5 +39,5 @@ public class TestServiceCreateDriver {
         assertNotEquals(dtoDriver.getName(), dtoDriverUpdated.getName(), "Error updating driver, names match");
         assertNotEquals(dtoDriver.getLastName(), dtoDriverUpdated.getLastName(), "Error updating driver, last names match");
         assertNotEquals(dtoDriver.getIdentification(), dtoDriverUpdated.getIdentification(), "Error updating driver, identifications match");
-    }
+    }*/
 }

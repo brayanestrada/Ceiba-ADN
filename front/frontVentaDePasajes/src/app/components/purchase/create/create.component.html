@@ -14,22 +14,21 @@
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-2 col-form-label">Ticket Amount</label>
+        <label class="col-2 col-form-label">Trip id</label>
         <div class="col-8">
           <input type="text"
             class="form-control"
-            placeholder="Ticket Amount"
-            name="ticketAmount"
-            [(ngModel)] = "purchase.ticketAmount"
+            placeholder="Trip id"
+            name="idTrip"
+            [(ngModel)] = "purchase.idTrip"
             required>
-            <span class="txt-error" *ngIf="f.submitted && f.controls['ticketAmount'].errors?.required">Ticket amount is mandatory</span>
+            <span class="txt-error" *ngIf="f.submitted && f.controls['idTrip'].errors?.required">Trip id is mandatory</span>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-2 col-form-label">&nbsp;</label>
         <div class="input-group col-md-8">
           <input type="submit" class="btn btn-outline-primary" value="Send">
-          <label></label>
         </div>
       </div>
     </div>

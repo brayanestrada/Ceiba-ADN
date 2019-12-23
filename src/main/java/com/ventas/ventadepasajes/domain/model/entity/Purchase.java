@@ -56,9 +56,8 @@ public class Purchase {
         this.purchaseDate = purchaseDate;
     }
 
-    public Purchase(int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip, String tripDate){
+    public Purchase(int numberPurchasedTickets, int discountPercentage, double totalPurchaseAmount, long idTrip, String tripDate){
         this.numberPurchasedTickets = numberPurchasedTickets;
-        this.ticketAmount = ticketAmount;
         this.discountPercentage = discountPercentage;
         this.totalPurchaseAmount = totalPurchaseAmount;
         this.idTrip = idTrip;
@@ -73,9 +72,8 @@ public class Purchase {
         this.idTrip = idTrip;
     }
 
-    public Purchase(int numberPurchasedTickets, double ticketAmount, long idTrip){
+    public Purchase(int numberPurchasedTickets, long idTrip){
         this.numberPurchasedTickets = numberPurchasedTickets;
-        this.ticketAmount = ticketAmount;
         this.discountPercentage = 0;
         this.totalPurchaseAmount = 0;
         this.idTrip = idTrip;
@@ -153,6 +151,7 @@ public class Purchase {
         purchase.setId(entityPurchase.getId());
         purchase.setTotalPurchaseAmount(entityPurchase.getTotalPurchaseAmount());
         purchase.setPurchaseDate(entityPurchase.getPurchaseDate());
+        purchase.setDiscountPercentage(entityPurchase.getDiscountPercentage());
         purchase.setNumberPurchasedTickets(entityPurchase.getNumberPurchasedTickets());
         purchase.setIdTrip(entityPurchase.getIdTrip());
         purchase.setTicketAmount(entityPurchase.getTicketAmount());

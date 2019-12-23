@@ -14,4 +14,7 @@ export class PurchaseModule {
   ticketAmount: number;
   discountPercentage: number;
   totalPurchaseAmount: number;
+  idTrip: number;
+  purchaseDate: string;
+  tripDate: string;
  }

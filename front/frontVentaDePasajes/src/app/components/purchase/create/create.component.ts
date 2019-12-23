@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PurchaseModule } from 'src/app/model/purchase/purchase.module';
@@ -15,19 +15,23 @@ import { CreateService } from 'src/app/service/purchase/create/create.service';
 })
 export class CreateComponent{
 
-
   purchase: PurchaseModule = new PurchaseModule();
 
   constructor(private router: Router, private createPurchase: CreateService) {
   }
+  
+  idTrip: number;
 
-
-  onSubmit( form: NgForm ) {
-    console.log(form.value);
+  onSubmit( form: NgForm ) { 
+    form.value.idTrip = this.idTrip;
     if ( form.invalid ) { return; }
-    this.createPurchase.createPurchase().subscribe(data => {
+    this.createPurchase.createPurchase(form.value.numberPurchasedTickets, form.value.idTrip)
+    .subscribe(data => {
       this.purchase = data;
     });
-    this.router.navigate(['/home']);
+    this.router.navigate(['/purchase']);
+  }
+
+  buyTicket(idTrip: number){
   }
 }

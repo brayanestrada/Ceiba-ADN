@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class TripModule { 
-
+  id: number;
   cost: number;
   seatsAvailable: number;
   seatsSold: number;

@@ -18,7 +18,7 @@ public class ControllerCreateTrip {
 
     @CrossOrigin
     @PostMapping("/create")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public DtoTrip createTrip(@RequestBody CommandTrip commandTrip){
         return this.handlerCreateTrip.run(commandTrip);
     }

@@ -1,27 +1,24 @@
 <div class="container">
-  
-  <button class="btn btn-success" routerLink="/createpurchase">Create</button>
-  
   <table class="table">
     <thead>
       <tr>
         <th scope="col">Id</th>
-        <th scope="col">Number of purchased tickets</th>
+        <th scope="col">Purchased tickets</th>
         <th scope="col">Ticket amout</th>
-        <th scope="col">Discount percentagee</th>
+        <th scope="col">Discount percentage</th>
         <th scope="col">Total</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
-    <tbody *ngFor="let purchase of purchases">
+    <tbody *ngFor="let purchase of purchases; let i=index">
       <tr>
         <td>{{ purchase.id }}</td>
         <td>{{ purchase.numberPurchasedTickets }}</td>
         <td>{{ purchase.ticketAmount }}</td>
-        <td>{{ purchase.discountPercentage }}</td>
+        <td>{{ purchase.discountPercentage }}%</td>
         <td>{{ purchase.totalPurchaseAmount }}</td>
         <td>
-          <button class="btn btn-danger" onclick="onDelete(id)">Delete</button>
+          <button class="btn btn-danger" (click)="onDelete(purchase)">Delete</button>
         </td>
       </tr>
     </tbody>

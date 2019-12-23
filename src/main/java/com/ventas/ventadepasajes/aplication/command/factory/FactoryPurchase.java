@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class FactoryPurchase {
 
     public Purchase create(CommandPurchase commandPurchase){
-        return new Purchase(commandPurchase.getNumberPurchasedTickets(), commandPurchase.getTicketAmount(), commandPurchase.getIdTrip());
+        return new Purchase(commandPurchase.getNumberPurchasedTickets(), commandPurchase.getIdTrip());
     }
 
     public Purchase update(long id, CommandPurchase commandPurchase){

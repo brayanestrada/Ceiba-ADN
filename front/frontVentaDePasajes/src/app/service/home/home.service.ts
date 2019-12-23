@@ -8,7 +8,7 @@ import { formatDate } from '@angular/common';
 export class HomeService {
 
   value: number;
-  constructor(private http: HttpClient) { console.log('Se ejecutó el constructor del Home Service'); }
+  constructor(private http: HttpClient) { }
 
   getTRM() {
     return this.http.get('https://trm-colombia.makaw-dev.now.sh/?date=2019-12-23');

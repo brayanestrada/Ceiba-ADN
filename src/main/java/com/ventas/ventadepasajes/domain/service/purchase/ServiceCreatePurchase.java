@@ -34,6 +34,12 @@ public class ServiceCreatePurchase {
         int discountPercentage = 0;
         MapperPurchase mapperPurchase = new MapperPurchase();
         Trip trip = getTrip(purchase.getIdTrip());
+        if(trip.getSeatsAvailable() == 0){
+            throw new ExceptionGeneral("Error: There are no free seats");
+        }
+        trip.setSeatsAvailable(trip.getSeatsAvailable()-1);
+        trip.setSeatsSold(trip.getSeatsSold()+1);
+        this.repositoryTrip.updateTrip(trip.getId(), trip);
         purchase.setTicketAmount(trip.getTicketAmount());
         double totalWithoutDiscount = purchase.getNumberPurchasedTickets() * purchase.getTicketAmount();
         try{
