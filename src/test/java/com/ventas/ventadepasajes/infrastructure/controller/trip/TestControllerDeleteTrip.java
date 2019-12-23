@@ -49,7 +49,6 @@ public class TestControllerDeleteTrip {
 
     private CountDownLatch lock = new CountDownLatch(1);
 
-    @Test
     public void createAndDeleteTrip() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         CommandTripDataBuilder commandTripDataBuilder = new CommandTripDataBuilder();
