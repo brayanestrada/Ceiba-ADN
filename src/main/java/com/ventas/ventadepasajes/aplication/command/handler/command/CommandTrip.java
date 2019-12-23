@@ -4,7 +4,6 @@ import lombok.ToString;
 
 @ToString
 public class CommandTrip {
-    private double cost;
     private int seatsAvailable;
     private int seatsSold;
     private String startCity;
@@ -13,8 +12,7 @@ public class CommandTrip {
     private long idDriver;
     private double ticketAmount;
 
-    public CommandTrip(double cost, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
-        this.cost = cost;
+    public CommandTrip(int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
         this.seatsAvailable = seatsAvailable;
         this.seatsSold = seatsSold;
         this.startCity = startCity;
@@ -22,10 +20,6 @@ public class CommandTrip {
         this.idDriver = idDriver;
         this.tripDate = tripDate;
         this.ticketAmount = ticketAmount;
-    }
-
-    public double getCost() {
-        return cost;
     }
 
     public int getSeatsAvailable() {

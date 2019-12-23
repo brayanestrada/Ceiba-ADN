@@ -1,6 +1,6 @@
 package com.ventas.ventadepasajes.aplication.command.handler.user;
 
-import com.ventas.ventadepasajes.domain.model.dto.DtoUser;
+import com.ventas.ventadepasajes.domain.model.entity.User;
 import com.ventas.ventadepasajes.domain.service.user.ServiceListUser;
 import org.springframework.stereotype.Component;
 
@@ -14,5 +14,5 @@ public class HandlerListUser {
         this.serviceListUser = serviceListUser;
     }
 
-    public List<DtoUser> run(){return serviceListUser.run();}
+    public List<User> run(){return serviceListUser.run();}
 }

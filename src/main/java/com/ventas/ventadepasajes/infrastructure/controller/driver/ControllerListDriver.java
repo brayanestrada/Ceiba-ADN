@@ -1,7 +1,7 @@
 package com.ventas.ventadepasajes.infrastructure.controller.driver;
 
 import com.ventas.ventadepasajes.aplication.command.handler.driver.HandlerListDriver;
-import com.ventas.ventadepasajes.domain.model.dto.DtoDriver;
+import com.ventas.ventadepasajes.domain.model.entity.Driver;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,7 @@ public class ControllerListDriver {
 
     @CrossOrigin
     @GetMapping("/list")
-    public List<DtoDriver> driverList(){
+    public List<Driver> driverList(){
         return this.handlerListDriver.run();
     }
 }

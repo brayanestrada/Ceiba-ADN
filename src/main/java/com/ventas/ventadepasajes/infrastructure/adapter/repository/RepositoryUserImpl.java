@@ -2,6 +2,7 @@ package com.ventas.ventadepasajes.infrastructure.adapter.repository;
 
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
 import com.ventas.ventadepasajes.domain.model.entity.User;
+import com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper.MapperUser;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityUser;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaUserRepository;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryUser;
@@ -28,8 +29,8 @@ public class RepositoryUserImpl implements RepositoryUser {
 
     @Override
     public List<User> listUser() {
-        List<EntityUser> listEntity = this.jpaUserRepository.findAll();
-        return listEntity.stream().map(e -> User.valueOf(e)).collect(Collectors.toList());
+        MapperUser mapperUser = new MapperUser();
+        return mapperUser.entityToModelList(this.jpaUserRepository.findAll());
     }
 
     @Override

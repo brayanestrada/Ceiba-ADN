@@ -12,6 +12,7 @@ public class Purchase {
     private String purchaseDate;
     private long idTrip;
     private String tripDate;
+
     private static final String ERROR_DATE_FORMAT = "Error: Date hasn't the correct format, it's dd-MM-yyyy";
     private static final String ERROR_NUMBER_PURCHASED_TICKETS_MANDATORY = "Error: Number of purchased tickets is mandatory";
     private static final int MAX_ALLOWED_TICKETS = 15;
@@ -24,6 +25,9 @@ public class Purchase {
 
 
     public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip, String purchaseDate, String tripDate){
+        validate(numberPurchasedTickets, idTrip);
+        DataValidator.validateDateFormat(purchaseDate, ERROR_DATE_FORMAT);
+        DataValidator.validateDateFormat(tripDate, ERROR_DATE_FORMAT);
         this.id = id;
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.ticketAmount = ticketAmount;
@@ -32,9 +36,6 @@ public class Purchase {
         this.idTrip = idTrip;
         this.purchaseDate = purchaseDate;
         this.tripDate = tripDate;
-        validate();
-        DataValidator.validateDateFormat(purchaseDate, ERROR_DATE_FORMAT);
-        DataValidator.validateDateFormat(tripDate, ERROR_DATE_FORMAT);
     }
 
     public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip){
@@ -139,25 +140,11 @@ public class Purchase {
         this.tripDate = tripDate;
     }
 
-    private void validate(){
+    private void validate(int numberPurchasedTickets, long idTrip){
         DataValidator.validateMandatory(numberPurchasedTickets, ERROR_NUMBER_PURCHASED_TICKETS_MANDATORY);
         DataValidator.validateMandatory(idTrip, ERROR_ID_TRIP_IS_MANDATORY);
         DataValidator.validateMaximumValue(numberPurchasedTickets, MAX_ALLOWED_TICKETS, ERROR_MAX_ALLOWED_TICKETS);
         DataValidator.validateMinimumValue(numberPurchasedTickets, MIN_ALLOWED_TICKETS, ERROR_MIN_ALLOWED_TICKETS);
-    }
-
-    public static Purchase valueOf(EntityPurchase entityPurchase){
-        Purchase purchase = new Purchase();
-        purchase.setId(entityPurchase.getId());
-        purchase.setTotalPurchaseAmount(entityPurchase.getTotalPurchaseAmount());
-        purchase.setPurchaseDate(entityPurchase.getPurchaseDate());
-        purchase.setDiscountPercentage(entityPurchase.getDiscountPercentage());
-        purchase.setNumberPurchasedTickets(entityPurchase.getNumberPurchasedTickets());
-        purchase.setIdTrip(entityPurchase.getIdTrip());
-        purchase.setTicketAmount(entityPurchase.getTicketAmount());
-        purchase.setPurchaseDate(entityPurchase.getPurchaseDate());
-        purchase.setTripDate(entityPurchase.getTripDate());
-        return purchase;
     }
 
 }

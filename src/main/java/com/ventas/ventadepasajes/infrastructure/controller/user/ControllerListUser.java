@@ -1,7 +1,7 @@
 package com.ventas.ventadepasajes.infrastructure.controller.user;
 
 import com.ventas.ventadepasajes.aplication.command.handler.user.HandlerListUser;
-import com.ventas.ventadepasajes.domain.model.dto.DtoUser;
+import com.ventas.ventadepasajes.domain.model.entity.User;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +21,7 @@ public class ControllerListUser {
 
     @CrossOrigin
     @GetMapping("/list")
-    public List<DtoUser> listUser(){
+    public List<User> listUser(){
         return this.handlerListUser.run();
     }
 }

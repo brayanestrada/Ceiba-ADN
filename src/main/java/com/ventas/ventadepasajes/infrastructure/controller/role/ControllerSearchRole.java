@@ -1,7 +1,7 @@
 package com.ventas.ventadepasajes.infrastructure.controller.role;
 
 import com.ventas.ventadepasajes.aplication.command.handler.role.HandlerSearchRole;
-import com.ventas.ventadepasajes.domain.model.dto.DtoRole;
+import com.ventas.ventadepasajes.domain.model.entity.Role;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,7 +14,7 @@ public class ControllerSearchRole {
 
     @CrossOrigin
     @GetMapping("/search/{id}")
-    public DtoRole searchRole(@PathVariable long id){
+    public Role searchRole(@PathVariable long id){
         return this.handlerSearchRole.run(id);
     }
 }

@@ -2,7 +2,6 @@ package com.ventas.ventadepasajes.infrastructure.controller.trip;
 
 import com.ventas.ventadepasajes.aplication.command.handler.command.CommandTrip;
 import com.ventas.ventadepasajes.aplication.command.handler.trip.HandlerCreateTrip;
-import com.ventas.ventadepasajes.domain.model.dto.DtoTrip;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +18,7 @@ public class ControllerCreateTrip {
     @CrossOrigin
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public DtoTrip createTrip(@RequestBody CommandTrip commandTrip){
-        return this.handlerCreateTrip.run(commandTrip);
+    public void createTrip(@RequestBody CommandTrip commandTrip){
+        this.handlerCreateTrip.run(commandTrip);
     }
 }

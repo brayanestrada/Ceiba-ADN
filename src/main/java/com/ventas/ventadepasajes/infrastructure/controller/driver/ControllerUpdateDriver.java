@@ -2,7 +2,6 @@ package com.ventas.ventadepasajes.infrastructure.controller.driver;
 
 import com.ventas.ventadepasajes.aplication.command.handler.command.CommandDriver;
 import com.ventas.ventadepasajes.aplication.command.handler.driver.HandlerUpdateDriver;
-import com.ventas.ventadepasajes.domain.model.dto.DtoDriver;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +17,7 @@ public class ControllerUpdateDriver {
     @CrossOrigin
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public DtoDriver updateDriver(@RequestBody CommandDriver commandDriver, @PathVariable long id){
-        return this.handlerUpdateDriver.run(id, commandDriver);
+    public void updateDriver(@RequestBody CommandDriver commandDriver, @PathVariable long id){
+        this.handlerUpdateDriver.run(id, commandDriver);
     }
 }

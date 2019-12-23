@@ -30,21 +30,21 @@ public class Driver {
     private String lastName;
     private String identification;
 
-    private Driver(){}
+    public Driver(){}
 
     public Driver(Long id, String name, String lastName, String identification){
+        dataValidatorDriver(name, lastName, identification);
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.identification = identification;
-        dataValidatorDriver();
     }
 
     public Driver( String name, String lastName, String identification){
+        dataValidatorDriver(name, lastName, identification);
         this.name = name;
         this.lastName = lastName;
         this.identification = identification;
-        dataValidatorDriver();
     }
 
     public Long getId() {
@@ -79,7 +79,7 @@ public class Driver {
         this.identification = identification;
     }
 
-    private void dataValidatorDriver(){
+    private void dataValidatorDriver(String name, String lastName, String identification){
         DataValidator.validateMandatory(name, NAME_IS_MANDATORY);
         DataValidator.validateMandatory(lastName, LAST_NAME_IS_MANDATORY);
         DataValidator.validateMandatory(identification, IDENTIFICATION_IS_MANDATORY);
@@ -90,14 +90,4 @@ public class Driver {
         DataValidator.validateMaximumValue(identification, IDENTIFICATION_MAX_LENGTH, ERROR_IDENTIFICATION_MAX_LENGTH);
         DataValidator.validateMinimumValue(identification, IDENTIFICATION_MIN_LENGTH, ERROR_IDENTIFICATION_MIN_LENGTH);
     }
-
-    public static Driver valueOf(EntityDriver entityDriver){
-        Driver driver = new Driver();
-        driver.setId(entityDriver.getId());
-        driver.setName(entityDriver.getName());
-        driver.setLastName(entityDriver.getLastName());
-        driver.setIdentification(entityDriver.getIdentification());
-        return driver;
-    }
-
 }

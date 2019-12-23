@@ -4,7 +4,6 @@ import com.ventas.ventadepasajes.aplication.command.handler.command.CommandTrip;
 
 public class CommandTripDataBuilder {
 
-    private double cost;
     private int seatsAvailable;
     private int seatsSold;
     private String startCity;
@@ -14,7 +13,6 @@ public class CommandTripDataBuilder {
     private double ticketAmount;
 
     public CommandTripDataBuilder(){
-        this.cost = 5000;
         this.seatsAvailable = 10;
         this.seatsSold = 0;
         this.startCity = "Medellín";
@@ -24,6 +22,6 @@ public class CommandTripDataBuilder {
         this.ticketAmount = 50000;
     }
 
-    public CommandTrip build(){ return new CommandTrip(cost, seatsAvailable, seatsSold, startCity, endCity,idDriver, tripDate , ticketAmount);
+    public CommandTrip build(){ return new CommandTrip(seatsAvailable, seatsSold, startCity, endCity,idDriver, tripDate , ticketAmount);
     }
 }

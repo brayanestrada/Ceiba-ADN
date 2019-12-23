@@ -2,13 +2,13 @@ package com.ventas.ventadepasajes.infrastructure.adapter.repository;
 
 import com.ventas.ventadepasajes.domain.model.entity.Driver;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryDriver;
+import com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper.MapperDriver;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityDriver;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaDriverRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public class RepositoryDriverImpl implements RepositoryDriver {
@@ -27,8 +27,9 @@ public class RepositoryDriverImpl implements RepositoryDriver {
 
     @Override
     public List<Driver> listDriver() {
-        List<EntityDriver> listEntity = this.jpaDriverRepository.findAll();
-        return listEntity.stream().map(e->Driver.valueOf(e)).collect(Collectors.toList());
+        MapperDriver mapperDriver = new MapperDriver();
+        List<EntityDriver> entityDriver = this.jpaDriverRepository.findAll();
+        return mapperDriver.entityToModelList(entityDriver);
     }
 
     @Override

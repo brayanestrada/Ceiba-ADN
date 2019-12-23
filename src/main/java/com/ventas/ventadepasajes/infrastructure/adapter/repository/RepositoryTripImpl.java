@@ -4,6 +4,7 @@ import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
 import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.model.entity.Trip;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryTrip;
+import com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper.MapperTrip;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityPurchase;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityTrip;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaTripRepository;
@@ -25,13 +26,13 @@ public class RepositoryTripImpl implements RepositoryTrip {
     public Trip createTrip(Trip trip) {
         EntityTrip entityTrip = this.modelMapper.map(trip, EntityTrip.class);
         EntityTrip entityTripSaved = this.jpaTripRepository.save(entityTrip);
-        return new Trip(entityTripSaved.getId(), entityTripSaved.getCost(), entityTripSaved.getSeatsAvailable(), entityTripSaved.getSeatsSold(), entityTripSaved.getStartCity(), entityTripSaved.getEndCity(), entityTripSaved.getIdDriver(), entityTripSaved.getTripDate(), entityTrip.getTicketAmount());
+        return new Trip(entityTripSaved.getId(), entityTripSaved.getSeatsAvailable(), entityTripSaved.getSeatsSold(), entityTripSaved.getStartCity(), entityTripSaved.getEndCity(), entityTripSaved.getIdDriver(), entityTripSaved.getTripDate(), entityTrip.getTicketAmount());
     }
 
     @Override
     public List<Trip> listTrip() {
-        List<EntityTrip> listEntity = this.jpaTripRepository.findAll();
-        return listEntity.stream().map(e -> Trip.valueOf(e)).collect(Collectors.toList());
+        MapperTrip mapperTrip = new MapperTrip();
+        return mapperTrip.entityToModelList(this.jpaTripRepository.findAll());
     }
 
     @Override
@@ -51,7 +52,6 @@ public class RepositoryTripImpl implements RepositoryTrip {
         EntityTrip entityTripUpdated = this.jpaTripRepository.findById(id)
                 .map(trip ->{
                     trip.setId(newTrip.getId());
-                    trip.setCost(newTrip.getCost());
                     trip.setSeatsAvailable(newTrip.getSeatsAvailable());
                     trip.setSeatsSold(newTrip.getSeatsSold());
                     trip.setStartCity(newTrip.getStartCity());
@@ -60,7 +60,6 @@ public class RepositoryTripImpl implements RepositoryTrip {
                     return jpaTripRepository.save(trip);
                 }).orElseGet(()->{
                     entityTrip.setId(id);
-                    entityTrip.setCost(newTrip.getCost());
                     entityTrip.setSeatsAvailable(newTrip.getSeatsAvailable());
                     entityTrip.setSeatsSold(newTrip.getSeatsSold());
                     entityTrip.setStartCity(newTrip.getStartCity());
@@ -68,7 +67,7 @@ public class RepositoryTripImpl implements RepositoryTrip {
                     entityTrip.setIdDriver(newTrip.getIdDriver());
                     return jpaTripRepository.save(entityTrip);
                 });
-        return new Trip(entityTripUpdated.getId(), entityTrip.getCost(), entityTrip.getSeatsAvailable(), entityTrip.getSeatsSold(), entityTripUpdated.getStartCity(), entityTrip.getEndCity(), entityTrip.getIdDriver(), entityTrip.getTripDate(), entityTrip.getTicketAmount());
+        return new Trip(entityTripUpdated.getId(), entityTrip.getSeatsAvailable(), entityTrip.getSeatsSold(), entityTripUpdated.getStartCity(), entityTrip.getEndCity(), entityTrip.getIdDriver(), entityTrip.getTripDate(), entityTrip.getTicketAmount());
     }
 
     @Override

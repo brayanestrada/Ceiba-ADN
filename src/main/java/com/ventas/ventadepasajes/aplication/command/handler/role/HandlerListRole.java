@@ -1,6 +1,6 @@
 package com.ventas.ventadepasajes.aplication.command.handler.role;
 
-import com.ventas.ventadepasajes.domain.model.dto.DtoRole;
+import com.ventas.ventadepasajes.domain.model.entity.Role;
 import com.ventas.ventadepasajes.domain.service.role.ServiceListRole;
 import org.springframework.stereotype.Component;
 
@@ -15,5 +15,5 @@ public class HandlerListRole {
         this.serviceListRole = serviceListRole;
     }
 
-    public List<DtoRole> run(){return this.serviceListRole.run();}
+    public List<Role> run(){return this.serviceListRole.run();}
 }

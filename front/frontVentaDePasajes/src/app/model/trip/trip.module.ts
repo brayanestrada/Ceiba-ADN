@@ -9,9 +9,8 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class TripModule { 
+export class TripModule {
   id: number;
-  cost: number;
   seatsAvailable: number;
   seatsSold: number;
   startCity: string;

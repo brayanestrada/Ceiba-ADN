@@ -1,6 +1,6 @@
 package com.ventas.ventadepasajes.aplication.command.handler.driver;
 
-import com.ventas.ventadepasajes.domain.model.dto.DtoDriver;
+import com.ventas.ventadepasajes.domain.model.entity.Driver;
 import com.ventas.ventadepasajes.domain.service.driver.ServiceListDriver;
 import org.springframework.stereotype.Component;
 
@@ -14,5 +14,5 @@ public class HandlerListDriver {
         this.serviceListDriver = serviceListDriver;
     }
 
-    public List<DtoDriver> run(){return serviceListDriver.run();}
+    public List<Driver> run(){return serviceListDriver.run();}
 }

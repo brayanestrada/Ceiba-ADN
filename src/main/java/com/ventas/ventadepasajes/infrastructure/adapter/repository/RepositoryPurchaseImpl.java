@@ -3,6 +3,7 @@ package com.ventas.ventadepasajes.infrastructure.adapter.repository;
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
 import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryPurchase;
+import com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper.MapperPurchase;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityPurchase;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaPurchaseRepository;
 import org.modelmapper.ModelMapper;
@@ -28,8 +29,8 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
 
     @Override
     public List<Purchase> listPurchase() {
-        List<EntityPurchase> listPurchase = this.jpaPurchaseRepository.findAll();
-        return listPurchase.stream().map(e ->Purchase.valueOf(e)).collect(Collectors.toList());
+        MapperPurchase mapperPurchase = new MapperPurchase();
+        return mapperPurchase.entityToModelList(this.jpaPurchaseRepository.findAll());
     }
 
     @Override

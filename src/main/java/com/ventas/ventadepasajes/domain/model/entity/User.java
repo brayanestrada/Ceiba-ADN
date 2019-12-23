@@ -42,6 +42,7 @@ public class User{
     public User(){}
 
     public User(Long id, String name, String lastName, String email, String phone, long role, String password){
+        validate(name, lastName, email, phone, password, role);
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -49,16 +50,15 @@ public class User{
         this.phone = phone;
         this.role = role;
         this.password = password;
-        validate();
     }
     public User(String name, String lastName, String email, String phone, long role, String password){
+        validate(name, lastName, email, phone, password, role);
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.role = role;
         this.password = password;
-        validate();
     }
 
     public Long getId() { return id; }
@@ -105,7 +105,7 @@ public class User{
         this.password = password;
     }
 
-    private void validate(){
+    private void validate(String name, String lastName, String email, String phone, String password, long role){
         validateMandatory(name, NAME_IS_MANDATORY);
         validateMandatory(lastName, LAST_NAME_IS_MANDATORY);
         validateMandatory(email, EMAIL_IS_MANDATORY);
@@ -120,17 +120,5 @@ public class User{
         validateMinimumValue(lastName, LAST_NAME_MIN_LENGTH, ERROR_LAST_NAME_MIN_LENGTH);
         validateMinimumValue(phone, PHONE_MIN_LENGTH, ERROR_PHONE_MIN_LENGTH);
         validateMinimumValue(password, PASSWORD_MIN_LENGTH, ERROR_PASSWORD_MIN_LENGTH);
-    }
-
-    public static User valueOf(EntityUser entityUser){
-        User userEntity = new User();
-        userEntity.setId(entityUser.getId());
-        userEntity.setName(entityUser.getName());
-        userEntity.setLastName(entityUser.getLastName());
-        userEntity.setEmail(entityUser.getEmail());
-        userEntity.setPhone(entityUser.getPhone());
-        userEntity.setRole(entityUser.getRole());
-        userEntity.setPassword(entityUser.getPassword());
-        return userEntity;
     }
 }

@@ -2,7 +2,6 @@ package com.ventas.ventadepasajes.infrastructure.controller.role;
 
 import com.ventas.ventadepasajes.aplication.command.handler.command.CommandRole;
 import com.ventas.ventadepasajes.aplication.command.handler.role.HandlerUpdateRole;
-import com.ventas.ventadepasajes.domain.model.dto.DtoRole;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,7 +16,7 @@ public class ControllerUpdateRole {
 
     @CrossOrigin
     @PutMapping("/update/{id}")
-    public DtoRole updateRole(@RequestBody CommandRole commandRole, @PathVariable long id){
-        return this.handlerUpdateRole.run(id, commandRole);
+    public void updateRole(@RequestBody CommandRole commandRole, @PathVariable long id){
+        this.handlerUpdateRole.run(id, commandRole);
     }
 }

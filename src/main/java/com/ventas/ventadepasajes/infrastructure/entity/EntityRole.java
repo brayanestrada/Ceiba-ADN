@@ -1,5 +1,7 @@
 package com.ventas.ventadepasajes.infrastructure.entity;
 
+import com.ventas.ventadepasajes.domain.model.entity.Role;
+
 import javax.persistence.*;
 
 @Entity
@@ -31,5 +33,12 @@ public class EntityRole {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public static Role valueOf(EntityRole entityRole){
+        Role role = new Role();
+        role.setId(entityRole.getId());
+        role.setName(entityRole.getName());
+        return role;
     }
 }

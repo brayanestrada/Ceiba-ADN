@@ -1,5 +1,7 @@
 package com.ventas.ventadepasajes.infrastructure.entity;
 
+import com.ventas.ventadepasajes.domain.model.entity.User;
+
 import javax.persistence.*;
 
 @Entity
@@ -75,5 +77,17 @@ public class EntityUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public static User valueOf(EntityUser entityUser){
+        User userEntity = new User();
+        userEntity.setId(entityUser.getId());
+        userEntity.setName(entityUser.getName());
+        userEntity.setLastName(entityUser.getLastName());
+        userEntity.setEmail(entityUser.getEmail());
+        userEntity.setPhone(entityUser.getPhone());
+        userEntity.setRole(entityUser.getRole());
+        userEntity.setPassword(entityUser.getPassword());
+        return userEntity;
     }
 }

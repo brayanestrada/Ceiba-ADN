@@ -3,6 +3,7 @@ package com.ventas.ventadepasajes.infrastructure.adapter.repository;
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
 import com.ventas.ventadepasajes.domain.model.entity.Role;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryRole;
+import com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper.MapperRole;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityRole;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaRoleRepository;
 import org.modelmapper.ModelMapper;
@@ -30,8 +31,8 @@ public class RepositoryRoleImpl implements RepositoryRole {
 
     @Override
     public List<Role> listRole() {
-        List<EntityRole> listRole = this.jpaRoleRepository.findAll();
-        return listRole.stream().map(e -> Role.valueOf(e)).collect(Collectors.toList());
+        MapperRole mapperRole = new MapperRole();
+        return mapperRole.entityToModelList(this.jpaRoleRepository.findAll());
     }
 
     @Override

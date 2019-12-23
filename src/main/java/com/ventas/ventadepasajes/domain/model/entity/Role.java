@@ -14,9 +14,9 @@ public class Role {
     public Role(){}
 
     public Role(long id, String name){
+        validate(name);
         this.id = id;
         this.name = name;
-        validate();
     }
 
     public Role(String name){
@@ -39,14 +39,7 @@ public class Role {
         this.name = name;
     }
 
-    public static Role valueOf(EntityRole entityRole){
-        Role role = new Role();
-        role.setId(entityRole.getId());
-        role.setName(entityRole.getName());
-        return role;
-    }
-
-    private void validate(){
+    private void validate(String name){
         DataValidator.validateMandatory(name,ERROR_NAME_MANDATORY);
         DataValidator.validateMinimumValue(name, MIN_LENGTH_NAME, ERROR_NAME_LENGTH);
         DataValidator.validateMaximumValue(name, MAX_LENGTH_NAME, ERROR_NAME_LENGTH);

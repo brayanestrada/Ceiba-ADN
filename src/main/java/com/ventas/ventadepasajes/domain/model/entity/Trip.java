@@ -8,10 +8,7 @@ import static com.ventas.ventadepasajes.domain.model.entity.DataValidator.valida
 public class Trip {
 
     private static final int MIN_SEATS_AVAILABLE = 0;
-    private static final int MIN_COST = 0;
     private static final String ERROR_MIN_SEATS_AVAILABLE = "The minimum available seats are " + MIN_SEATS_AVAILABLE;
-    private static final String ERROR_MIN_COST = "The minimum trip cost is " + MIN_COST;
-    private static final String ERROR_MANDATORY_COST = "Error: Trip cost is mandatory";
     private static final String ERROR_MANDATORY_SEATS_AVAILABLE = "Error: Seats available value is mandatory";
     private static final String ERROR_MANDATORY_SEATS_SOLD = "Error: Seats sold value is mandatory";
     private static final String ERROR_DATE_FORMAT = "Error: Date format is not correct, it must be dd-MM-yyyy";
@@ -20,7 +17,6 @@ public class Trip {
     private static final String ERROR_ID_DRIVER_MANDATORY = "Error: End city is mandatory";
 
     private long id;
-    private double cost;
     private int seatsAvailable;
     private int seatsSold;
     private String startCity;
@@ -31,9 +27,9 @@ public class Trip {
 
     public Trip(){}
 
-    public Trip(long id, double cost, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
+    public Trip(long id, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
+        dataValidatorTrip(seatsAvailable, seatsSold, tripDate, startCity, endCity, idDriver);
         this.id = id;
-        this.cost = cost;
         this.seatsAvailable = seatsAvailable;
         this.seatsSold = seatsSold;
         this.startCity = startCity;
@@ -41,11 +37,10 @@ public class Trip {
         this.tripDate = tripDate;
         this.idDriver = idDriver;
         this.ticketAmount = ticketAmount;
-        dataValidatorTrip();
     }
 
-    public Trip(double cost, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
-        this.cost = cost;
+    public Trip( int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
+        dataValidatorTrip(seatsAvailable, seatsSold, tripDate, startCity, endCity, idDriver);
         this.seatsAvailable = seatsAvailable;
         this.seatsSold = seatsSold;
         this.startCity = startCity;
@@ -53,7 +48,6 @@ public class Trip {
         this.tripDate = tripDate;
         this.idDriver = idDriver;
         this.ticketAmount = ticketAmount;
-        dataValidatorTrip();
     }
 
     public long getId() {
@@ -62,14 +56,6 @@ public class Trip {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public double getCost() {
-        return cost;
-    }
-
-    public void setCost(double cost) {
-        this.cost = cost;
     }
 
     public int getSeatsAvailable() {
@@ -128,29 +114,13 @@ public class Trip {
         this.ticketAmount = ticketAmount;
     }
 
-    private void dataValidatorTrip(){
-        DataValidator.validateMandatory(cost, ERROR_MANDATORY_COST);
+    private void dataValidatorTrip(int seatsAvailable, int seatsSold, String tripDate, String startCity, String endCity, long idDriver){
         DataValidator.validateMandatory(seatsAvailable, ERROR_MANDATORY_SEATS_AVAILABLE);
         DataValidator.validateMandatory(seatsSold, ERROR_MANDATORY_SEATS_SOLD);
-        DataValidator.validateMinimumValue(cost, MIN_SEATS_AVAILABLE, ERROR_MIN_COST);
         DataValidator.validateMinimumValue(seatsAvailable, MIN_SEATS_AVAILABLE, ERROR_MIN_SEATS_AVAILABLE);
         DataValidator.validateDateFormat(tripDate, ERROR_DATE_FORMAT);
         DataValidator.validateMandatory(startCity, ERROR_START_CITY_MANDATORY);
         DataValidator.validateMandatory(endCity, ERROR_END_CITY_MANDATORY);
         DataValidator.validateMandatory(idDriver, ERROR_ID_DRIVER_MANDATORY);
-    }
-
-    public static Trip valueOf(EntityTrip entityTrip){
-        Trip trip = new Trip();
-        trip.setId(entityTrip.getId());
-        trip.setCost(entityTrip.getCost());
-        trip.setIdDriver(entityTrip.getIdDriver());
-        trip.setStartCity(entityTrip.getStartCity());
-        trip.setSeatsAvailable(entityTrip.getSeatsAvailable());
-        trip.setSeatsSold(entityTrip.getSeatsSold());
-        trip.setEndCity(entityTrip.getEndCity());
-        trip.setTripDate(entityTrip.getTripDate());
-        trip.setTicketAmount(entityTrip.getTicketAmount());
-        return trip;
     }
 }

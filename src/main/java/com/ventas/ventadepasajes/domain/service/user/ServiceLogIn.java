@@ -1,8 +1,7 @@
 package com.ventas.ventadepasajes.domain.service.user;
 
-import com.ventas.ventadepasajes.domain.model.dto.DtoUser;
+import com.ventas.ventadepasajes.domain.model.entity.User;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryUser;
-import com.ventas.ventadepasajes.domain.service.user.mapper.MapperUser;
 
 public class ServiceLogIn {
 
@@ -12,8 +11,7 @@ public class ServiceLogIn {
         this.repositoryUser = repositoryUser;
     }
 
-    public DtoUser run(String email, String password){
-        MapperUser mapperUser = new MapperUser();
-        return mapperUser.entityToDto(this.repositoryUser.logIn(email, password));
+    public User run(String email, String password){
+        return this.repositoryUser.logIn(email, password);
     }
 }

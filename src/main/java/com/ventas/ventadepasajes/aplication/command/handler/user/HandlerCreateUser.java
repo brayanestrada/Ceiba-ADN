@@ -2,7 +2,6 @@ package com.ventas.ventadepasajes.aplication.command.handler.user;
 
 import com.ventas.ventadepasajes.aplication.command.handler.command.CommandUser;
 import com.ventas.ventadepasajes.aplication.command.factory.FactoryUser;
-import com.ventas.ventadepasajes.domain.model.dto.DtoUser;
 import com.ventas.ventadepasajes.domain.model.entity.User;
 import com.ventas.ventadepasajes.domain.service.user.ServiceCreateUser;
 import org.springframework.stereotype.Component;
@@ -17,7 +16,7 @@ public class HandlerCreateUser {
         this.factoryUser = factoryUser;
     }
 
-    public DtoUser run(CommandUser commandUser){
+    public User run(CommandUser commandUser){
         User user = this.factoryUser.create(commandUser);
         return this.serviceCreateUser.run(user);
     }

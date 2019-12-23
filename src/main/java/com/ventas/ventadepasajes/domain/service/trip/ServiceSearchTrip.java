@@ -1,8 +1,7 @@
 package com.ventas.ventadepasajes.domain.service.trip;
 
-import com.ventas.ventadepasajes.domain.model.dto.DtoTrip;
+import com.ventas.ventadepasajes.domain.model.entity.Trip;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryTrip;
-import com.ventas.ventadepasajes.domain.service.trip.mapper.MapperTrip;
 
 public class ServiceSearchTrip {
 
@@ -12,9 +11,8 @@ public class ServiceSearchTrip {
         this.repositoryTrip = repositoryTrip;
     }
 
-    public DtoTrip run(long id){
-        MapperTrip mapperTrip = new MapperTrip();
-        return mapperTrip.entityToDto(this.repositoryTrip.searchTrip(id));
+    public Trip run(long id){
+        return this.repositoryTrip.searchTrip(id);
 
     }
 }

@@ -2,7 +2,7 @@ package com.ventas.ventadepasajes.infrastructure.controller.user;
 
 import com.ventas.ventadepasajes.aplication.command.handler.command.CommandUser;
 import com.ventas.ventadepasajes.aplication.command.handler.user.HandlerUpdateUser;
-import com.ventas.ventadepasajes.domain.model.dto.DtoUser;
+import com.ventas.ventadepasajes.domain.model.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,7 +17,7 @@ public class ControllerUpdateUser {
 
     @CrossOrigin
     @PutMapping("/update/{id}")
-    public DtoUser updateUser(@RequestBody CommandUser commandUser, @PathVariable long id){
+    public User updateUser(@RequestBody CommandUser commandUser, @PathVariable long id){
         return this.handlerUpdateUser.run(id, commandUser);
     }
 }
