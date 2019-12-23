@@ -17,6 +17,7 @@ public class ControllerDeleteTrip {
 
     @CrossOrigin
     @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity deleteTrip(@PathVariable long id){
         if(handlerDeleteTrip.run(id)){
             return new ResponseEntity(HttpStatus.OK);

@@ -20,10 +20,12 @@ import org.springframework.web.context.WebApplicationContext;
 
 import javax.transaction.Transactional;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 
 @Transactional
 @RunWith(SpringRunner.class)
@@ -44,41 +46,23 @@ public class TestControllerDeleteTrip {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 
-    private boolean callRequestedCreateTrip(){
-        try{
-            ObjectMapper objectMapper = new ObjectMapper();
-            CommandTripDataBuilder commandTripDataBuilder = new CommandTripDataBuilder();
-            CommandTrip commandTrip = commandTripDataBuilder.build();
-            mockMvc.perform(post("/trip/create")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(objectMapper.writeValueAsString(commandTrip)))
-                    .andExpect(status().isCreated());
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 
-    private String callRequestDeleteTrip(long id) throws Exception {
-        MvcResult mvcResult =  mockMvc.perform(delete("/trip/delete/"+id)
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()).andReturn();
-        return mvcResult.getResponse().getContentAsString();
-    }
+    private CountDownLatch lock = new CountDownLatch(1);
 
     @Test
-    public void  deleteTrip() throws Exception {
-        if(callRequestedCreateTrip()){
-            callRequestDeleteTrip(1);
-            if(callRequestedCreateTrip()){
-                callRequestDeleteTrip(2);
-            }else{
-                throw new ExceptionGeneral("Error creating trip on delete trip test");
-            }
-
-        }else{
-            throw new ExceptionGeneral("Error creating trip on delete trip test");
-        }
+    public void createAndDeleteTrip() throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        CommandTripDataBuilder commandTripDataBuilder = new CommandTripDataBuilder();
+        CommandTrip commandTrip = commandTripDataBuilder.build();
+        mockMvc.perform(post("/trip/create")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(commandTrip)))
+                .andExpect(status().isCreated()).andReturn();
+        lock.await(2000, TimeUnit.MILLISECONDS);
+        MockMvc secondMockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        secondMockMvc.perform(delete("/trip/delete/{id}", 1)
+                        .contentType(MediaType.APPLICATION_JSON))
+                        .andExpect(status()
+                        .isOk());
     }
 }

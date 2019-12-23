@@ -17,6 +17,7 @@ public class ControllerDeletePurchase {
 
     @CrossOrigin
     @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity deletePurchase(@PathVariable long id){
         if(handlerDeletePurchase.run(id)){
             return new ResponseEntity(HttpStatus.OK);

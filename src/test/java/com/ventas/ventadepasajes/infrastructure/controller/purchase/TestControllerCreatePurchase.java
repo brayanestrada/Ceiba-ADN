@@ -15,9 +15,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -41,25 +45,24 @@ public class TestControllerCreatePurchase {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 
-    private void createTrip() throws Exception{
+    private CountDownLatch lock = new CountDownLatch(1);
+
+    public void create() throws Exception{
         ObjectMapper objectMapper = new ObjectMapper();
         CommandTripDataBuilder commandTripDataBuilder = new CommandTripDataBuilder();
         CommandTrip commandTrip = commandTripDataBuilder.build();
         mockMvc.perform(post("/trip/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandTrip)))
-                .andExpect(status().isCreated());
-    }
-
-    @Test
-    public void create() throws Exception{
-        createTrip();
-        ObjectMapper objectMapper = new ObjectMapper();
+                .andExpect(status().isCreated()).andReturn();
         CommandPurchaseDataBuilder commandPurchaseDataBuilder = new CommandPurchaseDataBuilder();
         CommandPurchase commandPurchase = commandPurchaseDataBuilder.build();
-        mockMvc.perform(post("/purchase/create")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(commandPurchase)))
+        MockMvc secondMockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        lock.await(2000, TimeUnit.MILLISECONDS);
+        secondMockMvc.perform(post("/purchase/create")
+                .content(objectMapper.writeValueAsString(commandPurchase))
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated());
+
     }
 }

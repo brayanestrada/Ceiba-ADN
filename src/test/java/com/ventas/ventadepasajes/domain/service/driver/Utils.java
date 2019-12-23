@@ -13,8 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Utils {
 
-
-        @Test
         public DtoDriver createDriver() {
                 Driver driver = new DriverTestDataBuilder().build();
                 RepositoryDriver repositoryDriver = Mockito.mock(RepositoryDriver.class);
@@ -27,6 +25,4 @@ public class Utils {
                 assertTrue(driver.getIdentification().equals(dtoDriver.getIdentification()), "Error creating user, no identification");
                 return dtoDriver;
         }
-
-
 }

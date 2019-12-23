@@ -42,42 +42,49 @@ public class TestControllerDeleteDriver {
     }
 
     @Test
-    public void deleteUser() throws Exception {
-        if(callRequestCreateDriver()){
+    public void deleteDriver() throws Exception {
+        MvcResult mvcResult = null;
+        String response;
+        try{
+            ObjectMapper objectMapper = new ObjectMapper();
+            CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
+            CommandDriver commandDriver = commandDriverDataBuilder.build();
+            mvcResult = mockMvc.perform(post("/driver/create")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(objectMapper.writeValueAsString(commandDriver)))
+                    .andExpect(status().isCreated()).andReturn();
+        }catch (Exception ex){
+            System.out.println(ex);
+        }
+        response = mvcResult.getResponse().getContentAsString();
+        System.out.println(response);
+        if(response.contains("1")){
             callRequestDeleteDriver(1);
-            if (
-            callRequestCreateDriver()){
-                callRequestDeleteDriver(2);
-            }else{
-                throw new ExceptionGeneral("Error creating Driver on Delete User Test");
-            }
         }else{
             throw new ExceptionGeneral("Error creating Driver on Delete User Test");
         }
     }
 
-    private boolean callRequestCreateDriver(){
+    private String callRequestCreateDriver(){
         try{
             ObjectMapper objectMapper = new ObjectMapper();
             CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
             CommandDriver commandDriver = commandDriverDataBuilder.build();
-            mockMvc.perform(post("/driver/create")
+            MvcResult mvcResult = mockMvc.perform(post("/driver/create")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(commandDriver)))
-                    .andExpect(status().isCreated());
-            return true;
+                    .andExpect(status().isCreated()).andReturn();
+            return mvcResult.getResponse().getContentAsString();
         }catch (Exception ex){
             System.out.println(ex);
-            return false;
+            return "Error";
         }
     }
 
 
-    private String callRequestDeleteDriver(long id) throws Exception {
-        MvcResult mvcResult =  mockMvc.perform(delete("/driver/delete/"+id)
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()).andReturn();
-        return mvcResult.getResponse().getContentAsString();
+    private void callRequestDeleteDriver(long id) throws Exception {
+        mockMvc.perform(delete("/driver/delete/"+id)
+                .contentType(MediaType.APPLICATION_JSON));
     }
 
 }
