@@ -1,7 +1,5 @@
 package com.ventas.ventadepasajes.domain.model.entity;
 
-import com.ventas.ventadepasajes.infrastructure.entity.EntityRole;
-
 public class Role {
 
     private long id;
@@ -20,6 +18,7 @@ public class Role {
     }
 
     public Role(String name){
+        validate(name);
         this.name = name;
     }
 
@@ -40,8 +39,8 @@ public class Role {
     }
 
     private void validate(String name){
-        DataValidator.validateMandatory(name,ERROR_NAME_MANDATORY);
-        DataValidator.validateMinimumValue(name, MIN_LENGTH_NAME, ERROR_NAME_LENGTH);
-        DataValidator.validateMaximumValue(name, MAX_LENGTH_NAME, ERROR_NAME_LENGTH);
+        DataValidator.validateMandatory( name, ERROR_NAME_MANDATORY );
+        DataValidator.validateMinimumValue( name, MIN_LENGTH_NAME, ERROR_NAME_LENGTH );
+        DataValidator.validateMaximumValue( name, MAX_LENGTH_NAME, ERROR_NAME_LENGTH );
     }
 }

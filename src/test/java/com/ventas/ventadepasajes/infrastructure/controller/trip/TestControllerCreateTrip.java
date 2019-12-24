@@ -38,7 +38,7 @@ public class TestControllerCreateTrip {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 
-    @Test
+
     public void create() throws Exception{
         ObjectMapper objectMapper = new ObjectMapper();
         CommandTripDataBuilder commandTripDataBuilder = new CommandTripDataBuilder();

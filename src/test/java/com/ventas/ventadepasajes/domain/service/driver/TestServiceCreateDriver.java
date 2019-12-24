@@ -1,14 +1,10 @@
 package com.ventas.ventadepasajes.domain.service.driver;
 
-import com.ventas.ventadepasajes.domain.model.dto.DtoDriver;
 import com.ventas.ventadepasajes.domain.model.entity.Driver;
-import com.ventas.ventadepasajes.domain.port.repository.RepositoryDriver;
 import com.ventas.ventadepasajes.domain.testdatabuilder.DriverTestDataBuilder;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class TestServiceCreateDriver {
 
@@ -16,10 +12,10 @@ public class TestServiceCreateDriver {
     public void validateCreatedUser(){
         Driver driver = new DriverTestDataBuilder().build();
         Utils utils = new Utils();
-        DtoDriver dtoDriver = utils.createDriver();
-        assertEquals(driver.getName(), dtoDriver.getName(), "Error creating user, no name");
-        assertEquals(driver.getLastName(), dtoDriver.getLastName(), "Error creating user, no name");
-        assertEquals(driver.getIdentification(), dtoDriver.getIdentification(), "Error creating user, no name");
+        Driver driverSaved = utils.createDriver();
+        assertEquals(driver.getName(), driverSaved.getName(), "Error creating user, no name");
+        assertEquals(driver.getLastName(), driverSaved.getLastName(), "Error creating user, no name");
+        assertEquals(driver.getIdentification(), driverSaved.getIdentification(), "Error creating user, no name");
     }
 /*
     @Test

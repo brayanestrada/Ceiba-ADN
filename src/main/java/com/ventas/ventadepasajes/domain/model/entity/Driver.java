@@ -1,9 +1,5 @@
 package com.ventas.ventadepasajes.domain.model.entity;
 
-import com.ventas.ventadepasajes.infrastructure.entity.EntityDriver;
-
-import static com.ventas.ventadepasajes.domain.model.entity.DataValidator.*;
-
 public class Driver {
 
     private static final int NAME_MIN_LENGTH = 2;
@@ -29,8 +25,6 @@ public class Driver {
     private String name;
     private String lastName;
     private String identification;
-
-    public Driver(){}
 
     public Driver(Long id, String name, String lastName, String identification){
         dataValidatorDriver(name, lastName, identification);

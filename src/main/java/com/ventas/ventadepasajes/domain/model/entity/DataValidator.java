@@ -8,8 +8,6 @@ import java.util.Date;
 
 public class DataValidator {
 
-    private DataValidator(){}
-
     public static void validateMandatory(Object value, String message){
         if(value == null){
             throw new ExceptionGeneral(message);
@@ -50,7 +48,6 @@ public class DataValidator {
             Date dateType = sdf.parse(date);
             if(!date.equals(sdf.format(dateType))){ throw new ExceptionGeneral(message);}
         } catch (ParseException e) {
-            e.printStackTrace();
             throw new ExceptionGeneral(message);
         }
     }

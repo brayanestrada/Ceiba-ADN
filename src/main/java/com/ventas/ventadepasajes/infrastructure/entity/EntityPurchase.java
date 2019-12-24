@@ -89,18 +89,4 @@ public class EntityPurchase {
     public void setTripDate(String tripDate) {
         this.tripDate = tripDate;
     }
-
-    public static Purchase valueOf(EntityPurchase entityPurchase){
-        Purchase purchase = new Purchase();
-        purchase.setId(entityPurchase.getId());
-        purchase.setTotalPurchaseAmount(entityPurchase.getTotalPurchaseAmount());
-        purchase.setPurchaseDate(entityPurchase.getPurchaseDate());
-        purchase.setDiscountPercentage(entityPurchase.getDiscountPercentage());
-        purchase.setNumberPurchasedTickets(entityPurchase.getNumberPurchasedTickets());
-        purchase.setIdTrip(entityPurchase.getIdTrip());
-        purchase.setTicketAmount(entityPurchase.getTicketAmount());
-        purchase.setPurchaseDate(entityPurchase.getPurchaseDate());
-        purchase.setTripDate(entityPurchase.getTripDate());
-        return purchase;
-    }
 }

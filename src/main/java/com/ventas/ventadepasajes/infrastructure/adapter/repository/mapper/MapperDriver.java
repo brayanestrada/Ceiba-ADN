@@ -13,12 +13,7 @@ public class MapperDriver {
     }
 
     public static Driver valueOfModel(EntityDriver entity){
-        Driver driver = new Driver();
-        driver.setId(entity.getId());
-        driver.setName(entity.getName());
-        driver.setLastName(entity.getLastName());
-        driver.setIdentification(entity.getIdentification());
-        return driver;
+        return new Driver(entity.getId(), entity.getName(), entity.getLastName(), entity.getIdentification());
     }
 
 }

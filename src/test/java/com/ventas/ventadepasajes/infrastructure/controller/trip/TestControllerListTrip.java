@@ -39,7 +39,6 @@ public class TestControllerListTrip {
     }
 
 
-    @Test
     public void listTrips() throws Exception{
         String result = callRequest();
         System.out.println(result);

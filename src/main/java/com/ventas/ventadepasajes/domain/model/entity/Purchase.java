@@ -1,7 +1,5 @@
 package com.ventas.ventadepasajes.domain.model.entity;
 
-import com.ventas.ventadepasajes.infrastructure.entity.EntityPurchase;
-
 public class Purchase {
 
     private long id;
@@ -21,9 +19,6 @@ public class Purchase {
     private static final String ERROR_MIN_ALLOWED_TICKETS = "Error: Min number of tickets to purchase are " + MIN_ALLOWED_TICKETS;
     private static final String ERROR_ID_TRIP_IS_MANDATORY = "Error: Trip id is mandatory";
 
-    public Purchase(){}
-
-
     public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip, String purchaseDate, String tripDate){
         validate(numberPurchasedTickets, idTrip);
         DataValidator.validateDateFormat(purchaseDate, ERROR_DATE_FORMAT);
@@ -38,34 +33,8 @@ public class Purchase {
         this.tripDate = tripDate;
     }
 
-    public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip){
-        this.id = id;
-        this.numberPurchasedTickets = numberPurchasedTickets;
-        this.ticketAmount = ticketAmount;
-        this.discountPercentage = discountPercentage;
-        this.totalPurchaseAmount = totalPurchaseAmount;
-        this.idTrip = idTrip;
-    }
-
-    public Purchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip, String purchaseDate) {
-        this.id = id;
-        this.numberPurchasedTickets = numberPurchasedTickets;
-        this.ticketAmount = ticketAmount;
-        this.discountPercentage = discountPercentage;
-        this.totalPurchaseAmount = totalPurchaseAmount;
-        this.idTrip = idTrip;
-        this.purchaseDate = purchaseDate;
-    }
-
-    public Purchase(int numberPurchasedTickets, int discountPercentage, double totalPurchaseAmount, long idTrip, String tripDate){
-        this.numberPurchasedTickets = numberPurchasedTickets;
-        this.discountPercentage = discountPercentage;
-        this.totalPurchaseAmount = totalPurchaseAmount;
-        this.idTrip = idTrip;
-        this.tripDate = tripDate;
-    }
-
     public Purchase(long id, int numberPurchasedTickets, long idTrip){
+        validate(numberPurchasedTickets, idTrip);
         this.id = id;
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.discountPercentage = 0;
@@ -74,6 +43,7 @@ public class Purchase {
     }
 
     public Purchase(int numberPurchasedTickets, long idTrip){
+        validate(numberPurchasedTickets, idTrip);
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.discountPercentage = 0;
         this.totalPurchaseAmount = 0;
@@ -141,8 +111,8 @@ public class Purchase {
     }
 
     private void validate(int numberPurchasedTickets, long idTrip){
-        DataValidator.validateMandatory(numberPurchasedTickets, ERROR_NUMBER_PURCHASED_TICKETS_MANDATORY);
-        DataValidator.validateMandatory(idTrip, ERROR_ID_TRIP_IS_MANDATORY);
+        DataValidator.validateNumberMandatory(idTrip, ERROR_ID_TRIP_IS_MANDATORY);
+        DataValidator.validateNumberMandatory(numberPurchasedTickets, ERROR_NUMBER_PURCHASED_TICKETS_MANDATORY);
         DataValidator.validateMaximumValue(numberPurchasedTickets, MAX_ALLOWED_TICKETS, ERROR_MAX_ALLOWED_TICKETS);
         DataValidator.validateMinimumValue(numberPurchasedTickets, MIN_ALLOWED_TICKETS, ERROR_MIN_ALLOWED_TICKETS);
     }

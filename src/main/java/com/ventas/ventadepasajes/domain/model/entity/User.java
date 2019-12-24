@@ -1,7 +1,5 @@
 package com.ventas.ventadepasajes.domain.model.entity;
 
-import com.ventas.ventadepasajes.infrastructure.entity.EntityUser;
-
 import static com.ventas.ventadepasajes.domain.model.entity.DataValidator.*;
 
 public class User{

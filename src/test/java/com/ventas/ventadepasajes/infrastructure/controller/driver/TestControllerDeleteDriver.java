@@ -41,7 +41,6 @@ public class TestControllerDeleteDriver {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 
-    @Test
     public void deleteDriver() throws Exception {
         MvcResult mvcResult = null;
         String response;

@@ -37,7 +37,6 @@ public class TestControllerListDriver {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 
-    @Test
     public void listDrivers() throws Exception{
         String result = callRequest();
         System.out.println(result);

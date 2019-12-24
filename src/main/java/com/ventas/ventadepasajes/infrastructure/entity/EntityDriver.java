@@ -24,7 +24,6 @@ public class EntityDriver {
         this.identification = identification;
     }
 
-
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
@@ -48,13 +47,4 @@ public class EntityDriver {
     }
 
     public void setIdentification(String identification) { this.identification = identification; }
-
-    public static Driver valueOf(EntityDriver entityDriver){
-        Driver driver = new Driver();
-        driver.setId(entityDriver.getId());
-        driver.setName(entityDriver.getName());
-        driver.setLastName(entityDriver.getLastName());
-        driver.setIdentification(entityDriver.getIdentification());
-        return driver;
-    }
 }
