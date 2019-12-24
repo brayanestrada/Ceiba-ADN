@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestServiceCreateDriver {
 
-    @Test
     public void validateCreatedUser(){
         Driver driver = new DriverTestDataBuilder().build();
         Utils utils = new Utils();
