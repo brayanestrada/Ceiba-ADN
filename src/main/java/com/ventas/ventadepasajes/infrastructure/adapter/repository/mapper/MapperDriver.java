@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class MapperDriver {
 
     public List<Driver> entityToModelList(List<EntityDriver> entityList){
-        return entityList.stream().map(e -> valueOfModel(e)).collect(Collectors.toList());
+        return entityList.stream().map(MapperDriver::valueOfModel).collect(Collectors.toList());
     }
 
     public static Driver valueOfModel(EntityDriver entity){

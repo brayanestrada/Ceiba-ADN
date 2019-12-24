@@ -1,24 +1,24 @@
 package com.ventas.ventadepasajes.infrastructure.adapter.repository;
 
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
-import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.model.entity.Trip;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryTrip;
 import com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper.MapperTrip;
-import com.ventas.ventadepasajes.infrastructure.entity.EntityPurchase;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityTrip;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaTripRepository;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public class RepositoryTripImpl implements RepositoryTrip {
 
     private ModelMapper modelMapper = new ModelMapper();
     private JpaTripRepository jpaTripRepository;
+    private Logger logger = LoggerFactory.getLogger(RepositoryTripImpl.class);
 
     public RepositoryTripImpl(JpaTripRepository jpaTripRepository){this.jpaTripRepository = jpaTripRepository;}
 
@@ -41,7 +41,7 @@ public class RepositoryTripImpl implements RepositoryTrip {
             this.jpaTripRepository.deleteById(id);
             return true;
         }catch (Exception e){
-            System.out.println(e);
+            logger.info("Error deleting trip");
             return false;
         }
     }

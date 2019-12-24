@@ -41,35 +41,4 @@ public class TestControllerUpdateDriver {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 
-   /* @Test
-    public void update() throws Exception{
-        if(callRequestCreateDriver()){
-            ObjectMapper objectMapper = new ObjectMapper();
-            CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
-            CommandDriver commandDriver = commandDriverDataBuilder.build();
-            mockMvc.perform(put("/driver/update/1")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body(objectMapper.writeValueAsString(commandDriver)))
-                    .andExpect(status().isOk());
-        }else{
-            throw new ExceptionGeneral("Error creating the driver on update driver");
-        }
-    }
-
-*/
-    private boolean callRequestCreateDriver(){
-        try{
-            ObjectMapper objectMapper = new ObjectMapper();
-            CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
-            CommandDriver commandDriver = commandDriverDataBuilder.build();
-            mockMvc.perform(post("/driver/create")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(objectMapper.writeValueAsString(commandDriver)))
-                    .andExpect(status().isCreated());
-            return true;
-        }catch (Exception ex){
-            System.out.println(ex);
-            return false;
-        }
-    }
 }

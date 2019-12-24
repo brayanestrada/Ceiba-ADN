@@ -7,16 +7,18 @@ import com.ventas.ventadepasajes.infrastructure.entity.EntityUser;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaUserRepository;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryUser;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public class RepositoryUserImpl implements RepositoryUser {
 
     private ModelMapper modelMapper = new ModelMapper();
     private JpaUserRepository jpaUserRepository;
+    private Logger logger = LoggerFactory.getLogger(RepositoryUserImpl.class);
 
     public RepositoryUserImpl(JpaUserRepository jpaUserRepository){ this.jpaUserRepository = jpaUserRepository; }
 
@@ -39,7 +41,7 @@ public class RepositoryUserImpl implements RepositoryUser {
             this.jpaUserRepository.deleteById(id);
             return true;
         }catch (Exception e){
-            System.err.println(e);
+            logger.info("Error deleting user");
             return false;
         }
     }

@@ -8,18 +8,17 @@ public class Driver {
     private static final int LAST_NAME_MAX_LENGTH = 30;
     private static final int IDENTIFICATION_MIN_LENGTH = 8;
     private static final int IDENTIFICATION_MAX_LENGTH = 11;
-    private static final String MUST_HAVE_MIN = "must have min";
+    private static final String MUST_HAVE_MIN = "must have min characters";
     private static final String MUST_HAVE_MAX = "must have max";
-    private static final String CHARACTERS = "characters";
     private static final String NAME_IS_MANDATORY = "Name is mandatory";
     private static final String LAST_NAME_IS_MANDATORY = "Last name is mandatory";
     private static final String IDENTIFICATION_IS_MANDATORY = "Identification is mandatory";
-    private static final String ERROR_NAME_MIN_LENGTH = "Name "+ MUST_HAVE_MIN + NAME_MIN_LENGTH + CHARACTERS;
-    private static final String ERROR_NAME_MAX_LENGTH = "Name "+ MUST_HAVE_MAX + NAME_MAX_LENGTH + CHARACTERS;
-    private static final String ERROR_LAST_NAME_MIN_LENGTH = "Last name "+ MUST_HAVE_MIN + LAST_NAME_MIN_LENGTH + CHARACTERS;
-    private static final String ERROR_LAST_NAME_MAX_LENGTH = "Last name" + MUST_HAVE_MAX + LAST_NAME_MAX_LENGTH + CHARACTERS;
-    private static final String ERROR_IDENTIFICATION_MIN_LENGTH = "Identification "+ MUST_HAVE_MIN + IDENTIFICATION_MIN_LENGTH + CHARACTERS;
-    private static final String ERROR_IDENTIFICATION_MAX_LENGTH = "Identification must have max " + IDENTIFICATION_MAX_LENGTH + CHARACTERS;
+    private static final String ERROR_NAME_MIN_LENGTH = "Name "+ MUST_HAVE_MIN + NAME_MIN_LENGTH;
+    private static final String ERROR_NAME_MAX_LENGTH = "Name "+ MUST_HAVE_MAX + NAME_MAX_LENGTH;
+    private static final String ERROR_LAST_NAME_MIN_LENGTH = "Last name "+ MUST_HAVE_MIN + LAST_NAME_MIN_LENGTH;
+    private static final String ERROR_LAST_NAME_MAX_LENGTH = "Last name" + MUST_HAVE_MAX + LAST_NAME_MAX_LENGTH;
+    private static final String ERROR_IDENTIFICATION_MIN_LENGTH = "Identification "+ MUST_HAVE_MIN + IDENTIFICATION_MIN_LENGTH;
+    private static final String ERROR_IDENTIFICATION_MAX_LENGTH = "Identification must have max " + IDENTIFICATION_MAX_LENGTH;
 
     private Long id;
     private String name;

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class MapperPurchase {
 
     public List<Purchase> entityToModelList(List<EntityPurchase> entityList){
-        return entityList.stream().map(e -> valueOfModel(e)).collect(Collectors.toList());
+        return entityList.stream().map(MapperPurchase::valueOfModel).collect(Collectors.toList());
     }
 
     public static Purchase valueOfModel(EntityPurchase entityPurchase){

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class MapperTrip {
 
     public List<Trip> entityToModelList(List<EntityTrip> entityList){
-        return entityList.stream().map(e -> valueOfModel(e)).collect(Collectors.toList());
+        return entityList.stream().map(MapperTrip::valueOfModel).collect(Collectors.toList());
     }
 
     public static Trip valueOfModel(EntityTrip entityTrip){

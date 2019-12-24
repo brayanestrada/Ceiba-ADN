@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class MapperUser {
 
     public List<User> entityToModelList(List<EntityUser> entityList){
-        return entityList.stream().map(e -> valueOfModel(e)).collect(Collectors.toList());
+        return entityList.stream().map(MapperUser::valueOfModel).collect(Collectors.toList());
     }
 
     public static User valueOfModel(EntityUser entity){

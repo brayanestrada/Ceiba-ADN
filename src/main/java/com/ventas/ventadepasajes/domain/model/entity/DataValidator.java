@@ -8,6 +8,8 @@ import java.util.Date;
 
 public class DataValidator {
 
+    private DataValidator(){}
+
     public static void validateMandatory(Object value, String message){
         if(value == null){
             throw new ExceptionGeneral(message);

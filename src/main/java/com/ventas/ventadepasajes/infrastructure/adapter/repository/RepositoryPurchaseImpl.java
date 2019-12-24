@@ -1,22 +1,23 @@
 package com.ventas.ventadepasajes.infrastructure.adapter.repository;
 
-import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
 import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryPurchase;
 import com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper.MapperPurchase;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityPurchase;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaPurchaseRepository;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public class RepositoryPurchaseImpl implements RepositoryPurchase {
 
     private ModelMapper modelMapper = new ModelMapper();
     private JpaPurchaseRepository jpaPurchaseRepository;
+    private Logger logger = LoggerFactory.getLogger(RepositoryPurchaseImpl.class);
 
     public RepositoryPurchaseImpl(JpaPurchaseRepository jpaPurchaseRepository){this.jpaPurchaseRepository = jpaPurchaseRepository;}
 
@@ -39,7 +40,7 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
             this.jpaPurchaseRepository.deleteById(id);
             return true;
         }catch (Exception e){
-            System.err.println(e);
+            logger.info("Error deleting purchase");
             return false;
         }
     }

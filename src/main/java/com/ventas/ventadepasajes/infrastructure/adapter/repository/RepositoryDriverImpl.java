@@ -6,6 +6,8 @@ import com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper.Mapper
 import com.ventas.ventadepasajes.infrastructure.entity.EntityDriver;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaDriverRepository;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,6 +17,7 @@ public class RepositoryDriverImpl implements RepositoryDriver {
 
     private ModelMapper modelMapper = new ModelMapper();
     private JpaDriverRepository jpaDriverRepository;
+    private Logger logger = LoggerFactory.getLogger(RepositoryDriverImpl.class);
 
     public RepositoryDriverImpl(JpaDriverRepository jpaDriverRepository){this.jpaDriverRepository = jpaDriverRepository;}
 
@@ -38,7 +41,7 @@ public class RepositoryDriverImpl implements RepositoryDriver {
             this.jpaDriverRepository.deleteById(id);
             return true;
         }catch (Exception e){
-            System.err.println(e);
+            logger.info("Error deleting driver");
             return false;
         }
     }

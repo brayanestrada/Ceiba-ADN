@@ -7,16 +7,18 @@ import com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper.Mapper
 import com.ventas.ventadepasajes.infrastructure.entity.EntityRole;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaRoleRepository;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public class RepositoryRoleImpl implements RepositoryRole {
 
     private ModelMapper modelMapper = new ModelMapper();
     private JpaRoleRepository jpaRoleRepository;
+    private Logger logger = LoggerFactory.getLogger(RepositoryRoleImpl.class);
 
     public RepositoryRoleImpl(JpaRoleRepository jpaRoleRepository){
         this.jpaRoleRepository = jpaRoleRepository;
@@ -41,7 +43,7 @@ public class RepositoryRoleImpl implements RepositoryRole {
             this.jpaRoleRepository.deleteById(id);
             return true;
         }catch (Exception e){
-            System.err.println(e);
+            logger.info("Error deleting role");
             return false;
         }
     }

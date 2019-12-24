@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class MapperRole {
 
     public List<Role> entityToModelList(List<EntityRole> entityList){
-        return entityList.stream().map(e -> valueOfModel(e)).collect(Collectors.toList());
+        return entityList.stream().map(MapperRole::valueOfModel).collect(Collectors.toList());
     }
 
     public static Role valueOfModel(EntityRole entityRole){

@@ -5,7 +5,7 @@ import com.ventas.ventadepasajes.domain.port.repository.RepositoryDriver;
 import com.ventas.ventadepasajes.domain.testdatabuilder.DriverTestDataBuilder;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 public class Utils {
 
@@ -16,9 +16,9 @@ public class Utils {
                 ServiceCreateDriver serviceCreateDriver = new ServiceCreateDriver(repositoryDriver);
                 Driver driverSaved = serviceCreateDriver.run(driver);
                 System.out.println(driverSaved.getId());
-                assertTrue(driver.getName().equals(driverSaved.getName()), "Error creating user, no name");
-                assertTrue(driver.getLastName().equals(driverSaved.getLastName()), "Error creating user, no last name");
-                assertTrue(driver.getIdentification().equals(driverSaved.getIdentification()), "Error creating user, no identification");
+                assertEquals(driver.getName(), driverSaved.getName(), "Error creating user, no name");
+                assertEquals(driver.getLastName(), driverSaved.getLastName(), "Error creating user, no last name");
+                assertEquals(driver.getIdentification(), driverSaved.getIdentification(), "Error creating user, no identification");
                 return driverSaved;
         }
 }

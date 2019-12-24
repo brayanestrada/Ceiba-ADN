@@ -4,6 +4,9 @@ import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.model.entity.Trip;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryPurchase;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryTrip;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -18,6 +21,8 @@ public class ServiceCreatePurchase {
     private RepositoryTrip repositoryTrip;
     private Purchase purchase;
 
+    Logger logger = LoggerFactory.getLogger(ServiceCreatePurchase.class);
+
     public ServiceCreatePurchase(RepositoryPurchase repositoryPurchase, RepositoryTrip repositoryTrip){
         this.repositoryPurchase = repositoryPurchase;
         this.repositoryTrip = repositoryTrip;
@@ -30,7 +35,7 @@ public class ServiceCreatePurchase {
         try{
             weekDay = getDayOfWeek(trip.getTripDate());
         }catch (ParseException e) {
-            e.printStackTrace();
+            logger.info("Error parsing date");
         }
         setPurchaseValues(purchase, trip, weekDay);
         updateTrip(trip);

@@ -1,7 +1,5 @@
 package com.ventas.ventadepasajes.infrastructure.entity;
 
-import com.ventas.ventadepasajes.domain.model.entity.Driver;
-
 import javax.persistence.*;
 
 @Entity

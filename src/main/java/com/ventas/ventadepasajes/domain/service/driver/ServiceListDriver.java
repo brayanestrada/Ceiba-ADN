@@ -2,7 +2,6 @@ package com.ventas.ventadepasajes.domain.service.driver;
 
 import com.ventas.ventadepasajes.domain.model.entity.Driver;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryDriver;
-import com.ventas.ventadepasajes.infrastructure.entity.EntityDriver;
 
 import java.util.List;
 

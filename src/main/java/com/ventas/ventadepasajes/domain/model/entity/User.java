@@ -19,15 +19,16 @@ public class User{
     private static final String EMAIL_IS_MANDATORY = "Email is mandatory";
     private static final String PHONE_IS_MANDATORY = "Phone is mandatory";
     private static final String ROLE_ID_IS_MANDATORY = "Role is mandatory";
-    private static final String PASSWORD_IS_MANDATORY = "Password is mandatory";
-    private static final String ERROR_NAME_MIN_LENGTH = "Name "+ MUST_HAVE_MIN + NAME_MIN_LENGTH + " numbers";
-    private static final String ERROR_PHONE_MIN_LENGTH = "Phone "+ MUST_HAVE_MIN + PHONE_MAX_LENGTH + " numbers";
-    private static final String ERROR_PHONE_MAX_LENGTH = "Phone "+ MUST_HAVE_MIN + PHONE_MAX_LENGTH + " numbers";
+    private static final String PASS_IS_MANDATORY = "Password is mandatory";
+    private static final String NUMBERS = " numbers";
+    private static final String ERROR_NAME_MIN_LENGTH = "Name "+ MUST_HAVE_MIN + NAME_MIN_LENGTH + NUMBERS;
+    private static final String ERROR_PHONE_MIN_LENGTH = "Phone "+ MUST_HAVE_MIN + PHONE_MAX_LENGTH + NUMBERS;
+    private static final String ERROR_PHONE_MAX_LENGTH = "Phone "+ MUST_HAVE_MIN + PHONE_MAX_LENGTH + NUMBERS;
     private static final String ERROR_NAME_MAX_LENGTH = "Name "+ MUST_HAVE_MAX + NAME_MAX_LENGTH + CHARACTERS;
     private static final String ERROR_LAST_NAME_MIN_LENGTH = "Last name "+ MUST_HAVE_MIN + LAST_NAME_MIN_LENGTH + CHARACTERS;
     private static final String ERROR_LAST_NAME_MAX_LENGTH = "Last name" + MUST_HAVE_MAX + LAST_NAME_MAX_LENGTH + CHARACTERS;
-    private static final String ERROR_PASSWORD_MIN_LENGTH = "Password "+ MUST_HAVE_MIN + PASSWORD_MIN_LENGTH + CHARACTERS;
-    private static final String ERROR_PASSWORD_MAX_LENGTH = "Password " + MUST_HAVE_MAX + PASSWORD_MAX_LENGTH + CHARACTERS;
+    private static final String ERROR_PASS_MIN_LENGTH = "Password "+ MUST_HAVE_MIN + PASSWORD_MIN_LENGTH + CHARACTERS;
+    private static final String ERROR_PASS_MAX_LENGTH = "Password " + MUST_HAVE_MAX + PASSWORD_MAX_LENGTH + CHARACTERS;
 
     private Long id;
     private String name;
@@ -109,14 +110,14 @@ public class User{
         validateMandatory(email, EMAIL_IS_MANDATORY);
         validateMandatory(phone, PHONE_IS_MANDATORY);
         validateNumberMandatory(role, ROLE_ID_IS_MANDATORY);
-        validateMandatory(password, PASSWORD_IS_MANDATORY);
+        validateMandatory(password, PASS_IS_MANDATORY);
         validateMaximumValue(name, NAME_MAX_LENGTH, ERROR_NAME_MAX_LENGTH);
         validateMaximumValue(lastName, LAST_NAME_MAX_LENGTH, ERROR_LAST_NAME_MAX_LENGTH);
         validateMaximumValue(phone, PHONE_MAX_LENGTH, ERROR_PHONE_MAX_LENGTH);
-        validateMaximumValue(password, PASSWORD_MAX_LENGTH, ERROR_PASSWORD_MAX_LENGTH);
+        validateMaximumValue(password, PASSWORD_MAX_LENGTH, ERROR_PASS_MAX_LENGTH);
         validateMinimumValue(name, LAST_NAME_MIN_LENGTH, ERROR_NAME_MIN_LENGTH);
         validateMinimumValue(lastName, LAST_NAME_MIN_LENGTH, ERROR_LAST_NAME_MIN_LENGTH);
         validateMinimumValue(phone, PHONE_MIN_LENGTH, ERROR_PHONE_MIN_LENGTH);
-        validateMinimumValue(password, PASSWORD_MIN_LENGTH, ERROR_PASSWORD_MIN_LENGTH);
+        validateMinimumValue(password, PASSWORD_MIN_LENGTH, ERROR_PASS_MIN_LENGTH);
     }
 }
