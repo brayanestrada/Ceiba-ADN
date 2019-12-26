@@ -67,9 +67,21 @@ public class TestControllerCreatePurchase {
         callCreateBadPurchase(commandPurchase, ERROR_NUMBER_PURCHASED_TICKETS_MANDATORY);
     }
 
+    @Test
+    public void createBadPurchaseMinimumNumberPurchasedTickets() throws Exception {
+        commandPurchase = commandPurchaseDataBuilder.buildMinimumValueNumberPurchasedTickets();
+        callCreateBadPurchase(commandPurchase, ERROR_MIN_ALLOWED_TICKETS);
+    }
+
+    @Test
+    public void createBadPurchaseMaximumNumberPurchasedTickets() throws Exception {
+        commandPurchase = commandPurchaseDataBuilder.buildMaximumValueNumberPurchasedTickets();
+        callCreateBadPurchase(commandPurchase, ERROR_MAX_ALLOWED_TICKETS);
+    }
+
     public Boolean callCreatePurchase(CommandPurchase commandPurchase) throws Exception {
         int tripId = callCreateTrip();
-        commandPurchase = commandPurchaseDataBuilder.buildWithoutTripId(commandPurchase,tripId);
+        commandPurchase = commandPurchaseDataBuilder.buildWithTripId(commandPurchase,tripId);
         mockMvc.perform(post("/purchase/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandPurchase)))
@@ -85,7 +97,7 @@ public class TestControllerCreatePurchase {
 
     public Boolean callCreateBadPurchase(CommandPurchase commandPurchase, String message) throws Exception {
         int tripId = callCreateTrip();
-        commandPurchase = commandPurchaseDataBuilder.buildWithoutTripId(commandPurchase,tripId);
+        commandPurchase = commandPurchaseDataBuilder.buildWithTripId(commandPurchase,tripId);
         MvcResult mvcResult = mockMvc.perform(post("/purchase/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandPurchase)))

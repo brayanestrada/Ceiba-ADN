@@ -7,6 +7,9 @@ public class CommandDriverDataBuilder {
     private static final String name = "Brayan";
     private static final String lastName = "Estrada";
     private static final String identification = "1017275333";
+    private static final String nameUpdated = "Deyson";
+    private static final String lastNameUpdated = "Driver";
+    private static final String identificationUpdated = "101710486";
     private static final String smallName = "A";
     private static final String longName = "Qwertyuiopasdfghjklñzxcvbnmqwertyuiosdfghjklzxcvbnm";
     private static final String smallLastName = "A";
@@ -15,6 +18,8 @@ public class CommandDriverDataBuilder {
     private static final String longIdentification = "10293847856574839";
 
     public CommandDriver build(){ return new CommandDriver(name, lastName, identification);}
+
+    public CommandDriver buildUpdate(){ return new CommandDriver(nameUpdated, lastNameUpdated, identificationUpdated);}
 
     public CommandDriver buildSmallName() { return new CommandDriver(smallName, lastName, identification); }
 
