@@ -39,5 +39,15 @@ public class CommandDriverDataBuilder {
 
     public CommandDriver buildWithoutIdentification() { return new CommandDriver(name, lastName, null); }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getIdentification() {
+        return identification;
+    }
 }
