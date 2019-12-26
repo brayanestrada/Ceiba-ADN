@@ -59,7 +59,7 @@ public class TestControllerUpdateDriver {
         int id = callRequestCreateDriver(commandDriver);
         commandDriverUpdated = commandDriverDataBuilder.buildUpdate();
         assertTrue(callRequestUpdateDriver(id, commandDriverUpdated));
-        String result = listDrivers();
+        listDrivers();
     }
 
     @Test
