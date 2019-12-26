@@ -52,14 +52,6 @@ public class TestControllerUpdatePurchase {
     private CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
     private CommandDriver commandDriver;
 
-    private final String uriCreate = "/purchase/create/";
-    private final String uriCreateTrip = "/trip/create/";
-    private final String uriCreateDriver = "/driver/create/";
-    private final String uriListPurchases = "/purchase/list/";
-    private final String uriTripList = "/trip/list/";
-    private final String uriDriverList = "/driver/list/";
-    private final String uriUpdate = "/purchase/update/{id}";
-
     @Before
     public void setUp(){
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
@@ -126,7 +118,7 @@ public class TestControllerUpdatePurchase {
 
 
     private int callRequestCreateDriver(CommandDriver commandDriver) throws Exception {
-        mockMvc.perform(post(uriCreateDriver)
+        mockMvc.perform(post("/driver/create/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandDriver)))
                 .andExpect(status().isCreated());
@@ -135,7 +127,7 @@ public class TestControllerUpdatePurchase {
     }
 
     private int callRequestCreateTrip(CommandTrip commandTrip) throws Exception {
-        mockMvc.perform(post(uriCreateTrip)
+        mockMvc.perform(post("/trip/create/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandTrip)))
                 .andExpect(status().isCreated());
@@ -144,7 +136,7 @@ public class TestControllerUpdatePurchase {
     }
 
     private int callRequestCreatePurchase(CommandPurchase commandPurchase) throws Exception {
-        mockMvc.perform(post(uriCreate)
+        mockMvc.perform(post("/purchase/create/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandPurchase)))
                 .andExpect(status().isCreated());
@@ -152,16 +144,15 @@ public class TestControllerUpdatePurchase {
         return JsonPath.read(result, "$[0].id");
     }
 
-    private boolean callRequestUpdatePurchase(int id, CommandPurchase commandPurchase) throws Exception {
-        mockMvc.perform(put(uriUpdate , id)
+    private void callRequestUpdatePurchase(int id, CommandPurchase commandPurchase) throws Exception {
+        mockMvc.perform(put("/purchase/update/{id}" , id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandPurchase)))
                 .andExpect(status().isOk());
-        return true;
     }
 
-    private Boolean callRequestUpdateBadPurchase(int id, CommandPurchase commandPurchase, String message) throws Exception {
-        MvcResult mvcResult = mockMvc.perform(put(uriUpdate, id)
+    private void callRequestUpdateBadPurchase(int id, CommandPurchase commandPurchase, String message) throws Exception {
+        MvcResult mvcResult = mockMvc.perform(put("/purchase/update/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandPurchase)))
                 .andExpect(status().isBadRequest())
@@ -170,25 +161,17 @@ public class TestControllerUpdatePurchase {
         if (!result.contains(message)){
             Assert.fail("Should throw bad request exception but it didn't happen");
         }
-        return true;
     }
 
     private String listTrips() throws Exception {
-        MvcResult mvcResult  = mockMvc.perform(get(uriTripList)
-                .contentType(MediaType.APPLICATION_JSON))
-                .andReturn();
-        return mvcResult.getResponse().getContentAsString();
-    }
-
-    private String listPurchases() throws Exception {
-        MvcResult mvcResult  = mockMvc.perform(get(uriListPurchases)
+        MvcResult mvcResult  = mockMvc.perform(get("/trip/list/")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         return mvcResult.getResponse().getContentAsString();
     }
 
     private String listDrivers() throws Exception {
-        MvcResult mvcResult  = mockMvc.perform(get(uriDriverList)
+        MvcResult mvcResult  = mockMvc.perform(get("/driver/list/")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         return mvcResult.getResponse().getContentAsString();

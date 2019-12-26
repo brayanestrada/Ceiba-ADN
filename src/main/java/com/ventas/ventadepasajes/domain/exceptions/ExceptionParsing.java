@@ -1,9 +1,8 @@
 package com.ventas.ventadepasajes.domain.exceptions;
 
+import sun.security.pkcs.ParsingException;
 
-import sun.security.provider.PolicyParser;
-
-public class ExceptionParsing extends PolicyParser.ParsingException {
+public class ExceptionParsing extends ParsingException {
 
     private static final long serialVersionUID = 1L;
 

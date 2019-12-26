@@ -10,12 +10,6 @@ public class CommandUserDataBuilder {
     private static final String phone = "3013439322";
     private static final long role = 14;
     private static final String password = "Test4echo*";
-    private static final String nameUpdated = "Deyson";
-    private static final String lastNameUpdated = "Posada";
-    private static final String emailUpdated = "deyson.estrada@personalsoft.com.co";
-    private static final String phoneUpdated = "3206472701";
-    private static final long roleUpdated = 14;
-    private static final String passwordUpdated = "Test4echo*";
     private static final String smallName = "A";
     private static final String smallLastName = "A";
     private static final String smallPhone = "123";

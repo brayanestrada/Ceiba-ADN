@@ -48,8 +48,9 @@ public class TestControllerCreateRole {
     }
 
     @Test
-    public void createRole() {
+    public void createRole() throws Exception {
         this.commandRole = commandRoleDataBuilder.build();
+        callRequestCreateDriver(commandRole);
     }
 
     @Test
@@ -78,7 +79,7 @@ public class TestControllerCreateRole {
                 .andExpect(status().isCreated());
     }
 
-    private String callRequestCreateBadDriver(CommandRole commandRole, String message) throws Exception {
+    private void callRequestCreateBadDriver(CommandRole commandRole, String message) throws Exception {
         MvcResult mvcResult = mockMvc.perform(post("/role/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandRole)))
@@ -88,6 +89,5 @@ public class TestControllerCreateRole {
         if (!result.contains(message)){
             Assert.fail("Should throw bad request exception but it didn't happen");
         }
-        return mvcResult.getResponse().getContentAsString();
     }
 }

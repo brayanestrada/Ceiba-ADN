@@ -44,8 +44,6 @@ public class TestControllerUpdateDriver {
     private CommandDriver commandDriver;
     private CommandDriver commandDriverUpdated;
 
-    private final String uriCreate = "/driver/create/";
-    private final String uriList = "/driver/list/";
     private final String uriUpdate = "/driver/update/{id}";
 
     @Before
@@ -57,6 +55,15 @@ public class TestControllerUpdateDriver {
     public void updateDriver() throws Exception {
         commandDriver = commandDriverDataBuilder.build();
         int id = callRequestCreateDriver(commandDriver);
+        commandDriverUpdated = commandDriverDataBuilder.buildUpdate();
+        assertTrue(callRequestUpdateDriver(id, commandDriverUpdated));
+        listDrivers();
+    }
+
+    @Test
+    public void updateDriverWithoutExist() throws Exception {
+        commandDriver = commandDriverDataBuilder.build();
+        int id = callRequestCreateDriver(commandDriver) + 1;
         commandDriverUpdated = commandDriverDataBuilder.buildUpdate();
         assertTrue(callRequestUpdateDriver(id, commandDriverUpdated));
         listDrivers();
@@ -136,7 +143,7 @@ public class TestControllerUpdateDriver {
 
 
     private int callRequestCreateDriver(CommandDriver commandDriver) throws Exception {
-        mockMvc.perform(post(uriCreate)
+        mockMvc.perform(post("/driver/create/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandDriver)))
                 .andExpect(status().isCreated());
@@ -166,7 +173,7 @@ public class TestControllerUpdateDriver {
     }
 
     private String listDrivers() throws Exception {
-        MvcResult mvcResult  = mockMvc.perform(get(uriList)
+        MvcResult mvcResult  = mockMvc.perform(get("/driver/list/")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         return mvcResult.getResponse().getContentAsString();

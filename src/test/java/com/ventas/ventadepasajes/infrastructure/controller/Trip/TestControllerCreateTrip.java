@@ -79,7 +79,7 @@ public class TestControllerCreateTrip {
     @Test
     public void createBadTripWithoutIdDriver() throws Exception {
         this.commandTrip = commandTripDataBuilder.buildWithoutIdDriver();
-        assertTrue(callRequestCreateTripWithoutDriverId(commandTrip, ERROR_ID_DRIVER_MANDATORY)); }
+        assertTrue(callRequestCreateTripWithoutDriverId(commandTrip)); }
 
     @Test
     public void createBadTripMinValueSeatsAvailable() throws Exception {
@@ -135,7 +135,7 @@ public class TestControllerCreateTrip {
         return true;
     }
 
-    private Boolean callRequestCreateTripWithoutDriverId(CommandTrip commandTrip, String message) throws Exception {
+    private Boolean callRequestCreateTripWithoutDriverId(CommandTrip commandTrip) throws Exception {
         callRequestCreateDriver();
         MvcResult mvcResult = mockMvc.perform(post(uri)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -143,7 +143,7 @@ public class TestControllerCreateTrip {
                 .andExpect(status().isBadRequest())
                 .andReturn();
         String result = mvcResult.getResponse().getContentAsString();
-        if (!result.contains(message)){
+        if (!result.contains(Utils.ERROR_ID_DRIVER_MANDATORY)){
             Assert.fail("Should throw bad request exception but it didn't happen");
         }
         return true;

@@ -5,12 +5,14 @@ import com.ventas.ventadepasajes.aplication.command.handler.command.CommandPurch
 public class CommandPurchaseDataBuilder {
 
     private long idTrip = 1;
-    private int numberPurchasedTickets = 5;
-    private int numberPurchasedTicketsUpdated = 10;
 
-    public CommandPurchase build(){ return new CommandPurchase(numberPurchasedTickets, idTrip);}
+    public CommandPurchase build(){
+        int numberPurchasedTickets = 5;
+        return new CommandPurchase(numberPurchasedTickets, idTrip);}
 
-    public CommandPurchase buildUpdated(int idTrip){ return new CommandPurchase(numberPurchasedTicketsUpdated, idTrip);}
+    public CommandPurchase buildUpdated(int idTrip){
+        int numberPurchasedTicketsUpdated = 10;
+        return new CommandPurchase(numberPurchasedTicketsUpdated, idTrip);}
 
     public CommandPurchase buildWithTripId(CommandPurchase commandPurchase, int idTrip) { return new CommandPurchase(commandPurchase.getNumberPurchasedTickets(), idTrip); }
 
