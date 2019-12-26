@@ -12,11 +12,12 @@ public class MapperRole {
         return entityList.stream().map(MapperRole::valueOfModel).collect(Collectors.toList());
     }
 
-    public static Role valueOfModel(EntityRole entityRole){
-        Role role = new Role();
-        role.setId(entityRole.getId());
-        role.setName(entityRole.getName());
-        return role;
+    private static Role valueOfModel(EntityRole entityRole){
+        return new Role(entityRole.getId(), entityRole.getName());
+    }
+
+    public EntityRole modelToEntity(Role role){
+        return new EntityRole(role.getId(), role.getName());
     }
 
 }

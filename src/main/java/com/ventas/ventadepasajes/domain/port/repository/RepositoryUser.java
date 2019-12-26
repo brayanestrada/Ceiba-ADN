@@ -5,6 +5,7 @@ import com.ventas.ventadepasajes.domain.model.entity.User;
 import java.util.List;
 
 public interface RepositoryUser {
+
     User createUser(User user);
 
     List<User> listUser();

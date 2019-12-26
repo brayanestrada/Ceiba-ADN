@@ -5,7 +5,6 @@ import com.ventas.ventadepasajes.domain.port.repository.RepositoryPurchase;
 import com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper.MapperPurchase;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityPurchase;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaPurchaseRepository;
-import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -15,23 +14,22 @@ import java.util.List;
 @Repository
 public class RepositoryPurchaseImpl implements RepositoryPurchase {
 
-    private ModelMapper modelMapper = new ModelMapper();
     private JpaPurchaseRepository jpaPurchaseRepository;
+    private MapperPurchase mapperPurchase = new MapperPurchase();
     private Logger logger = LoggerFactory.getLogger(RepositoryPurchaseImpl.class);
 
     public RepositoryPurchaseImpl(JpaPurchaseRepository jpaPurchaseRepository){this.jpaPurchaseRepository = jpaPurchaseRepository;}
 
     @Override
     public Purchase createPurchase(Purchase purchase) {
-        EntityPurchase entityPurchase = this.modelMapper.map(purchase, EntityPurchase.class);
+        EntityPurchase entityPurchase = this.mapperPurchase.modelToEntity(purchase);
         EntityPurchase entityPurchaseSaved = this.jpaPurchaseRepository.save(entityPurchase);
         return new Purchase(entityPurchaseSaved.getId(), entityPurchase.getNumberPurchasedTickets(), entityPurchase.getTicketAmount(), purchase.getDiscountPercentage(), purchase.getTotalPurchaseAmount(), purchase.getIdTrip(), purchase.getPurchaseDate(), purchase.getTripDate());
     }
 
     @Override
     public List<Purchase> listPurchase() {
-        MapperPurchase mapperPurchase = new MapperPurchase();
-        return mapperPurchase.entityToModelList(this.jpaPurchaseRepository.findAll());
+        return this.mapperPurchase.entityToModelList(this.jpaPurchaseRepository.findAll());
     }
 
     @Override
@@ -47,7 +45,7 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
 
     @Override
     public Purchase updatePurchase(long id, Purchase newPurchase) {
-        EntityPurchase entityPurchase = this.modelMapper.map(newPurchase, EntityPurchase.class);
+        EntityPurchase entityPurchase = this.mapperPurchase.modelToEntity(newPurchase);
         String newPurchaseDate = newPurchase.getPurchaseDate();
         EntityPurchase entityPurchaseUpdated = this.jpaPurchaseRepository.findById(id)
                 .map(purchase ->{

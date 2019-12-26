@@ -13,6 +13,5 @@ public class ServiceSearchTrip {
 
     public Trip run(long id){
         return this.repositoryTrip.searchTrip(id);
-
     }
 }

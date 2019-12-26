@@ -1,9 +1,7 @@
 package com.ventas.ventadepasajes.aplication.command.handler.command;
 
-import lombok.ToString;
-
-@ToString
 public class CommandTrip {
+
     private int seatsAvailable;
     private int seatsSold;
     private String startCity;
@@ -49,4 +47,5 @@ public class CommandTrip {
     public double getTicketAmount() {
         return ticketAmount;
     }
+
 }

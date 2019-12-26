@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class FactoryRole {
 
-
     public Role create(CommandRole commandRole){
         return new Role(commandRole.getName());
     }

@@ -30,18 +30,18 @@ public class ServiceUpdatePurchase {
     public Purchase run(long id, Purchase purchase) {
         int weekDayUpdate = 0;
         this.purchase = purchase;
-        Trip trip = getTripUpdate(purchase.getIdTrip());
+        Trip trip = getTrip(purchase.getIdTrip());
         try{
             weekDayUpdate = getDayOfWeek(trip.getTripDate());
         }catch (ParseException e) {
-            logger.info("Error getting week day");
+            logger.error("Error getting week day");
         }
         setPurchaseUpdateValues(id, purchase, trip, weekDayUpdate);
         updateTrip(trip);
-        return this.repositoryPurchase.createPurchase(this.purchase);
+        return this.repositoryPurchase.updatePurchase(id, this.purchase);
     }
 
-    public String getDateNow(){
+    private String getDateNow(){
         LocalDate now = LocalDate.now();
         return now.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
@@ -77,7 +77,7 @@ public class ServiceUpdatePurchase {
         this.purchase.setTotalPurchaseAmount(totalWithoutDiscount-discountAmount);
     }
 
-    public Trip getTripUpdate(long id){
+    private Trip getTrip(long id){
         return this.repositoryTrip.searchTrip(id);
     }
 }

@@ -1,11 +1,10 @@
 package com.ventas.ventadepasajes.domain.service.purchase;
 
+import com.ventas.ventadepasajes.domain.exceptions.ExceptionParsing;
 import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.model.entity.Trip;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryPurchase;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryTrip;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,38 +19,37 @@ public class ServiceCreatePurchase {
     private RepositoryPurchase repositoryPurchase;
     private RepositoryTrip repositoryTrip;
     private Purchase purchase;
-
-    Logger logger = LoggerFactory.getLogger(ServiceCreatePurchase.class);
+    private int weekDay;
 
     public ServiceCreatePurchase(RepositoryPurchase repositoryPurchase, RepositoryTrip repositoryTrip){
         this.repositoryPurchase = repositoryPurchase;
         this.repositoryTrip = repositoryTrip;
     }
 
-    public Purchase run(Purchase purchase) {
+    public Purchase run(Purchase purchase) throws ExceptionParsing {
         this.purchase = purchase;
-        int weekDay = 0;
         Trip trip = getTrip(purchase.getIdTrip());
-        try{
-            weekDay = getDayOfWeek(trip.getTripDate());
-        }catch (ParseException e) {
-            logger.info("Error parsing date");
-        }
-        setPurchaseValues(purchase, trip, weekDay);
+        getDayOfWeek(trip.getTripDate());
+        setPurchaseValues(purchase, trip, this.weekDay);
         updateTrip(trip);
         return this.repositoryPurchase.createPurchase(this.purchase);
     }
 
-    public String getDateNow(){
+    private String getDateNow(){
         LocalDate now = LocalDate.now();
         return now.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 
-    private int getDayOfWeek(String tripDate) throws ParseException {
-        Date date = new SimpleDateFormat("dd-MM-yyyy").parse(tripDate);
+    private void getDayOfWeek(String tripDate) throws ExceptionParsing {
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("dd-MM-yyyy").parse(tripDate);
+        } catch (ParseException e) {
+            throw new ExceptionParsing("Error parsing date");
+        }
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(date);
-        return calendar.get(Calendar.DAY_OF_WEEK);
+        this.weekDay = calendar.get(Calendar.DAY_OF_WEEK);
     }
 
     private int getDiscountPercentage(int numberPurchasedTickets, int weekDay){

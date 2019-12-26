@@ -6,19 +6,18 @@ import com.ventas.ventadepasajes.domain.port.repository.RepositoryRole;
 import com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper.MapperRole;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityRole;
 import com.ventas.ventadepasajes.infrastructure.jparepository.JpaRoleRepository;
-import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class RepositoryRoleImpl implements RepositoryRole {
 
-    private ModelMapper modelMapper = new ModelMapper();
     private JpaRoleRepository jpaRoleRepository;
     private Logger logger = LoggerFactory.getLogger(RepositoryRoleImpl.class);
+    private MapperRole mapperRole = new MapperRole();
 
     public RepositoryRoleImpl(JpaRoleRepository jpaRoleRepository){
         this.jpaRoleRepository = jpaRoleRepository;
@@ -26,15 +25,14 @@ public class RepositoryRoleImpl implements RepositoryRole {
 
     @Override
     public Role createRole(Role role) {
-        EntityRole entityRole = this.modelMapper.map(role, EntityRole.class);
+        EntityRole entityRole = this.mapperRole.modelToEntity(role);
         EntityRole entityRoleSaved = this.jpaRoleRepository.save(entityRole);
         return new Role(entityRoleSaved.getId(), entityRoleSaved.getName());
     }
 
     @Override
     public List<Role> listRole() {
-        MapperRole mapperRole = new MapperRole();
-        return mapperRole.entityToModelList(this.jpaRoleRepository.findAll());
+        return this.mapperRole.entityToModelList(this.jpaRoleRepository.findAll());
     }
 
     @Override
@@ -50,7 +48,7 @@ public class RepositoryRoleImpl implements RepositoryRole {
 
     @Override
     public Role updateRole(long id, Role newRole) {
-        EntityRole entityRole = this.modelMapper.map(newRole, EntityRole.class);
+        EntityRole entityRole = this.mapperRole.modelToEntity(newRole);
         EntityRole entityRoleUpdated = this.jpaRoleRepository.findById(id)
                 .map(role ->{
                     role.setId(newRole.getId());
@@ -66,12 +64,11 @@ public class RepositoryRoleImpl implements RepositoryRole {
     }
 
     @Override
-    public Role searchRole(long id) {
-        EntityRole entityRole = this.jpaRoleRepository.searchRole(id);
-        try{
-            return this.modelMapper.map(entityRole, Role.class);
-        }catch (Exception e){
+    public boolean searchRole(long id) {
+        Optional<EntityRole> entityRole = this.jpaRoleRepository.searchRole(id);
+        if(!entityRole.isPresent()){
             throw new ExceptionGeneral("There are no roles with id " + id);
         }
+        return true;
     }
 }

@@ -2,14 +2,13 @@ package com.ventas.ventadepasajes.domain.model.entity;
 
 public class Role {
 
-    private long id;
-    private String name;
     private static final int MIN_LENGTH_NAME = 2;
     private static final int MAX_LENGTH_NAME = 35;
     private static final String ERROR_NAME_MANDATORY = "Error: Name is mandatory";
     private static final String ERROR_NAME_LENGTH = "Error: Name characters must be between 2 and 35 characters";
 
-    public Role(){}
+    private long id;
+    private String name;
 
     public Role(long id, String name){
         validate(name);

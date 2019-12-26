@@ -1,11 +1,7 @@
 package com.ventas.ventadepasajes.aplication.command.handler.command;
 
-import lombok.ToString;
-
-@ToString
 public class CommandUser {
 
-    private Long id;
     private String name;
     private String lastName;
     private String email;
@@ -13,18 +9,13 @@ public class CommandUser {
     private long role;
     private String password;
 
-    public CommandUser(Long id, String name, String lastName, String email, String phone, long role, String password){
-        this.id = id;
+    public CommandUser(String name, String lastName, String email, String phone, long role, String password){
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.role = role;
         this.password = password;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getName() {

@@ -1,7 +1,5 @@
 package com.ventas.ventadepasajes.infrastructure.entity;
 
-import com.ventas.ventadepasajes.domain.model.entity.Purchase;
-
 import javax.persistence.*;
 
 @Entity
@@ -19,7 +17,7 @@ public class EntityPurchase {
     private String tripDate;
     private long idTrip;
 
-    public EntityPurchase(){}
+    private EntityPurchase(){}
 
     public EntityPurchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip, String purchaseDate, String tripDate){
         this.id = id;

@@ -17,7 +17,7 @@ public class ControllerCreateUser {
 
     @CrossOrigin
     @PostMapping("/create")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@RequestBody CommandUser commandUser){
         return this.handlerCreateUser.run(commandUser);
     }

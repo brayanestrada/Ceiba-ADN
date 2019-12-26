@@ -1,9 +1,7 @@
 package com.ventas.ventadepasajes.aplication.command.handler.command;
 
-import lombok.ToString;
-
-@ToString
 public class CommandPurchase {
+    
     private int numberPurchasedTickets;
     private long idTrip;
 

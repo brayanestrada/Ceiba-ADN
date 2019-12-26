@@ -5,7 +5,6 @@ public class Trip {
     private static final int MIN_SEATS_AVAILABLE = 0;
     private static final String ERROR_MIN_SEATS_AVAILABLE = "The minimum available seats are " + MIN_SEATS_AVAILABLE;
     private static final String ERROR_MANDATORY_SEATS_AVAILABLE = "Error: Seats available value is mandatory";
-    private static final String ERROR_MANDATORY_SEATS_SOLD = "Error: Seats sold value is mandatory";
     private static final String ERROR_DATE_FORMAT = "Error: Date format is not correct, it must be dd-MM-yyyy";
     private static final String ERROR_START_CITY_MANDATORY = "Error: Start city is mandatory";
     private static final String ERROR_END_CITY_MANDATORY = "Error: End city is mandatory";
@@ -20,10 +19,10 @@ public class Trip {
     private long idDriver;
     private double ticketAmount;
 
-    public Trip(){}
+    private Trip(){}
 
     public Trip(long id, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
-        dataValidatorTrip(seatsAvailable, seatsSold, tripDate, startCity, endCity, idDriver);
+        dataValidatorTrip(seatsAvailable, tripDate, startCity, endCity, idDriver);
         this.id = id;
         this.seatsAvailable = seatsAvailable;
         this.seatsSold = seatsSold;
@@ -35,7 +34,7 @@ public class Trip {
     }
 
     public Trip( int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
-        dataValidatorTrip(seatsAvailable, seatsSold, tripDate, startCity, endCity, idDriver);
+        dataValidatorTrip(seatsAvailable, tripDate, startCity, endCity, idDriver);
         this.seatsAvailable = seatsAvailable;
         this.seatsSold = seatsSold;
         this.startCity = startCity;
@@ -109,9 +108,8 @@ public class Trip {
         this.ticketAmount = ticketAmount;
     }
 
-    private void dataValidatorTrip(int seatsAvailable, int seatsSold, String tripDate, String startCity, String endCity, long idDriver){
+    private void dataValidatorTrip(int seatsAvailable, String tripDate, String startCity, String endCity, long idDriver){
         DataValidator.validateNumberMandatory(seatsAvailable, ERROR_MANDATORY_SEATS_AVAILABLE);
-        DataValidator.validateNumberMandatory(seatsSold, ERROR_MANDATORY_SEATS_SOLD);
         DataValidator.validateMandatory(startCity, ERROR_START_CITY_MANDATORY);
         DataValidator.validateMandatory(endCity, ERROR_END_CITY_MANDATORY);
         DataValidator.validateNumberMandatory(idDriver, ERROR_ID_DRIVER_MANDATORY);

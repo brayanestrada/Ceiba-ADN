@@ -12,14 +12,24 @@ public class MapperUser {
         return entityList.stream().map(MapperUser::valueOfModel).collect(Collectors.toList());
     }
 
-    public static User valueOfModel(EntityUser entity){
-        User user = new User();
-        user.setLastName(entity.getLastName());
-        user.setId(entity.getId());
-        user.setPhone(entity.getPhone());
-        user.setPassword(entity.getPassword());
-        user.setName(entity.getName());
-        user.setRole(entity.getRole());
-        return user;
+    private static User valueOfModel(EntityUser entity){
+        return new User(entity.getId(),
+                entity.getName(),
+                entity.getLastName(),
+                entity.getEmail(),
+                entity.getPhone(),
+                entity.getRole(),
+                entity.getPassword()
+        );
+    }
+
+    public User entityToModel(EntityUser entityUser){
+        return new User(entityUser.getId(), entityUser.getName(), entityUser.getLastName(), entityUser.getEmail(),
+                entityUser.getPhone(), entityUser.getRole(), entityUser.getPassword());
+    }
+
+    public EntityUser modelToEntity(User user){
+        return new EntityUser(user.getId(), user.getName(), user.getLastName(), user.getEmail(),
+                user.getPhone(), user.getRole(), user.getPassword());
     }
 }

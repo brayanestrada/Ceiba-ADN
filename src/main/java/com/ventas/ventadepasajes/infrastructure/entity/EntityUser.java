@@ -1,12 +1,13 @@
 package com.ventas.ventadepasajes.infrastructure.entity;
 
-import com.ventas.ventadepasajes.domain.model.entity.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "tbl_user")
 public class EntityUser {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -15,9 +16,10 @@ public class EntityUser {
     private String email;
     private String phone;
     private long role;
+    @JsonIgnore
     private String password;
 
-    public EntityUser(){}
+    private EntityUser(){}
 
     public EntityUser(Long id, String name, String lastName, String email, String phone, long roleId, String password){
         this.id = id;
@@ -77,17 +79,5 @@ public class EntityUser {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public static User valueOf(EntityUser entityUser){
-        User userEntity = new User();
-        userEntity.setId(entityUser.getId());
-        userEntity.setName(entityUser.getName());
-        userEntity.setLastName(entityUser.getLastName());
-        userEntity.setEmail(entityUser.getEmail());
-        userEntity.setPhone(entityUser.getPhone());
-        userEntity.setRole(entityUser.getRole());
-        userEntity.setPassword(entityUser.getPassword());
-        return userEntity;
     }
 }

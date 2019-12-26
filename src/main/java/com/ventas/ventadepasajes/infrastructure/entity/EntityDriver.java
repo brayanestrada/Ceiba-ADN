@@ -13,7 +13,7 @@ public class EntityDriver {
     private String lastName;
     private String identification;
 
-    public EntityDriver(){}
+    private EntityDriver(){ }
 
     public EntityDriver(Long id, String name, String lastName, String identification){
         this.id = id;

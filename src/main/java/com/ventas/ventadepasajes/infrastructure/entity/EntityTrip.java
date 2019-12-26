@@ -1,7 +1,5 @@
 package com.ventas.ventadepasajes.infrastructure.entity;
 
-import com.ventas.ventadepasajes.domain.model.entity.Trip;
-
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +16,26 @@ public class EntityTrip {
     private String tripDate;
     private double ticketAmount;
     private long idDriver;
+
+    private EntityTrip(){}
+
+    public EntityTrip(long id,
+                      int seatsAvailable,
+                      int seatsSold,
+                      String startCity,
+                      String endCity,
+                      String tripDate,
+                      double ticketAmount,
+                      long idDriver){
+        this.id = id;
+        this.seatsAvailable = seatsAvailable;
+        this.seatsSold = seatsSold;
+        this.startCity = startCity;
+        this.endCity = endCity;
+        this.tripDate = tripDate;
+        this.ticketAmount = ticketAmount;
+        this.idDriver = idDriver;
+    }
 
     public long getId() {
         return id;
@@ -83,16 +101,4 @@ public class EntityTrip {
         this.ticketAmount = ticketAmount;
     }
 
-    public static Trip valueOf(EntityTrip entityTrip){
-        Trip trip = new Trip();
-        trip.setId(entityTrip.getId());
-        trip.setIdDriver(entityTrip.getIdDriver());
-        trip.setStartCity(entityTrip.getStartCity());
-        trip.setSeatsAvailable(entityTrip.getSeatsAvailable());
-        trip.setSeatsSold(entityTrip.getSeatsSold());
-        trip.setEndCity(entityTrip.getEndCity());
-        trip.setTripDate(entityTrip.getTripDate());
-        trip.setTicketAmount(entityTrip.getTicketAmount());
-        return trip;
-    }
 }

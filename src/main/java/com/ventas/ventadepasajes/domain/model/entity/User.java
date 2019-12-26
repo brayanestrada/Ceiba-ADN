@@ -3,6 +3,7 @@ package com.ventas.ventadepasajes.domain.model.entity;
 import static com.ventas.ventadepasajes.domain.model.entity.DataValidator.*;
 
 public class User{
+
     private static final int NAME_MIN_LENGTH = 3;
     private static final int NAME_MAX_LENGTH = 30;
     private static final int LAST_NAME_MIN_LENGTH = 3;
@@ -37,8 +38,6 @@ public class User{
     private String phone;
     private long role;
     private String password;
-
-    public User(){}
 
     public User(Long id, String name, String lastName, String email, String phone, long role, String password){
         validate(name, lastName, email, phone, password, role);

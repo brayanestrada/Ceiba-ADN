@@ -12,8 +12,12 @@ public class MapperDriver {
         return entityList.stream().map(MapperDriver::valueOfModel).collect(Collectors.toList());
     }
 
-    public static Driver valueOfModel(EntityDriver entity){
+    private static Driver valueOfModel(EntityDriver entity){
         return new Driver(entity.getId(), entity.getName(), entity.getLastName(), entity.getIdentification());
+    }
+
+    public EntityDriver modelToEntity(Driver driver){
+        return new EntityDriver(driver.getId(), driver.getName(), driver.getLastName(), driver.getIdentification());
     }
 
 }

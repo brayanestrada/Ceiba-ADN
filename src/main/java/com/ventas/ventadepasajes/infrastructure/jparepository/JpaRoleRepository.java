@@ -6,9 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface JpaRoleRepository extends JpaRepository<EntityRole, Long> {
 
     @Query(value = "SELECT * FROM TBL_ROLE WHERE id = :id", nativeQuery = true)
-    EntityRole searchRole(@Param("id") long id);
+    Optional<EntityRole> searchRole(@Param("id") long id);
+
 }

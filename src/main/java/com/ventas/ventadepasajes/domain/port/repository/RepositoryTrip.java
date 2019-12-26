@@ -5,6 +5,7 @@ import com.ventas.ventadepasajes.domain.model.entity.Trip;
 import java.util.List;
 
 public interface RepositoryTrip {
+
     Trip createTrip(Trip trip);
 
     List<Trip> listTrip();

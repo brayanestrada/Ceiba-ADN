@@ -17,12 +17,6 @@ public class TestTripModel {
     }
 
     @Test
-    public void testSeatsSoldMandatory(){
-        dataBuilder.withoutSeatsSold();
-        assertThrows(ExceptionGeneral.class, () -> dataBuilder.build(), "Error: Seats sold value is mandatory");
-    }
-
-    @Test
     public void testStartCityMandatory(){
         dataBuilder.withoutStartCity();
         assertThrows(ExceptionGeneral.class, () -> dataBuilder.build(), "Error: Start city is mandatory");
@@ -55,12 +49,6 @@ public class TestTripModel {
     public void testSeatsAvailableMandatoryWithoutId(){
         dataBuilder.withoutSeatsAvailable();
         assertThrows(ExceptionGeneral.class, () -> dataBuilder.buildWithoutId(), "Error: Seats available value is mandatory");
-    }
-
-    @Test
-    public void testSeatsSoldMandatoryWithoutId(){
-        dataBuilder.withoutSeatsSold();
-        assertThrows(ExceptionGeneral.class, () -> dataBuilder.buildWithoutId(), "Error: Seats sold value is mandatory");
     }
 
     @Test

@@ -1,7 +1,6 @@
 package com.ventas.ventadepasajes.domain.port.repository;
 
 import com.ventas.ventadepasajes.domain.model.entity.Role;
-
 import java.util.List;
 
 public interface RepositoryRole {
@@ -14,5 +13,5 @@ public interface RepositoryRole {
 
     Role updateRole(long id, Role role);
 
-    Role searchRole(long id);
+    boolean searchRole(long id);
 }

@@ -12,7 +12,7 @@ public class MapperPurchase {
         return entityList.stream().map(MapperPurchase::valueOfModel).collect(Collectors.toList());
     }
 
-    public static Purchase valueOfModel(EntityPurchase entityPurchase){
+    private static Purchase valueOfModel(EntityPurchase entityPurchase){
         return new Purchase(entityPurchase.getId(),
                 entityPurchase.getNumberPurchasedTickets(),
                 entityPurchase.getTicketAmount(),
@@ -22,6 +22,17 @@ public class MapperPurchase {
                 entityPurchase.getPurchaseDate(),
                 entityPurchase.getTripDate()
         );
+    }
+
+    public EntityPurchase modelToEntity(Purchase purchase){
+        return new EntityPurchase(purchase.getId(),
+                purchase.getNumberPurchasedTickets(),
+                purchase.getTicketAmount(),
+                purchase.getDiscountPercentage(),
+                purchase.getTotalPurchaseAmount(),
+                purchase.getIdTrip(),
+                purchase.getPurchaseDate(),
+                purchase.getTripDate());
     }
 
 }
