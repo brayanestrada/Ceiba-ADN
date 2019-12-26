@@ -23,8 +23,8 @@ public class User{
     private static final String PASS_IS_MANDATORY = "Password is mandatory";
     private static final String NUMBERS = " numbers";
     private static final String ERROR_NAME_MIN_LENGTH = "Name "+ MUST_HAVE_MIN + NAME_MIN_LENGTH + NUMBERS;
-    private static final String ERROR_PHONE_MIN_LENGTH = "Phone "+ MUST_HAVE_MIN + PHONE_MAX_LENGTH + NUMBERS;
-    private static final String ERROR_PHONE_MAX_LENGTH = "Phone "+ MUST_HAVE_MIN + PHONE_MAX_LENGTH + NUMBERS;
+    private static final String ERROR_PHONE_MIN_LENGTH = "Phone "+ MUST_HAVE_MIN + PHONE_MIN_LENGTH + NUMBERS;
+    private static final String ERROR_PHONE_MAX_LENGTH = "Phone "+ MUST_HAVE_MAX + PHONE_MAX_LENGTH + NUMBERS;
     private static final String ERROR_NAME_MAX_LENGTH = "Name "+ MUST_HAVE_MAX + NAME_MAX_LENGTH + CHARACTERS;
     private static final String ERROR_LAST_NAME_MIN_LENGTH = "Last name "+ MUST_HAVE_MIN + LAST_NAME_MIN_LENGTH + CHARACTERS;
     private static final String ERROR_LAST_NAME_MAX_LENGTH = "Last name" + MUST_HAVE_MAX + LAST_NAME_MAX_LENGTH + CHARACTERS;

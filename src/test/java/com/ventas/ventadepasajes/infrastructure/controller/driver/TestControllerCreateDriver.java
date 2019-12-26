@@ -110,14 +110,14 @@ public class TestControllerCreateDriver {
     }
 
 
-    public void callRequestCreateDriver(Object command) throws Exception {
+    private void callRequestCreateDriver(Object command) throws Exception {
         mockMvc.perform(post(uri)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(command)))
                 .andExpect(status().isCreated());
     }
 
-    public String callRequestCreateBadDriver(Object command, String message) throws Exception {
+    private String callRequestCreateBadDriver(Object command, String message) throws Exception {
         MvcResult mvcResult = mockMvc.perform(post(uri)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(command)))
