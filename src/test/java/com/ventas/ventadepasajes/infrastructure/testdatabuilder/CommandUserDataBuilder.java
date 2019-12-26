@@ -49,6 +49,6 @@ public class CommandUserDataBuilder {
 
     public CommandUser buildLongPassword(){ return new CommandUser(name, lastName, email, phone, role, longPassword); }
 
-
+    public CommandUser buildWithRoleId(CommandUser commandUser, int roleId){ return new CommandUser(commandUser.getName(), commandUser.getLastName(), commandUser.getEmail(), commandUser.getPhone(), roleId, commandUser.getPassword()); }
 
 }

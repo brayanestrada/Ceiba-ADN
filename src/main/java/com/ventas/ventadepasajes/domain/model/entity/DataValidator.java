@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DataValidator {
+public final class DataValidator {
 
     private DataValidator(){}
 
@@ -48,7 +48,8 @@ public class DataValidator {
         try{
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
             Date dateType = sdf.parse(date);
-            if(!date.equals(sdf.format(dateType))){ throw new ExceptionGeneral(message);}
+            if(!date.equals(sdf.format(dateType))){
+                throw new ExceptionGeneral(message);}
         } catch (ParseException e) {
             throw new ExceptionGeneral(message);
         }
