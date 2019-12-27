@@ -7,29 +7,28 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 // Servicios
-import { HomeService } from './service/home/home.service';
-import { CreateService } from './service/purchase/create/create.service';
+import { HomeService } from './feature/home/service/home/home.service';
+import { CreateService } from './feature/purchase/service/create/create.service';
+import { ListDriverService } from './feature/driver/service/list/list.service';
 
 // Componentes
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { PurchaseComponent } from './components/purchase/purchase/purchase.component';
-import { HomeComponent } from './components/home/home.component';
-import { CreateComponent } from './components/purchase/create/create.component';
-import { LoginComponent } from './components/user/login/login.component';
-import { CreateTripComponent } from './components/trip/create/create.component';
-import { TripComponent } from './components/trip/trip/trip.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ListPurchaseComponent } from './feature/purchase/components/list/list.component';
+import { HomeComponent } from './feature/home/components/home/home.component';
+import { CreatePurchaseComponent } from './feature/purchase/components/create/create.component';
+import { LoginComponent } from './feature/user/components/login/login.component';
+import { CreateDriverComponent } from './feature/driver/components/create/create.component';
+import { ListDriversComponent } from './feature/driver/components/list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    PurchaseComponent,
     HomeComponent,
-    CreateComponent,
     LoginComponent,
-    CreateTripComponent,
-    TripComponent
+    CreateDriverComponent,
+    ListDriversComponent
   ],
   imports: [
     BrowserModule,
@@ -37,10 +36,7 @@ import { TripComponent } from './components/trip/trip/trip.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [
-    HomeService,
-    CreateService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,25 @@
+<div class="container">
+  <button class="btn btn-success space-bottom-top" routerLink="/trip/create">Create</button>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Identification</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let driver of drivers; let i=index">
+      <tr>
+        <td>{{ driver.id }}</td>
+        <td>{{ driver.name }}</td>
+        <td>{{ driver.lastName}}</td>
+        <td>{{ driver.identification }}</td>
+        <td>
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

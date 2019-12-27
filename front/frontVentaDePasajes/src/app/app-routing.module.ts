@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PurchaseComponent } from './components/purchase/purchase/purchase.component';
-import { HomeComponent } from './components/home/home.component';
-import { CreateComponent } from './components/purchase/create/create.component';
-import { TripComponent } from './components/trip/trip/trip.component';
-import { LoginComponent } from './components/user/login/login.component';
-import { CreateTripComponent } from './components/trip/create/create.component';
+import { HomeComponent } from './feature/home/components/home/home.component';
+import { LoginComponent } from './feature/user/components/login/login.component';
+import { ListDriversComponent } from './feature/driver/components/list/list.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
-  { path: 'purchase', component: PurchaseComponent},
-  { path: 'createpurchase', component: CreateComponent},
-  { path: 'createtrip', component: CreateTripComponent},
-  { path: 'trips', component: TripComponent},
+  { path: 'purchase', loadChildren:
+      () => import('./feature/purchase/purchase.module').then(mod => mod.PurchaseModule)},
+  { path: 'trip' , loadChildren :
+      () => import('./feature/trip/trip.module').then(mod => mod.TripModule)},
+  // { path: 'trip/create', component: CreateTripComponent},
+  { path: 'driver/list', component: ListDriversComponent},
+  // { path: 'trips/list', component: ListTripsComponent},
   { path: 'login', component: LoginComponent}
 ];
 
