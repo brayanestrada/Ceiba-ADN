@@ -1,0 +1,91 @@
+<div class="container main-form">
+  <h2>Create trips</h2>
+  <form (ngSubmit)="onSubmit( f )" #f="ngForm">
+    <div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Seats available</label>
+        <div class="col-8">
+          <input type="text"
+            class="form-control"
+            placeholder="Seats available"
+            name="seatsAvailable"
+            [(ngModel)] = "tripModel.seatsAvailable"
+            autocomplete="off"
+            required>
+            <span class="txt-error" *ngIf="f.submitted && f.controls['seatsAvailable'].errors?.required">Seats available is mandatory</span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Start city</label>
+        <div class="col-8">
+          <input type="text"
+            class="form-control"
+            placeholder="Start city"
+            name="startCity"
+            [(ngModel)] = "tripModel.startCity"
+            autocomplete="off"
+            required>
+            <span class="txt-error" *ngIf="f.submitted && f.controls['startCity'].errors?.required">Start city is mandatory</span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">End city</label>
+        <div class="col-8">
+          <input type="text"
+            class="form-control"
+            placeholder="End city"
+            name="endCity"
+            autocomplete="off"
+            [(ngModel)] = "tripModel.endCity"
+            required>
+            <span class="txt-error" *ngIf="f.submitted && f.controls['endCity'].errors?.required">End city is mandatory</span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Trip Date</label>
+        <div class="col-8">
+          <input type="text"
+            class="form-control"
+            placeholder="12-12-2019"
+            name="tripDate"
+            autocomplete="off"
+            [(ngModel)] = "tripModel.tripDate"
+            required>
+            <span class="txt-error" *ngIf="f.submitted && f.controls['tripDate'].errors?.required">Trip date is mandatory</span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Ticket cost</label>
+        <div class="col-8">
+          <input type="text"
+            class="form-control"
+            placeholder="ticketAmount"
+            name="ticketAmount"
+            autocomplete="off"
+            [(ngModel)] = "tripModel.ticketAmount"
+            required>
+            <span class="txt-error" *ngIf="f.submitted && f.controls['ticketAmount'].errors?.required">Ticket cost is mandatory</span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Driver</label>
+        <div class="col-8">
+
+            <select (change)="getIdDriver($event.target.value)">
+              <option disabled>Select a driver</option>
+              <option *ngFor="let driver of driverModel"
+              name="idDriver"
+              [ngValue] = "driver.id" value="{{driver.id}}"
+              (ngModel) = "tripModel.idDriver">
+                {{ driver.name }}
+              </option>
+            </select>
+            <span class="txt-error" *ngIf="f.submitted && f.controls['idDriver'].errors?.required">Ticket cost is mandatory</span>
+        </div>
+      </div>
+      <div>
+          <button class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
+</div>

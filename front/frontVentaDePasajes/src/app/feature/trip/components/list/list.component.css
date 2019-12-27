@@ -1,0 +1,54 @@
+p{
+  display: block;
+}
+
+.card-text{
+  display: inline-block;
+  text-align: left;
+}
+
+.card-header{
+  font-weight: bold;
+}
+
+.newtrip{
+  display: inline-block;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
+}
+
+
+.card{
+  display: inline-block;
+}
+
+h2{
+  margin-top:15px;
+  text-align: center;
+}
+
+.center-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.space-bottom{
+  margin-bottom: 3vh;
+}
+
+.space-top{
+  margin-top: 3vh;
+}
+
+.total{
+  width: 100%;
+}
+
+.txt-error{
+  font-size: 13px;
+  color: #f00;
+  display: block;
+}
+

@@ -9,17 +9,32 @@ public class EntityTrip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private double cost;
-    private int seats_available;
-    private int seats_sold;
+    private int seatsAvailable;
+    private int seatsSold;
+    private String startCity;
+    private String endCity;
+    private String tripDate;
+    private double ticketAmount;
+    private long idDriver;
 
-    public EntityTrip(){}
+    private EntityTrip(){}
 
-    public EntityTrip(long id, double cost, int seats_available, int seats_sold){
+    public EntityTrip(long id,
+                      int seatsAvailable,
+                      int seatsSold,
+                      String startCity,
+                      String endCity,
+                      String tripDate,
+                      double ticketAmount,
+                      long idDriver){
         this.id = id;
-        this.cost = cost;
-        this.seats_available = seats_available;
-        this.seats_sold = seats_sold;
+        this.seatsAvailable = seatsAvailable;
+        this.seatsSold = seatsSold;
+        this.startCity = startCity;
+        this.endCity = endCity;
+        this.tripDate = tripDate;
+        this.ticketAmount = ticketAmount;
+        this.idDriver = idDriver;
     }
 
     public long getId() {
@@ -30,27 +45,60 @@ public class EntityTrip {
         this.id = id;
     }
 
-    public double getCost() {
-        return cost;
+    public int getSeatsAvailable() {
+        return seatsAvailable;
     }
 
-    public void setCost(double cost) {
-        this.cost = cost;
+    public void setSeatsAvailable(int seatsAvailable) {
+        this.seatsAvailable = seatsAvailable;
     }
 
-    public int getSeats_available() {
-        return seats_available;
+    public int getSeatsSold() {
+        return seatsSold;
     }
 
-    public void setSeats_available(int seats_available) {
-        this.seats_available = seats_available;
+    public void setSeatsSold(int seatsSold) {
+        this.seatsSold = seatsSold;
     }
 
-    public int getSeats_sold() {
-        return seats_sold;
+    public String getStartCity() {
+        return startCity;
     }
 
-    public void setSeats_sold(int seats_sold) {
-        this.seats_sold = seats_sold;
+    public void setStartCity(String startCity) {
+        this.startCity = startCity;
     }
+
+    public String getEndCity() {
+        return endCity;
+    }
+
+    public void setEndCity(String endCity) {
+        this.endCity = endCity;
+    }
+
+    public long getIdDriver() {
+        return idDriver;
+    }
+
+    public void setIdDriver(long idDriver) {
+        this.idDriver = idDriver;
+    }
+
+    public String getTripDate() {
+        return tripDate;
+    }
+
+    public void setTripDate(String tripDate) {
+        this.tripDate = tripDate;
+    }
+
+    public double getTicketAmount() {
+        return ticketAmount;
+    }
+
+    public void setTicketAmount(double ticketAmount) {
+        this.ticketAmount = ticketAmount;
+    }
+
 }

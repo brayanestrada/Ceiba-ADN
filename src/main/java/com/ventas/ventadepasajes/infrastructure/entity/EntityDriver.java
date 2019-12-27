@@ -13,7 +13,7 @@ public class EntityDriver {
     private String lastName;
     private String identification;
 
-    public EntityDriver(){}
+    private EntityDriver(){ }
 
     public EntityDriver(Long id, String name, String lastName, String identification){
         this.id = id;
@@ -21,7 +21,6 @@ public class EntityDriver {
         this.lastName = lastName;
         this.identification = identification;
     }
-
 
     public Long getId() { return id; }
 
@@ -46,5 +45,4 @@ public class EntityDriver {
     }
 
     public void setIdentification(String identification) { this.identification = identification; }
-
 }

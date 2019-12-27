@@ -1,9 +1,7 @@
 package com.ventas.ventadepasajes.infrastructure.controller.trip;
 
 import com.ventas.ventadepasajes.aplication.command.handler.trip.HandlerDeleteTrip;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +15,9 @@ public class ControllerDeleteTrip {
         this.handlerDeleteTrip = handlerDeleteTrip;
     }
 
+    @CrossOrigin
     @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity deleteTrip(@PathVariable long id){
         if(handlerDeleteTrip.run(id)){
             return new ResponseEntity(HttpStatus.OK);

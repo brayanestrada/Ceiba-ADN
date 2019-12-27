@@ -2,7 +2,7 @@ package com.ventas.ventadepasajes.aplication.command.handler.trip;
 
 import com.ventas.ventadepasajes.aplication.command.factory.FactoryTrip;
 import com.ventas.ventadepasajes.aplication.command.handler.command.CommandTrip;
-import com.ventas.ventadepasajes.domain.model.dto.DtoTrip;
+import com.ventas.ventadepasajes.domain.model.entity.Trip;
 import com.ventas.ventadepasajes.domain.service.trip.ServiceCreateTrip;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ public class HandlerCreateTrip {
         this.serviceCreateTrip = serviceCreateTrip;
     }
 
-    public DtoTrip run(CommandTrip commandTrip){
+    public Trip run(CommandTrip commandTrip){
         return this.serviceCreateTrip.run(this.factoryTrip.create(commandTrip));
     }
 }

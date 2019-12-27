@@ -1,6 +1,7 @@
 package com.ventas.ventadepasajes.infrastructure.configuration;
 
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryPurchase;
+import com.ventas.ventadepasajes.domain.port.repository.RepositoryTrip;
 import com.ventas.ventadepasajes.domain.service.purchase.ServiceCreatePurchase;
 import com.ventas.ventadepasajes.domain.service.purchase.ServiceDeletePurchase;
 import com.ventas.ventadepasajes.domain.service.purchase.ServiceListPurchase;
@@ -12,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 public class BeanServicePurchase {
 
     @Bean
-    public ServiceCreatePurchase serviceCreatePurchase(RepositoryPurchase repositoryPurchase){
-        return new ServiceCreatePurchase(repositoryPurchase);
+    public ServiceCreatePurchase serviceCreatePurchase(RepositoryPurchase repositoryPurchase, RepositoryTrip repositoryTrip){
+        return new ServiceCreatePurchase(repositoryPurchase, repositoryTrip);
     }
 
     @Bean
@@ -22,8 +23,8 @@ public class BeanServicePurchase {
     }
 
     @Bean
-    public ServiceUpdatePurchase serviceUpdatePurchase(RepositoryPurchase repositoryPurchase){
-        return new ServiceUpdatePurchase(repositoryPurchase);
+    public ServiceUpdatePurchase serviceUpdatePurchase(RepositoryPurchase repositoryPurchase, RepositoryTrip repositoryTrip){
+        return new ServiceUpdatePurchase(repositoryPurchase, repositoryTrip);
     }
 
     @Bean

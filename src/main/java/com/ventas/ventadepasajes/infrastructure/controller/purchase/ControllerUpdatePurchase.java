@@ -2,7 +2,6 @@ package com.ventas.ventadepasajes.infrastructure.controller.purchase;
 
 import com.ventas.ventadepasajes.aplication.command.handler.command.CommandPurchase;
 import com.ventas.ventadepasajes.aplication.command.handler.purchase.HandlerUpdatePurchase;
-import com.ventas.ventadepasajes.domain.model.dto.DtoPurchase;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,8 +13,9 @@ public class ControllerUpdatePurchase {
         this.handlerUpdatePurchase = handlerUpdatePurchase;
     }
 
+    @CrossOrigin
     @PutMapping("/update/{id}")
-    public DtoPurchase update(@RequestBody CommandPurchase commandPurchase, @PathVariable long id){
-        return this.handlerUpdatePurchase.run(id, commandPurchase);
+    public void update(@RequestBody CommandPurchase commandPurchase, @PathVariable long id){
+        this.handlerUpdatePurchase.run(id, commandPurchase);
     }
 }

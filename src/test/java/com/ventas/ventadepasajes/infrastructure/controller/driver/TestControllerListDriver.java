@@ -1,6 +1,10 @@
 package com.ventas.ventadepasajes.infrastructure.controller.driver;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.JsonPath;
 import com.ventas.ventadepasajes.VentadepasajesApplication;
+import com.ventas.ventadepasajes.aplication.command.handler.command.CommandDriver;
+import com.ventas.ventadepasajes.infrastructure.testdatabuilder.CommandDriverDataBuilder;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -15,14 +19,15 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Transactional
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-        classes = VentadepasajesApplication.class)
+@SpringBootTest(classes = VentadepasajesApplication.class)
 @AutoConfigureMockMvc
 public class TestControllerListDriver {
 
@@ -30,7 +35,17 @@ public class TestControllerListDriver {
     private WebApplicationContext wac;
 
     @Autowired
+    private ObjectMapper objectMapper;
+
+    @Autowired
     private MockMvc mockMvc;
+
+    private CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
+
+    private CommandDriver commandDriver;
+
+    private String uriDriverCreate = "/driver/create";
+    private String uriDriverList = "/driver/list";
 
     @Before
     public void setUp(){
@@ -38,21 +53,32 @@ public class TestControllerListDriver {
     }
 
     @Test
-    public void listDrivers() throws Exception{
-        String result = callRequest();
-        System.out.println(result);
-        if(result.equals("[]")){
-            System.out.println("Ejecutó sin ningun problema");
-        }else{
-            fail("Error executing getListDrivers");
-        }
+    public void listSuccessful() throws Exception {
+        commandDriver = commandDriverDataBuilder.build();
+        callRequestCreateDriver(commandDriver);
+        assertTrue(validateCreatedDriver());
     }
 
-    private String callRequest() throws Exception {
-        MvcResult mvcResult =  mockMvc.perform(get("/driver/list")
+    private String callRequestListDriver() throws Exception {
+        MvcResult result = mockMvc.perform(get(uriDriverList)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()).andReturn();
-        return mvcResult.getResponse().getContentAsString();
-
+                .andReturn();
+        return result.getResponse().getContentAsString();
     }
+
+    private boolean validateCreatedDriver() throws Exception {
+        String result = callRequestListDriver();
+        assertEquals(JsonPath.read(result, "$[0].name"), commandDriverDataBuilder.getName());
+        assertEquals(JsonPath.read(result, "$[0].lastName"), commandDriverDataBuilder.getLastName());
+        assertEquals(JsonPath.read(result, "$[0].identification"), commandDriverDataBuilder.getIdentification());
+        return true;
+    }
+
+    private void callRequestCreateDriver(CommandDriver commandDriver) throws Exception {
+        mockMvc.perform(post(uriDriverCreate)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(commandDriver)))
+                .andExpect(status().isCreated());
+    }
+
 }

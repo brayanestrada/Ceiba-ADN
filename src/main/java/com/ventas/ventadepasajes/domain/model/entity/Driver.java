@@ -1,9 +1,5 @@
 package com.ventas.ventadepasajes.domain.model.entity;
 
-import com.ventas.ventadepasajes.infrastructure.entity.EntityDriver;
-
-import static com.ventas.ventadepasajes.domain.model.entity.DataValidator.*;
-
 public class Driver {
 
     private static final int NAME_MIN_LENGTH = 2;
@@ -12,36 +8,36 @@ public class Driver {
     private static final int LAST_NAME_MAX_LENGTH = 30;
     private static final int IDENTIFICATION_MIN_LENGTH = 8;
     private static final int IDENTIFICATION_MAX_LENGTH = 11;
+    private static final String MUST_HAVE_MIN = "must have min characters";
+    private static final String MUST_HAVE_MAX = "must have max";
     private static final String NAME_IS_MANDATORY = "Name is mandatory";
     private static final String LAST_NAME_IS_MANDATORY = "Last name is mandatory";
     private static final String IDENTIFICATION_IS_MANDATORY = "Identification is mandatory";
-    private static final String ERROR_NAME_MIN_LENGTH = "Name must have min " + NAME_MIN_LENGTH + " characters";
-    private static final String ERROR_NAME_MAX_LENGTH = "Name must have max " + NAME_MAX_LENGTH + " characters";
-    private static final String ERROR_LAST_NAME_MIN_LENGTH = "Last name must have min " + LAST_NAME_MIN_LENGTH + " characters";
-    private static final String ERROR_LAST_NAME_MAX_LENGTH = "Last name must have max " + LAST_NAME_MAX_LENGTH + " characters";
-    private static final String ERROR_IDENTIFICATION_MIN_LENGTH = "Identification must have min " + IDENTIFICATION_MIN_LENGTH + " characters";
-    private static final String ERROR_IDENTIFICATION_MAX_LENGTH = "Identification must have max " + IDENTIFICATION_MAX_LENGTH + " characters";
+    private static final String ERROR_NAME_MIN_LENGTH = "Name "+ MUST_HAVE_MIN + NAME_MIN_LENGTH;
+    private static final String ERROR_NAME_MAX_LENGTH = "Name "+ MUST_HAVE_MAX + NAME_MAX_LENGTH;
+    private static final String ERROR_LAST_NAME_MIN_LENGTH = "Last name "+ MUST_HAVE_MIN + LAST_NAME_MIN_LENGTH;
+    private static final String ERROR_LAST_NAME_MAX_LENGTH = "Last name" + MUST_HAVE_MAX + LAST_NAME_MAX_LENGTH;
+    private static final String ERROR_IDENTIFICATION_MIN_LENGTH = "Identification "+ MUST_HAVE_MIN + IDENTIFICATION_MIN_LENGTH;
+    private static final String ERROR_IDENTIFICATION_MAX_LENGTH = "Identification must have max " + IDENTIFICATION_MAX_LENGTH;
 
     private Long id;
     private String name;
     private String lastName;
     private String identification;
 
-    public Driver(){}
-
     public Driver(Long id, String name, String lastName, String identification){
+        dataValidatorDriver(name, lastName, identification);
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.identification = identification;
-        dataValidatorDriver();
     }
 
     public Driver( String name, String lastName, String identification){
+        dataValidatorDriver(name, lastName, identification);
         this.name = name;
         this.lastName = lastName;
         this.identification = identification;
-        dataValidatorDriver();
     }
 
     public Long getId() {
@@ -76,7 +72,7 @@ public class Driver {
         this.identification = identification;
     }
 
-    private void dataValidatorDriver(){
+    private void dataValidatorDriver(String name, String lastName, String identification){
         DataValidator.validateMandatory(name, NAME_IS_MANDATORY);
         DataValidator.validateMandatory(lastName, LAST_NAME_IS_MANDATORY);
         DataValidator.validateMandatory(identification, IDENTIFICATION_IS_MANDATORY);
@@ -87,14 +83,4 @@ public class Driver {
         DataValidator.validateMaximumValue(identification, IDENTIFICATION_MAX_LENGTH, ERROR_IDENTIFICATION_MAX_LENGTH);
         DataValidator.validateMinimumValue(identification, IDENTIFICATION_MIN_LENGTH, ERROR_IDENTIFICATION_MIN_LENGTH);
     }
-
-    public static Driver valueOf(EntityDriver entityDriver){
-        Driver driver = new Driver();
-        driver.setId(entityDriver.getId());
-        driver.setName(entityDriver.getName());
-        driver.setLastName(entityDriver.getLastName());
-        driver.setIdentification(entityDriver.getIdentification());
-        return driver;
-    }
-
 }

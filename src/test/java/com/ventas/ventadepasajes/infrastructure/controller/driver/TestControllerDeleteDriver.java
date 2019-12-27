@@ -1,9 +1,9 @@
 package com.ventas.ventadepasajes.infrastructure.controller.driver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.JsonPath;
 import com.ventas.ventadepasajes.VentadepasajesApplication;
 import com.ventas.ventadepasajes.aplication.command.handler.command.CommandDriver;
-import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
 import com.ventas.ventadepasajes.infrastructure.testdatabuilder.CommandDriverDataBuilder;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -16,17 +16,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
-import javax.transaction.Transactional;
-
+import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Transactional
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-        classes = VentadepasajesApplication.class)
+@SpringBootTest(classes = VentadepasajesApplication.class)
 @AutoConfigureMockMvc
 public class TestControllerDeleteDriver {
 
@@ -34,7 +33,18 @@ public class TestControllerDeleteDriver {
     private WebApplicationContext wac;
 
     @Autowired
+    private ObjectMapper objectMapper;
+
+    @Autowired
     private MockMvc mockMvc;
+
+    private CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
+
+    private CommandDriver commandDriver;
+
+    private String uriDriverCreate = "/driver/create";
+    private String uriDriverList = "/driver/list";
+    private String uriDriverDelete = "/driver/delete/";
 
     @Before
     public void setUp(){
@@ -42,42 +52,50 @@ public class TestControllerDeleteDriver {
     }
 
     @Test
-    public void deleteUser() throws Exception {
-        if(callRequestCreateDriver()){
-            callRequestDeleteDriver(1);
-            if (
-            callRequestCreateDriver()){
-                callRequestDeleteDriver(2);
-            }else{
-                throw new ExceptionGeneral("Error creating Driver on Delete User Test");
-            }
-        }else{
-            throw new ExceptionGeneral("Error creating Driver on Delete User Test");
-        }
+    public void listSuccessful() throws Exception {
+        commandDriver = commandDriverDataBuilder.build();
+        int id = callRequestCreateDriver(commandDriver);
+        assertTrue(validateCreatedDriver());
+        callRequestDeleteDriver(id);
+        assertFalse(validateCreatedDriver());
     }
 
-    private boolean callRequestCreateDriver(){
-        try{
-            ObjectMapper objectMapper = new ObjectMapper();
-            CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
-            CommandDriver commandDriver = commandDriverDataBuilder.build();
-            mockMvc.perform(post("/driver/create")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(objectMapper.writeValueAsString(commandDriver)))
-                    .andExpect(status().isCreated());
-            return true;
-        }catch (Exception ex){
-            System.out.println(ex);
-            return false;
-        }
-    }
-
-
-    private String callRequestDeleteDriver(long id) throws Exception {
-        MvcResult mvcResult =  mockMvc.perform(delete("/driver/delete/"+id)
+    private String callRequestListDriver() throws Exception {
+        MvcResult result = mockMvc.perform(get(uriDriverList)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()).andReturn();
-        return mvcResult.getResponse().getContentAsString();
+                .andReturn();
+        return result.getResponse().getContentAsString();
+    }
+
+    private boolean validateCreatedDriver() throws Exception {
+        String result = callRequestListDriver();
+        if(result.contains("[]")){
+            return false;
+        }else{
+            assertEquals(JsonPath.read(result, "$[0].name"), commandDriverDataBuilder.getName());
+            assertEquals(JsonPath.read(result, "$[0].lastName"), commandDriverDataBuilder.getLastName());
+            assertEquals(JsonPath.read(result, "$[0].identification"), commandDriverDataBuilder.getIdentification());
+            return true;
+        }
+    }
+
+    private int callRequestCreateDriver(CommandDriver commandDriver) throws Exception {
+        mockMvc.perform(post(uriDriverCreate)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(commandDriver)))
+                .andExpect(status().isCreated());
+
+        MvcResult result = mockMvc.perform(get(uriDriverList)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        return JsonPath.read(result.getResponse().getContentAsString(), "$[0].id");
+    }
+
+    private void callRequestDeleteDriver(int id) throws Exception {
+        mockMvc.perform(delete(uriDriverDelete + id)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 
 }
