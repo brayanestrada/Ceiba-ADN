@@ -14,6 +14,10 @@ export class tripsPage {
 
   constructor() {}
 
+  public clickAnyPart() {
+    browser.actions().mouseMove(this.seatsAvailableInput, {x: 20, y: 0}).click().perform();
+  }
+
   public clickCreateButton() {
     this.createButton.click();
   }

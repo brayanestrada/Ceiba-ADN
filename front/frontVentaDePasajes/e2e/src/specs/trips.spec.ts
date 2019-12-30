@@ -26,6 +26,7 @@ describe('Testing trips section', async () => {
 
   it('Create Trip', () => {
     trips.clickCreateButton();
+    trips.clickAnyPart();
     trips.fillSeatsAvailableInput(10);
     trips.fillStartCityInput('Medellín');
     trips.fillEndCityInput('Bogotá');

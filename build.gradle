@@ -18,15 +18,10 @@ jacoco {
     reportsDir = file("$buildDir/reports/jacoco")
 }
 
-jacocoTestReport{
-    additionalSourceDirs.from = files(sourceSets.main.allJava.srcDirs)
+jacocoTestReport {
     reports {
-        html.enabled true
-        xml.enabled false
-        csv.enabled false
-        html.destination file("build/reports/jacoco/html")
+        xml.enabled true
     }
-    executionData.from = files('build/jacoco/test.exec')
 }
 
 configurations {

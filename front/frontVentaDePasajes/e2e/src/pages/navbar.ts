@@ -1,5 +1,6 @@
-import { element, by, browser } from "protractor"
+import { element, by, browser } from 'protractor'
 
+// tslint:disable-next-line: class-name
 export class navBar {
 
     private homeButton = element(by.xpath('/html/body/app-root/app-navbar/nav/div/div/a[1]'));
@@ -9,7 +10,7 @@ export class navBar {
 
     constructor() {}
 
-    public getUrl(url) { browser.get(url) }
+    public getUrl(url) { browser.get(url); }
 
     public home_button_click() { this.homeButton.click(); }
 

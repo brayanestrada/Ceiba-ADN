@@ -9,6 +9,7 @@
               class="form-control"
               placeholder="Name"
               name="name"
+              autocomplete="off"
               [(ngModel)] = "driver.name"
               required>
               <span class="txt-error" *ngIf="f.submitted && f.controls['name'].errors?.required">*Name is mandatory</span>
@@ -21,6 +22,7 @@
               class="form-control"
               placeholder="Last Name"
               name="lastName"
+              autocomplete="off"
               [(ngModel)] = "driver.lastName"
               required>
               <span class="txt-error" *ngIf="f.submitted && f.controls['lastName'].errors?.required">*Last name is mandatory</span>
@@ -29,10 +31,11 @@
         <div class="form-group row">
           <label class="col-2 col-form-label">Identification</label>
           <div class="col-8">
-            <input type="text"
+            <input type="number"
               class="form-control"
               placeholder="Identification"
               name="identification"
+              autocomplete="off"
               [(ngModel)] = "driver.identification"
               required>
               <span class="txt-error" *ngIf="f.submitted && f.controls['identification'].errors?.required">*Identification is mandatory</span>
