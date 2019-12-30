@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/role")
+@RequestMapping("/api/role")
 public class ControllerDeleteRole {
 
     private HandlerDeleteRole handlerDeleteRole;
@@ -15,7 +15,6 @@ public class ControllerDeleteRole {
         this.handlerDeleteRole = handlerDeleteRole;
     }
 
-    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteRole(@PathVariable long id){
         if(handlerDeleteRole.run(id)){

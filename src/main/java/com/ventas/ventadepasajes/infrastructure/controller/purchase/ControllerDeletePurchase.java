@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/purchase")
+@RequestMapping("/api/purchase")
 public class ControllerDeletePurchase {
 
     private HandlerDeletePurchase handlerDeletePurchase;
@@ -15,7 +15,6 @@ public class ControllerDeletePurchase {
         this.handlerDeletePurchase = handlerDeletePurchase;
     }
 
-    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity deletePurchase(@PathVariable long id){

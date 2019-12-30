@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/role")
+@RequestMapping("/api/role")
 public class ControllerCreateRole {
 
     private HandlerCreateRole handlerCreateRole;
@@ -15,7 +15,6 @@ public class ControllerCreateRole {
         this.handlerCreateRole = handlerCreateRole;
     }
 
-    @CrossOrigin
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createRole(@RequestBody CommandRole commandRole) { this.handlerCreateRole.run(commandRole);

@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/trip")
+@RequestMapping("/api/trip")
 public class ControllerDeleteTrip {
 
     private final HandlerDeleteTrip handlerDeleteTrip;
@@ -15,7 +15,6 @@ public class ControllerDeleteTrip {
         this.handlerDeleteTrip = handlerDeleteTrip;
     }
 
-    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity deleteTrip(@PathVariable long id){

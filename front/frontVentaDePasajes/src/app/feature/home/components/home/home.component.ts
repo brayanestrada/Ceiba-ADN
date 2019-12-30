@@ -12,7 +12,6 @@ export class HomeComponent {
   myDate = new Date();
 
   constructor(private home: HomeService) {
-    console.log('Se ejecutó el constructor del home component');
     this.home.getTRM().subscribe(data => {
       this.TRM = data['data']['value'];
     });

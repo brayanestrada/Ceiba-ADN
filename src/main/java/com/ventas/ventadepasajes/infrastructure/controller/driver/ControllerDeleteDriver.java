@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/driver")
+@RequestMapping("/api/driver")
 public class ControllerDeleteDriver{
 
     private final HandlerDeleteDriver handlerDeleteDriver;
@@ -15,7 +15,6 @@ public class ControllerDeleteDriver{
         this.handlerDeleteDriver = handlerDeleteDriver;
     }
 
-    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteDriver(@PathVariable Long id) {
         if(handlerDeleteDriver.run(id)){

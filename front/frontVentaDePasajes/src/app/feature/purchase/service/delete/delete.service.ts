@@ -10,6 +10,6 @@ export class DeleteService {
   constructor(private http: HttpClient) { }
 
   deletePurchase(id: number) {
-    return this.http.delete(environment.apiUrl + 'purchase/delete/' + id);
+    return this.http.delete('/api/purchase/delete/' + id);
   }
 }

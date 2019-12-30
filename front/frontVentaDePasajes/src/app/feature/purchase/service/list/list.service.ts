@@ -7,11 +7,9 @@ import { environment } from '../../../../../environments/environment';
 })
 export class ListService {
 
-  constructor(private http: HttpClient) {
-    console.log('Se ejecutó el constructor del Service purchase');
-  }
+  constructor(private http: HttpClient) {  }
 
   getPurchase() {
-    return this.http.get(environment.apiUrl + 'purchase/list');
+    return this.http.get('/api/purchase/list');
   }
 }
