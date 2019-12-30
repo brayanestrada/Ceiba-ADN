@@ -23,10 +23,10 @@ public class EntityPurchase {
         this.id = id;
         this.totalPurchaseAmount = totalPurchaseAmount;
         this.purchaseDate = purchaseDate;
+        this.tripDate = tripDate;
         this.numberPurchasedTickets = numberPurchasedTickets;
         this.discountPercentage = discountPercentage;
         this.ticketAmount = ticketAmount;
-        this.discountPercentage = discountPercentage;
         this.idTrip = idTrip;
     }
 
