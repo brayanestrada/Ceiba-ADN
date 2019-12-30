@@ -19,7 +19,7 @@ public class TripTestDataBuilder {
         this.seatsSoldTest = 0;
         this.startCityTest = "Medellín";
         this.endCityTest = "Bogotá";
-        this.tripDateTest = "01-02-2020";
+        this.tripDateTest = "2020-10-20";
         this.idDriverTest = 1;
         this.ticketAmountTest = 2000;
     }

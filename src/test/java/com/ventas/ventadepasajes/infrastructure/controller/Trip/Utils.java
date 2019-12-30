@@ -8,6 +8,6 @@ public class Utils {
     public static final String ERROR_DATE_FORMAT = "Error: Date format is not correct, it must be dd-MM-yyyy";
     public static final String ERROR_START_CITY_MANDATORY = "Error: Start city is mandatory";
     public static final String ERROR_END_CITY_MANDATORY = "Error: End city is mandatory";
-    public static final String ERROR_ID_DRIVER_MANDATORY = "Error: Driver id is mandatory";
+    public static final String ERROR_ID_DRIVER_MANDATORY = "Error: There are no drivers with id = 0";
 
 }

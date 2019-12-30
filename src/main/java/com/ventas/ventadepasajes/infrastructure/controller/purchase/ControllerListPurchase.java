@@ -2,7 +2,6 @@ package com.ventas.ventadepasajes.infrastructure.controller.purchase;
 
 import com.ventas.ventadepasajes.aplication.command.handler.purchase.HandlerListPurchase;
 import com.ventas.ventadepasajes.domain.model.entity.Purchase;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

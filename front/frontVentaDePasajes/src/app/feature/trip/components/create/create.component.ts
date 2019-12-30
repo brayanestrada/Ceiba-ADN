@@ -16,10 +16,10 @@ export class CreateTripComponent implements OnInit {
 
   tripModel: Trip = new Trip();
   driverModel: Driver[] = [];
-  tripDate:Date;
-  tripDateString:string;
+  tripDate: Date;
+  tripDateString: string;
   pipe: DatePipe = new DatePipe('es-CO');
-  
+  idDriver: string;
 
   constructor(private createService: CreateService, private router: Router, private listDriver: ListDriverService) { }
 
@@ -31,22 +31,22 @@ export class CreateTripComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.convertDate();
-    console.log()
     if ( form.invalid ) {return; }
-    this.getIdDriver(form.value.idDriver);
-    this.createService.createTrip(form.value)
+    this.getIdDriver(this.idDriver);
+    this.createService.createTrip(this.tripModel)
     .subscribe(data => {
-      this.tripModel = data;    
+      this.tripModel = data;
       this.router.navigate(['/trip/list']);
       this.ngOnInit();
     });
   }
 
   getIdDriver(idDriver: any) {
+    console.log(idDriver);
     this.tripModel.idDriver = Number(idDriver);
   }
 
-  convertDate(){
+  convertDate() {
     this.tripModel.tripDate = this.pipe.transform(this.tripDate, 'MM-dd-yyyy');
     console.log(this.tripModel.tripDate);
   }
