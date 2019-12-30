@@ -44,8 +44,8 @@ public class TestControllerListDriver {
 
     private CommandDriver commandDriver;
 
-    private String uriDriverCreate = "/driver/create";
-    private String uriDriverList = "/driver/list";
+    private String uriDriverCreate = "/api/driver/create";
+    private String uriDriverList = "/api/driver/list";
 
     @Before
     public void setUp(){

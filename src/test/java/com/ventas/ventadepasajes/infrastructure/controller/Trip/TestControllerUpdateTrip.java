@@ -44,7 +44,7 @@ public class TestControllerUpdateTrip {
     private CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
     private CommandTripDataBuilder commandTripDataBuilder = new CommandTripDataBuilder();
 
-    private final String uriUpdateTrip = "/trip/update/{id}";
+    private final String uriUpdateTrip = "/api/trip/update/{id}";
 
     @Before
     public void setUp(){
@@ -65,7 +65,7 @@ public class TestControllerUpdateTrip {
 
 
     private int callRequestCreateDriver(CommandDriver commandDriver) throws Exception {
-        String uriCreateDriver = "/driver/create/";
+        String uriCreateDriver = "/api/driver/create/";
         mockMvc.perform(post(uriCreateDriver)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandDriver)))
@@ -75,7 +75,7 @@ public class TestControllerUpdateTrip {
     }
 
     private int callRequestCreateTrip(CommandTrip commandTrip) throws Exception {
-        String uriCreateTrip = "/trip/create/";
+        String uriCreateTrip = "/api/trip/create/";
         mockMvc.perform(post(uriCreateTrip)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandTrip)))
@@ -106,7 +106,7 @@ public class TestControllerUpdateTrip {
     }
 
     private String listTrips() throws Exception {
-        String uriListTrip = "/trip/list";
+        String uriListTrip = "/api/trip/list";
         MvcResult mvcResult  = mockMvc.perform(get(uriListTrip)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
@@ -114,7 +114,7 @@ public class TestControllerUpdateTrip {
     }
 
     private String listDrivers() throws Exception {
-        String uriListDrivers = "/driver/list/";
+        String uriListDrivers = "/api/driver/list/";
         MvcResult mvcResult  = mockMvc.perform(get(uriListDrivers)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();

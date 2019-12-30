@@ -42,9 +42,9 @@ public class TestControllerDeleteDriver {
 
     private CommandDriver commandDriver;
 
-    private String uriDriverCreate = "/driver/create";
-    private String uriDriverList = "/driver/list";
-    private String uriDriverDelete = "/driver/delete/";
+    private String uriDriverCreate = "/api/driver/create";
+    private String uriDriverList = "/api/driver/list";
+    private String uriDriverDelete = "/api/driver/delete/";
 
     @Before
     public void setUp(){

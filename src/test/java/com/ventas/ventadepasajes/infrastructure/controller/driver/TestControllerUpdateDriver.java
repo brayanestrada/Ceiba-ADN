@@ -44,7 +44,7 @@ public class TestControllerUpdateDriver {
     private CommandDriver commandDriver;
     private CommandDriver commandDriverUpdated;
 
-    private final String uriUpdate = "/driver/update/{id}";
+    private final String uriUpdate = "/api/driver/update/{id}";
 
     @Before
     public void setUp(){
@@ -143,7 +143,7 @@ public class TestControllerUpdateDriver {
 
 
     private int callRequestCreateDriver(CommandDriver commandDriver) throws Exception {
-        mockMvc.perform(post("/driver/create/")
+        mockMvc.perform(post("/api/driver/create/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandDriver)))
                 .andExpect(status().isCreated());
@@ -173,7 +173,7 @@ public class TestControllerUpdateDriver {
     }
 
     private String listDrivers() throws Exception {
-        MvcResult mvcResult  = mockMvc.perform(get("/driver/list/")
+        MvcResult mvcResult  = mockMvc.perform(get("/api/driver/list/")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         return mvcResult.getResponse().getContentAsString();
