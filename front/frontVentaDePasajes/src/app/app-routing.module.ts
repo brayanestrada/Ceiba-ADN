@@ -8,13 +8,15 @@ import { ListDriversComponent } from './feature/driver/components/list/list.comp
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'purchase', loadChildren:
-      () => import('./feature/purchase/purchase.module').then(mod => mod.PurchaseModule)},
+    () => import('./feature/purchase/purchase.module').then(mod => mod.PurchaseModule)},
   { path: 'trip' , loadChildren :
-      () => import('./feature/trip/trip.module').then(mod => mod.TripModule)},
+    () => import('./feature/trip/trip.module').then(mod => mod.TripModule)},
+  { path: 'user' , loadChildren :
+    () => import('./feature/user/user.module').then(mod => mod.UserModule)},
+  { path: 'driver' , loadChildren :
+      () => import('./feature/driver/driver.module').then(mod => mod.DriverModule)},
   // { path: 'trip/create', component: CreateTripComponent},
-  { path: 'driver/list', component: ListDriversComponent},
-  // { path: 'trips/list', component: ListTripsComponent},
-  { path: 'login', component: LoginComponent}
+  //{ path: 'driver/list', component: ListDriversComponent}
 ];
 
 @NgModule({

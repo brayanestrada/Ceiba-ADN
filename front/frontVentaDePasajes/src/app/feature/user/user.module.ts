@@ -1,26 +1,25 @@
-import { CreateTripComponent } from './components/create/create.component';
 import { NgModule } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
-import { ListTripsComponent } from './components/list/list.component';
+import { LoginComponent } from './components/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { TripRoutingModule } from './trip-routing.module';
+import { UserRoutingModule } from './user-routing.module';
 import { CommonModule } from '@angular/common';
-
+import { CreateUserComponent } from './components/create/create/create.component';
 
 @NgModule({
   declarations: [
-    CreateTripComponent,
-    ListTripsComponent,
+    LoginComponent,
+    CreateUserComponent,
   ],
   imports: [
     CommonModule,
-    TripRoutingModule,
+    UserRoutingModule,
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: []
 })
-export class TripModule { }
+export class UserModule { }

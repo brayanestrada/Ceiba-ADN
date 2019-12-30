@@ -9,11 +9,11 @@ import { throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CreateService {
+export class CreateDriverService {
 
   constructor(private http: HttpClient) { }
 
-  createTrip(driver: Driver) {
+  createDriver(driver: Driver) {
     return this.http.post(environment.apiUrl + 'driver/create' , driver)
     .pipe(
       map((data: any) => {

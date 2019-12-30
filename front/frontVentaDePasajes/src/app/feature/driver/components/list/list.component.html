@@ -1,5 +1,5 @@
 <div class="container">
-  <button class="btn btn-success space-bottom-top" routerLink="/trip/create">Create</button>
+  <button class="btn btn-success space-bottom-top" routerLink="/driver/create">Create</button>
 
   <table class="table">
     <thead>
@@ -8,6 +8,7 @@
         <th scope="col">Name</th>
         <th scope="col">Last Name</th>
         <th scope="col">Identification</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody *ngFor="let driver of drivers; let i=index">

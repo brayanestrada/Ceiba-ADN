@@ -43,11 +43,11 @@ public class ServiceUpdatePurchase {
 
     private String getDateNow(){
         LocalDate now = LocalDate.now();
-        return now.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     private int getDayOfWeek(String tripDate) throws ParseException {
-        Date date = new SimpleDateFormat("dd-MM-yyyy").parse(tripDate);
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(tripDate);
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(date);
         return calendar.get(Calendar.DAY_OF_WEEK);

@@ -41,7 +41,7 @@
             <span class="txt-error" *ngIf="f.submitted && f.controls['endCity'].errors?.required">End city is mandatory</span>
         </div>
       </div>
-      <div class="form-group row">
+      <!--<div class="form-group row">
         <label class="col-2 col-form-label">Trip Date</label>
         <div class="col-8">
           <input type="text"
@@ -53,7 +53,7 @@
             required>
             <span class="txt-error" *ngIf="f.submitted && f.controls['tripDate'].errors?.required">Trip date is mandatory</span>
         </div>
-      </div>
+      </div>-->
       <div class="form-group row">
         <label class="col-2 col-form-label">Ticket cost</label>
         <div class="col-8">
@@ -68,6 +68,18 @@
         </div>
       </div>
       <div class="form-group row">
+        <label class="col-2 col-form-label">Date</label>
+        <div class="col-8">
+          <input type="date"
+            class="form-control"
+            name="tripDate"
+            autocomplete="off"
+            [(ngModel)] = "tripDate"
+            required>
+            <span class="txt-error" *ngIf="f.submitted && f.controls['tripDate'].errors?.required">Ticket cost is mandatory</span>
+        </div>
+      </div>
+      <div class="form-group row">
         <label class="col-2 col-form-label">Driver</label>
         <div class="col-8">
 
@@ -76,7 +88,7 @@
               <option *ngFor="let driver of driverModel"
               name="idDriver"
               [ngValue] = "driver.id" value="{{driver.id}}"
-              (ngModel) = "tripModel.idDriver">
+              [(ngModel)] = "tripModel.idDriver">
                 {{ driver.name }}
               </option>
             </select>
