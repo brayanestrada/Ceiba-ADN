@@ -24,24 +24,24 @@ public class Trip {
     public Trip(long id, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
         dataValidatorTrip(seatsAvailable, tripDate, startCity, endCity, idDriver);
         this.id = id;
+        this.endCity = endCity;
         this.seatsAvailable = seatsAvailable;
         this.seatsSold = seatsSold;
-        this.startCity = startCity;
-        this.endCity = endCity;
         this.tripDate = tripDate;
-        this.idDriver = idDriver;
         this.ticketAmount = ticketAmount;
+        this.startCity = startCity;
+        this.idDriver = idDriver;
     }
 
     public Trip( int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
         dataValidatorTrip(seatsAvailable, tripDate, startCity, endCity, idDriver);
         this.seatsAvailable = seatsAvailable;
         this.seatsSold = seatsSold;
-        this.startCity = startCity;
-        this.endCity = endCity;
         this.tripDate = tripDate;
+        this.endCity = endCity;
         this.idDriver = idDriver;
         this.ticketAmount = ticketAmount;
+        this.startCity = startCity;
     }
 
     public long getId() {

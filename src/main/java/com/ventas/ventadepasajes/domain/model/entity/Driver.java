@@ -36,8 +36,8 @@ public class Driver {
     public Driver( String name, String lastName, String identification){
         dataValidatorDriver(name, lastName, identification);
         this.name = name;
-        this.lastName = lastName;
         this.identification = identification;
+        this.lastName = lastName;
     }
 
     public Long getId() {

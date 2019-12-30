@@ -66,9 +66,9 @@ public class ServiceCreatePurchase {
     }
 
     private void setPurchaseValues(Purchase purchaseValues, Trip tripValues, int weekDay){
-        this.purchase.setTicketAmount(tripValues.getTicketAmount());
         this.purchase.setTripDate(tripValues.getTripDate());
         this.purchase.setPurchaseDate(getDateNow());
+        this.purchase.setTicketAmount(tripValues.getTicketAmount());
         this.purchase.setDiscountPercentage(getDiscountPercentage(purchaseValues.getNumberPurchasedTickets(), weekDay));
         double totalWithoutDiscount = purchase.getNumberPurchasedTickets() * purchase.getTicketAmount();
         double discountAmount = totalWithoutDiscount*(purchaseValues.getDiscountPercentage())/100;

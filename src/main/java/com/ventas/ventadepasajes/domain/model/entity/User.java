@@ -41,13 +41,13 @@ public class User{
 
     public User(Long id, String name, String lastName, String email, String phone, long role, String password){
         validate(name, lastName, email, phone, password, role);
-        this.id = id;
         this.name = name;
+        this.phone = phone;
         this.lastName = lastName;
         this.email = email;
-        this.phone = phone;
-        this.role = role;
         this.password = password;
+        this.role = role;
+        this.id = id;
     }
     public User(String name, String lastName, String email, String phone, long role, String password){
         validate(name, lastName, email, phone, password, role);
