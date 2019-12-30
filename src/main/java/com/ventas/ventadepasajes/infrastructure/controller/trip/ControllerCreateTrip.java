@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/trip")
+@RequestMapping("/api/trip")
 public class ControllerCreateTrip {
 
     private HandlerCreateTrip handlerCreateTrip;
@@ -15,7 +15,6 @@ public class ControllerCreateTrip {
         this.handlerCreateTrip = handlerCreateTrip;
     }
 
-    @CrossOrigin
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createTrip(@RequestBody CommandTrip commandTrip){

@@ -10,6 +10,6 @@ export class ListService {
   constructor(private http: HttpClient) { }
 
   getTrips() {
-    return this.http.get(environment.apiUrl + 'trip/list');
+    return this.http.get('/api/trip/list');
   }
 }

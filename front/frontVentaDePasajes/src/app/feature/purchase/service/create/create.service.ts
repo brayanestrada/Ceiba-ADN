@@ -16,7 +16,7 @@ export class CreateService {
       numberPurchasedTickets: tickets,
       idTrip: tripId
     };
-    return this.http.post(environment.apiUrl + 'purchase/create', purchaseBody)
+    return this.http.post('/api/purchase/create', purchaseBody)
       .pipe(
         map((data: any) => {
         return data;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/purchase")
+@RequestMapping("/api/purchase")
 public class ControllerListPurchase {
 
     private final HandlerListPurchase handlerListPurchase;
@@ -19,7 +19,6 @@ public class ControllerListPurchase {
         this.handlerListPurchase = handlerListPurchase;
     }
 
-    @CrossOrigin
     @GetMapping("/list")
     public List<Purchase> listPurchase(){
         return handlerListPurchase.run();

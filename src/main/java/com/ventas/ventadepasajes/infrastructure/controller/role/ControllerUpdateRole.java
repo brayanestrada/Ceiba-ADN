@@ -5,7 +5,7 @@ import com.ventas.ventadepasajes.aplication.command.handler.role.HandlerUpdateRo
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/role")
+@RequestMapping("/api/role")
 public class ControllerUpdateRole {
 
     private HandlerUpdateRole handlerUpdateRole;
@@ -13,8 +13,6 @@ public class ControllerUpdateRole {
     public ControllerUpdateRole(HandlerUpdateRole handlerUpdateRole){
         this.handlerUpdateRole = handlerUpdateRole;
     }
-
-    @CrossOrigin
     @PutMapping("/update/{id}")
     public void updateRole(@RequestBody CommandRole commandRole, @PathVariable long id){
         this.handlerUpdateRole.run(id, commandRole);

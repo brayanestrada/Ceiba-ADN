@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/api/login")
 public class ControllerLogIn {
 
     private HandlerLogIn handlerLogIn;
@@ -18,7 +18,6 @@ public class ControllerLogIn {
         this.handlerLogIn = handlerLogIn;
     }
 
-    @CrossOrigin
     @PostMapping()
     @ResponseStatus(HttpStatus.OK)
     public UserDto logIn(@RequestBody CommandUser commandUser){

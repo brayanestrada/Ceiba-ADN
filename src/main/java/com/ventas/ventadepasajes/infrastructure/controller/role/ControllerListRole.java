@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/role")
+@RequestMapping("/api/role")
 public class ControllerListRole {
 
     private HandlerListRole handlerListRole;
@@ -19,7 +19,6 @@ public class ControllerListRole {
         this.handlerListRole = handlerListRole;
     }
 
-    @CrossOrigin
     @GetMapping("/list")
     public List<Role> listRole(){
         return this.handlerListRole.run();

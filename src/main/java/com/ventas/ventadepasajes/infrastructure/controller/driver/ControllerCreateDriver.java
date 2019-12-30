@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/driver")
+@RequestMapping("/api/driver")
 public class ControllerCreateDriver {
 
     private HandlerCreateDriver handlerCreateDriver;
@@ -14,7 +14,6 @@ public class ControllerCreateDriver {
     public ControllerCreateDriver(HandlerCreateDriver handlerCreateDriver){
         this.handlerCreateDriver = handlerCreateDriver; }
 
-    @CrossOrigin
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createDriver(@RequestBody CommandDriver commandDriver){

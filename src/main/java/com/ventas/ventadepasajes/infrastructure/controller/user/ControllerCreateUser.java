@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class ControllerCreateUser {
     private final HandlerCreateUser handlerCreateUser;
 
@@ -15,7 +15,6 @@ public class ControllerCreateUser {
         this.handlerCreateUser = handlerCreateUser;
     }
 
-    @CrossOrigin
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody CommandUser commandUser){

@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/purchase")
+@RequestMapping("/api/purchase")
 public class ControllerCreatePurchase {
 
     private HandlerCreatePurchase handlerCreatePurchase;
@@ -16,7 +16,6 @@ public class ControllerCreatePurchase {
         this.handlerCreatePurchase = handlerCreatePurchase;
     }
 
-    @CrossOrigin
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createPurchase(@RequestBody CommandPurchase commandPurchase) throws ExceptionParsing {

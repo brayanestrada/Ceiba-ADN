@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class ControllerDeleteUser {
 
     private final HandlerDeleteUser handlerDeleteUser;
@@ -15,7 +15,6 @@ public class ControllerDeleteUser {
         this.handlerDeleteUser = handlerDeleteUser;
     }
 
-    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteUse(@PathVariable long id){
         if(handlerDeleteUser.run(id)){

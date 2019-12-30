@@ -13,7 +13,7 @@ export class CreateService {
   constructor(private http: HttpClient) { }
 
   createTrip(trip: Trip) {
-    return this.http.post(environment.apiUrl + 'trip/create' , trip)
+    return this.http.post('/api/trip/create' , trip)
     .pipe(
       map((data: any) => {
       return data;

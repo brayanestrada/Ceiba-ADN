@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/trip")
+@RequestMapping("/api/trip")
 public class ControllerSearchTrip {
 
     private HandlerSearchTrip handlerSearchTrip;
@@ -15,7 +15,6 @@ public class ControllerSearchTrip {
         this.handlerSearchTrip = handlerSearchTrip;
     }
 
-    @CrossOrigin
     @GetMapping("/search/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Trip seachTrip(@PathVariable long id){

@@ -5,7 +5,7 @@ import com.ventas.ventadepasajes.aplication.command.handler.purchase.HandlerUpda
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/purchase")
+@RequestMapping("/api/purchase")
 public class ControllerUpdatePurchase {
     private HandlerUpdatePurchase handlerUpdatePurchase;
 
@@ -13,7 +13,6 @@ public class ControllerUpdatePurchase {
         this.handlerUpdatePurchase = handlerUpdatePurchase;
     }
 
-    @CrossOrigin
     @PutMapping("/update/{id}")
     public void update(@RequestBody CommandPurchase commandPurchase, @PathVariable long id){
         this.handlerUpdatePurchase.run(id, commandPurchase);

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/driver")
+@RequestMapping("/api/driver")
 public class ControllerListDriver {
 
     private final HandlerListDriver handlerListDriver;
@@ -20,7 +20,6 @@ public class ControllerListDriver {
 
     }
 
-    @CrossOrigin
     @GetMapping("/list")
     public List<Driver> driverList(){
         return this.handlerListDriver.run();

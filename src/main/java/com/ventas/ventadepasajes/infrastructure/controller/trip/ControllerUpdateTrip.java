@@ -5,7 +5,7 @@ import com.ventas.ventadepasajes.aplication.command.handler.trip.HandlerUpdateTr
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/trip")
+@RequestMapping("/api/trip")
 public class ControllerUpdateTrip {
 
     private HandlerUpdateTrip handlerUpdateTrip;
@@ -14,7 +14,6 @@ public class ControllerUpdateTrip {
         this.handlerUpdateTrip = handlerUpdateTrip;
     }
 
-    @CrossOrigin
     @PutMapping("/update/{id}")
     public void updateTrip(@RequestBody CommandTrip commandTrip, @PathVariable long id){
         this.handlerUpdateTrip.run(id, commandTrip);

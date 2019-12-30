@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/trip")
+@RequestMapping("/api/trip")
 public class ControllerListTrips {
 
     private HandlerListTrip handlerListTrip;
@@ -19,7 +19,6 @@ public class ControllerListTrips {
         this.handlerListTrip = handlerListTrip;
     }
 
-    @CrossOrigin
     @GetMapping("/list")
     public List<Trip> listTrip(){
         return this.handlerListTrip.run();

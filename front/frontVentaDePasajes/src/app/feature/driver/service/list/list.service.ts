@@ -10,6 +10,6 @@ export class ListDriverService {
   constructor(private http: HttpClient) { }
 
   getDrivers() {
-    return this.http.get(environment.apiUrl + 'driver/list');
+    return this.http.get('/api/driver/list');
   }
 }

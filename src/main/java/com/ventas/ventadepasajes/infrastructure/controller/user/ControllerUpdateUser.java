@@ -6,7 +6,7 @@ import com.ventas.ventadepasajes.domain.model.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class ControllerUpdateUser {
 
     private final HandlerUpdateUser handlerUpdateUser;
@@ -15,7 +15,6 @@ public class ControllerUpdateUser {
         this.handlerUpdateUser = handlerUpdateUser;
     }
 
-    @CrossOrigin
     @PutMapping("/update/{id}")
     public User updateUser(@RequestBody CommandUser commandUser, @PathVariable long id){
         return this.handlerUpdateUser.run(id, commandUser);

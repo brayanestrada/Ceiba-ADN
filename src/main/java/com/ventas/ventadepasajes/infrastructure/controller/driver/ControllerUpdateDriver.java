@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/driver")
+@RequestMapping("/api/driver")
 public class ControllerUpdateDriver {
     private HandlerUpdateDriver handlerUpdateDriver;
 
@@ -14,7 +14,6 @@ public class ControllerUpdateDriver {
         this.handlerUpdateDriver = handlerUpdateDriver;
     }
 
-    @CrossOrigin
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void updateDriver(@RequestBody CommandDriver commandDriver, @PathVariable long id){
