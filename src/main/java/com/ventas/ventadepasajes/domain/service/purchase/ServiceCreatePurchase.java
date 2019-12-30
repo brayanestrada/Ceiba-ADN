@@ -37,13 +37,13 @@ public class ServiceCreatePurchase {
 
     private String getDateNow(){
         LocalDate now = LocalDate.now();
-        return now.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     private void getDayOfWeek(String tripDate) throws ExceptionParsing {
         Date date = null;
         try {
-            date = new SimpleDateFormat("dd-MM-yyyy").parse(tripDate);
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(tripDate);
         } catch (ParseException e) {
             throw new ExceptionParsing("Error parsing date");
         }

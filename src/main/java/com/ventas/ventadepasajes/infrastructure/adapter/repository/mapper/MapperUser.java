@@ -1,6 +1,7 @@
 package com.ventas.ventadepasajes.infrastructure.adapter.repository.mapper;
 
 import com.ventas.ventadepasajes.domain.model.entity.User;
+import com.ventas.ventadepasajes.domain.model.entity.dto.UserDto;
 import com.ventas.ventadepasajes.infrastructure.entity.EntityUser;
 
 import java.util.List;
@@ -31,5 +32,9 @@ public class MapperUser {
     public EntityUser modelToEntity(User user){
         return new EntityUser(user.getId(), user.getName(), user.getLastName(), user.getEmail(),
                 user.getPhone(), user.getRole(), user.getPassword());
+    }
+
+    public UserDto modelToDto(User user){
+        return new UserDto(user.getId(), user.getName(), user.getLastName(), user.getEmail(), user.getPhone(), user.getRole());
     }
 }

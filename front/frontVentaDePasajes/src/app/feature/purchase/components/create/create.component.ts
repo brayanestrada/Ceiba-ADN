@@ -24,8 +24,8 @@ export class CreatePurchaseComponent {
     this.createPurchase.createPurchase(form.value.numberPurchasedTickets, form.value.idTrip)
     .subscribe(data => {
       this.purchase = data;
+      this.router.navigate(['/purchase']);
     });
-    this.router.navigate(['/purchase']);
   }
 
   buyTicket(idTrip: number) {

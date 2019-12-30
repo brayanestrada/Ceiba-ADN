@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { LoginService } from '../../service/login/login.service';
 import { Router } from '@angular/router';
 import { Login } from '../../shared/Login';
+import { User } from '../../shared/User';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import { Login } from '../../shared/Login';
 })
 export class LoginComponent implements OnInit {
 
-  login: Login;
+  login: Login = new Login();
+  user: User = new User();
 
   constructor(private router: Router, private loginService: LoginService) { }
 
@@ -19,9 +21,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit( form: NgForm ) {
-    this.login.email = form.value.email;
-    this.login.password = form.value.password;
-    this.router.navigate(['/purchase']);
+    console.log(this.login.email);
+    console.log(this.login.password);
+    this.loginService.logIn(this.login).subscribe((data:any) => {
+      this.user = data;
+      console.log(this.user);
+      this.router.navigate(['/purchase/list']);
+    });
   }
 
 

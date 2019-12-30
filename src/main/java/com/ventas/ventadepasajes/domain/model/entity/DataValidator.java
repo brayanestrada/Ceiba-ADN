@@ -46,7 +46,7 @@ public final class DataValidator {
 
     public static void validateDateFormat(String date, String message){
         try{
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date dateType = sdf.parse(date);
             if(!date.equals(sdf.format(dateType))){
                 throw new ExceptionGeneral(message);}
