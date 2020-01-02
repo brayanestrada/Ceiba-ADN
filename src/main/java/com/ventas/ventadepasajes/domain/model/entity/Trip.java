@@ -48,10 +48,6 @@ public class Trip {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public int getSeatsAvailable() {
         return seatsAvailable;
     }
@@ -72,40 +68,20 @@ public class Trip {
         return startCity;
     }
 
-    public void setStartCity(String startCity) {
-        this.startCity = startCity;
-    }
-
     public String getEndCity() {
         return endCity;
-    }
-
-    public void setEndCity(String endCity) {
-        this.endCity = endCity;
     }
 
     public long getIdDriver() {
         return idDriver;
     }
 
-    public void setIdDriver(long idDriver) {
-        this.idDriver = idDriver;
-    }
-
     public String getTripDate() {
         return tripDate;
     }
 
-    public void setTripDate(String tripDate) {
-        this.tripDate = tripDate;
-    }
-
     public double getTicketAmount() {
         return ticketAmount;
-    }
-
-    public void setTicketAmount(double ticketAmount) {
-        this.ticketAmount = ticketAmount;
     }
 
     private void dataValidatorTrip(int seatsAvailable, String tripDate, String startCity, String endCity, long idDriver){

@@ -1,6 +1,7 @@
 package com.ventas.ventadepasajes.domain.model;
 
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
+import com.ventas.ventadepasajes.domain.model.entity.Driver;
 import com.ventas.ventadepasajes.domain.testdatabuilder.DriverTestDataBuilder;
 import org.junit.jupiter.api.Test;
 
@@ -62,5 +63,10 @@ public class TestDriverModel {
     public void validateLongIdentification(){
         dataBuilder.longIdentification();
         assertThrows(ExceptionGeneral.class, () -> dataBuilder.build(), "Identification must be between 8 and 11 characters");
+    }
+
+    @Test
+    public void testSetName(){
+
     }
 }

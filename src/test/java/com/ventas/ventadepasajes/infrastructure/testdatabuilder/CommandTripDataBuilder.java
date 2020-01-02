@@ -9,6 +9,7 @@ public class CommandTripDataBuilder {
     private static final String startCity = "Medellín";
     private static final String endCity = "Armenia";
     private static final long idDriver = 7;
+    private static final long badIdDriver = 123123;
     private static final String tripDate = "2019-12-21";
     private static final double ticketAmount = 5000;
     private static final String badTripDate = "12/12/2019";
@@ -27,6 +28,8 @@ public class CommandTripDataBuilder {
     public CommandTrip buildMinValueSeatsAvailable(){ return new CommandTrip(minimumSeatsAvailable, seatsSold, startCity, endCity, idDriver, tripDate, ticketAmount);}
 
     public CommandTrip buildBadDateFormat(){ return new CommandTrip(seatsAvailable, seatsSold, startCity, endCity, idDriver, badTripDate, ticketAmount);}
+
+    public CommandTrip buildBadIdDriver(){ return new CommandTrip(seatsAvailable, seatsSold, startCity, endCity, badIdDriver, tripDate, ticketAmount);}
 
     public CommandTrip buildWithDriverId(CommandTrip commandTrip, int idDriver){ return new CommandTrip(commandTrip.getSeatsAvailable(), commandTrip.getSeatsSold(), commandTrip.getStartCity(), commandTrip.getEndCity(),idDriver, commandTrip.getTripDate() , commandTrip.getTicketAmount()); }
 }

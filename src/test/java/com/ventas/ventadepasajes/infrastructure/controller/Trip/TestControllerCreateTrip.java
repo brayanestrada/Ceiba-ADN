@@ -79,7 +79,7 @@ public class TestControllerCreateTrip {
     @Test
     public void createBadTripWithoutIdDriver() throws Exception {
         this.commandTrip = commandTripDataBuilder.buildWithoutIdDriver();
-        assertTrue(callRequestCreateTripWithoutDriverId(commandTrip)); }
+        assertTrue(callRequestCreateTripWithoutDriverId(commandTrip, ERROR_ID_DRIVER_MANDATORY)); }
 
     @Test
     public void createBadTripMinValueSeatsAvailable() throws Exception {
@@ -91,6 +91,12 @@ public class TestControllerCreateTrip {
     public void createBadTripBadDateFormat() throws Exception {
         this.commandTrip = commandTripDataBuilder.buildBadDateFormat();
         assertTrue(callRequestCreateBadTrip(commandTrip, ERROR_DATE_FORMAT));
+    }
+
+    @Test
+    public void createBadTripBadIdDriver() throws Exception {
+        this.commandTrip = commandTripDataBuilder.buildBadIdDriver();
+        assertTrue(callRequestCreateTripWithoutDriverId(commandTrip, "Error: There are no drivers with id = " + commandTrip.getIdDriver()));
     }
 
     private int callRequestCreateDriver() throws Exception {
@@ -116,7 +122,6 @@ public class TestControllerCreateTrip {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandTrip)))
                 .andExpect(status().isCreated());
-
         return true;
     }
 
@@ -135,7 +140,7 @@ public class TestControllerCreateTrip {
         return true;
     }
 
-    private Boolean callRequestCreateTripWithoutDriverId(CommandTrip commandTrip) throws Exception {
+    private Boolean callRequestCreateTripWithoutDriverId(CommandTrip commandTrip, String message) throws Exception {
         callRequestCreateDriver();
         MvcResult mvcResult = mockMvc.perform(post(uri)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -143,7 +148,7 @@ public class TestControllerCreateTrip {
                 .andExpect(status().isBadRequest())
                 .andReturn();
         String result = mvcResult.getResponse().getContentAsString();
-        if (!result.contains(Utils.ERROR_ID_DRIVER_MANDATORY)){
+        if (!result.contains(message)){
             Assert.fail("Should throw bad request exception but it didn't happen");
         }
         return true;

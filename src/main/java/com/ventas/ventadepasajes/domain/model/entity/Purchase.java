@@ -62,8 +62,6 @@ public class Purchase {
         return numberPurchasedTickets;
     }
 
-    public void setNumberPurchasedTickets(int numberPurchasedTickets) { this.numberPurchasedTickets = numberPurchasedTickets; }
-
     public double getTicketAmount() {
         return ticketAmount;
     }
@@ -86,10 +84,6 @@ public class Purchase {
 
     public long getIdTrip() {
         return idTrip;
-    }
-
-    public void setIdTrip(long idTrip) {
-        this.idTrip = idTrip;
     }
 
     public String getPurchaseDate() {
