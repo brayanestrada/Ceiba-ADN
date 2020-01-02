@@ -17,19 +17,19 @@ public class EntityRole {
         this.id = id;
     }
 
-    public long getId() {
+    public long getIdEntity() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setIdEntity(long id) {
         this.id = id;
     }
 
-    public String getName() {
+    public String getNameEntity() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setNameEntity(String name) {
         this.name = name;
     }
 

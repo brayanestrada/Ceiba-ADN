@@ -37,67 +37,67 @@ public class EntityTrip {
         this.endCity = endCity;
     }
 
-    public long getId() {
+    public long getIdEntity() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setIdEntity(long id) {
         this.id = id;
     }
 
-    public int getSeatsAvailable() {
+    public int getSeatsAvailableEntity() {
         return seatsAvailable;
     }
 
-    public void setSeatsAvailable(int seatsAvailable) {
+    public void setSeatsAvailableEntity(int seatsAvailable) {
         this.seatsAvailable = seatsAvailable;
     }
 
-    public int getSeatsSold() {
+    public int getSeatsSoldEntity() {
         return seatsSold;
     }
 
-    public void setSeatsSold(int seatsSold) {
+    public void setSeatsSoldEntity(int seatsSold) {
         this.seatsSold = seatsSold;
     }
 
-    public String getStartCity() {
+    public String getStartCityEntity() {
         return startCity;
     }
 
-    public void setStartCity(String startCity) {
+    public void setStartCityEntity(String startCity) {
         this.startCity = startCity;
     }
 
-    public String getEndCity() {
+    public String getEndCityEntity() {
         return endCity;
     }
 
-    public void setEndCity(String endCity) {
+    public void setEndCityEntity(String endCity) {
         this.endCity = endCity;
     }
 
-    public long getIdDriver() {
+    public long getIdDriverEntity() {
         return idDriver;
     }
 
-    public void setIdDriver(long idDriver) {
+    public void setIdDriverEntity(long idDriver) {
         this.idDriver = idDriver;
     }
 
-    public String getTripDate() {
+    public String getTripDateEntity() {
         return tripDate;
     }
 
-    public void setTripDate(String tripDate) {
+    public void setTripDateEntity(String tripDate) {
         this.tripDate = tripDate;
     }
 
-    public double getTicketAmount() {
+    public double getTicketAmountEntity() {
         return ticketAmount;
     }
 
-    public void setTicketAmount(double ticketAmount) {
+    public void setTicketAmountEntity(double ticketAmount) {
         this.ticketAmount = ticketAmount;
     }
 

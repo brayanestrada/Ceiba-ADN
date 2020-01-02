@@ -13,14 +13,14 @@ public class MapperPurchase {
     }
 
     private static Purchase valueOfModel(EntityPurchase entityPurchase){
-        return new Purchase(entityPurchase.getId(),
-                entityPurchase.getNumberPurchasedTickets(),
-                entityPurchase.getTicketAmount(),
-                entityPurchase.getDiscountPercentage(),
-                entityPurchase.getTotalPurchaseAmount(),
-                entityPurchase.getIdTrip(),
-                entityPurchase.getPurchaseDate(),
-                entityPurchase.getTripDate()
+        return new Purchase(entityPurchase.getIdEntity(),
+                entityPurchase.getNumberPurchasedTicketsEntity(),
+                entityPurchase.getTicketAmountEntity(),
+                entityPurchase.getDiscountPercentageEntity(),
+                entityPurchase.getTotalPurchaseAmountEntity(),
+                entityPurchase.getIdTripEntity(),
+                entityPurchase.getPurchaseDateEntity(),
+                entityPurchase.getTripDateEntity()
         );
     }
 

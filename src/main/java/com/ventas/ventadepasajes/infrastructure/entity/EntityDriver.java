@@ -17,32 +17,32 @@ public class EntityDriver {
 
     public EntityDriver(Long id, String name, String lastName, String identification){
         this.id = id;
+        this.name = name;
         this.identification = identification;
         this.lastName = lastName;
-        this.name = name;
     }
 
-    public Long getId() { return id; }
+    public Long getIdEntity() { return id; }
 
-    public void setId(Long id) { this.id = id; }
+    public void setIdEntity(Long id) { this.id = id; }
 
-    public String getName() {
+    public String getNameEntity() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setNameEntity(String name) {
         this.name = name;
     }
 
-    public String getLastName() {
+    public String getLastNameEntity() {
         return lastName;
     }
 
-    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setLastNameEntity(String lastName) { this.lastName = lastName; }
 
-    public String getIdentification() {
+    public String getIdentificationEntity() {
         return identification;
     }
 
-    public void setIdentification(String identification) { this.identification = identification; }
+    public void setIdentificationEntity(String identification) { this.identification = identification; }
 }

@@ -30,61 +30,61 @@ public class EntityPurchase {
         this.idTrip = idTrip;
     }
 
-    public long getId() {
+    public long getIdEntity() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setIdEntity(long id) {
         this.id = id;
     }
 
-    public int getNumberPurchasedTickets() {
+    public int getNumberPurchasedTicketsEntity() {
         return numberPurchasedTickets;
     }
 
-    public void setNumberPurchasedTickets(int numberPurchasedTickets) { this.numberPurchasedTickets = numberPurchasedTickets; }
+    public void setNumberPurchasedTicketsEntity(int numberPurchasedTickets) { this.numberPurchasedTickets = numberPurchasedTickets; }
 
-    public double getTicketAmount() {
+    public double getTicketAmountEntity() {
         return ticketAmount;
     }
 
-    public void setTicketAmount(double ticketAmount) {
+    public void setTicketAmountEntity(double ticketAmount) {
         this.ticketAmount = ticketAmount;
     }
 
-    public double getTotalPurchaseAmount() {
+    public double getTotalPurchaseAmountEntity() {
         return totalPurchaseAmount;
     }
 
-    public void setTotalPurchaseAmount(double totalPurchaseAmount) {
+    public void setTotalPurchaseAmountEntity(double totalPurchaseAmount) {
         this.totalPurchaseAmount = totalPurchaseAmount;
     }
 
-    public int getDiscountPercentage() { return discountPercentage; }
+    public int getDiscountPercentageEntity() { return discountPercentage; }
 
-    public void setDiscountPercentage(int discountPercentage) { this.discountPercentage = discountPercentage; }
+    public void setDiscountPercentageEntity(int discountPercentage) { this.discountPercentage = discountPercentage; }
 
-    public long getIdTrip() {
+    public long getIdTripEntity() {
         return idTrip;
     }
 
-    public void setIdTrip(long idTrip) {
+    public void setIdTripEntity(long idTrip) {
         this.idTrip = idTrip;
     }
 
-    public String getPurchaseDate() {
+    public String getPurchaseDateEntity() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(String purchaseDate) {
+    public void setPurchaseDateEntity(String purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public String getTripDate() {
+    public String getTripDateEntity() {
         return tripDate;
     }
 
-    public void setTripDate(String tripDate) {
+    public void setTripDateEntity(String tripDate) {
         this.tripDate = tripDate;
     }
 }

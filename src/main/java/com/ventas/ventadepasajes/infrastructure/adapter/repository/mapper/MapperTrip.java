@@ -13,14 +13,14 @@ public class MapperTrip {
     }
 
     private static Trip valueOfModel(EntityTrip entityTrip){
-        return new Trip(entityTrip.getId(),
-                entityTrip.getSeatsAvailable(),
-                entityTrip.getSeatsSold(),
-                entityTrip.getStartCity(),
-                entityTrip.getEndCity(),
-                entityTrip.getIdDriver(),
-                entityTrip.getTripDate(),
-                entityTrip.getTicketAmount()
+        return new Trip(entityTrip.getIdEntity(),
+                entityTrip.getSeatsAvailableEntity(),
+                entityTrip.getSeatsSoldEntity(),
+                entityTrip.getStartCityEntity(),
+                entityTrip.getEndCityEntity(),
+                entityTrip.getIdDriverEntity(),
+                entityTrip.getTripDateEntity(),
+                entityTrip.getTicketAmountEntity()
         );
     }
 
@@ -36,14 +36,14 @@ public class MapperTrip {
     }
 
     public Trip entityToModel(EntityTrip entityTrip){
-        return new Trip(entityTrip.getId(),
-                entityTrip.getSeatsAvailable(),
-                entityTrip.getSeatsSold(),
-                entityTrip.getStartCity(),
-                entityTrip.getEndCity(),
-                entityTrip.getIdDriver(),
-                entityTrip.getTripDate(),
-                entityTrip.getTicketAmount()
+        return new Trip(entityTrip.getIdEntity(),
+                entityTrip.getSeatsAvailableEntity(),
+                entityTrip.getSeatsSoldEntity(),
+                entityTrip.getStartCityEntity(),
+                entityTrip.getEndCityEntity(),
+                entityTrip.getIdDriverEntity(),
+                entityTrip.getTripDateEntity(),
+                entityTrip.getTicketAmountEntity()
         );
     }
 

@@ -10,78 +10,78 @@ public class Trip {
     private static final String ERROR_END_CITY_MANDATORY = "Error: End city is mandatory";
     private static final String ERROR_ID_DRIVER_MANDATORY = "Error: Driver id is mandatory";
 
-    private long id;
-    private long idDriver;
-    private int seatsAvailable;
-    private int seatsSold;
-    private String tripDate;
-    private double ticketAmount;
-    private String startCity;
-    private String endCity;
+    private long idModel;
+    private long idDriverModel;
+    private int seatsAvailableModel;
+    private int seatsSoldModel;
+    private String tripDateModel;
+    private double ticketAmountModel;
+    private String startCityModel;
+    private String endCityModel;
 
     private Trip(){}
 
     public Trip(long id, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
         dataValidatorTrip(seatsAvailable, tripDate, startCity, endCity, idDriver);
-        this.id = id;
-        this.endCity = endCity;
-        this.seatsSold = seatsSold;
-        this.tripDate = tripDate;
-        this.startCity = startCity;
-        this.idDriver = idDriver;
-        this.seatsAvailable = seatsAvailable;
-        this.ticketAmount = ticketAmount;
+        this.idModel = id;
+        this.endCityModel = endCity;
+        this.seatsSoldModel = seatsSold;
+        this.tripDateModel = tripDate;
+        this.startCityModel = startCity;
+        this.idDriverModel = idDriver;
+        this.seatsAvailableModel = seatsAvailable;
+        this.ticketAmountModel = ticketAmount;
     }
 
     public Trip( int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
         dataValidatorTrip(seatsAvailable, tripDate, startCity, endCity, idDriver);
-        this.seatsAvailable = seatsAvailable;
-        this.seatsSold = seatsSold;
-        this.idDriver = idDriver;
-        this.endCity = endCity;
-        this.startCity = startCity;
-        this.ticketAmount = ticketAmount;
-        this.tripDate = tripDate;
+        this.seatsAvailableModel = seatsAvailable;
+        this.seatsSoldModel = seatsSold;
+        this.idDriverModel = idDriver;
+        this.endCityModel = endCity;
+        this.startCityModel = startCity;
+        this.ticketAmountModel = ticketAmount;
+        this.tripDateModel = tripDate;
     }
 
     public long getId() {
-        return id;
+        return idModel;
     }
 
     public int getSeatsAvailable() {
-        return seatsAvailable;
+        return seatsAvailableModel;
     }
 
     public void setSeatsAvailable(int seatsAvailable) {
-        this.seatsAvailable = seatsAvailable;
+        this.seatsAvailableModel = seatsAvailable;
     }
 
     public int getSeatsSold() {
-        return seatsSold;
+        return seatsSoldModel;
     }
 
     public void setSeatsSold(int seatsSold) {
-        this.seatsSold = seatsSold;
+        this.seatsSoldModel = seatsSold;
     }
 
     public String getStartCity() {
-        return startCity;
+        return startCityModel;
     }
 
     public String getEndCity() {
-        return endCity;
+        return endCityModel;
     }
 
     public long getIdDriver() {
-        return idDriver;
+        return idDriverModel;
     }
 
     public String getTripDate() {
-        return tripDate;
+        return tripDateModel;
     }
 
     public double getTicketAmount() {
-        return ticketAmount;
+        return ticketAmountModel;
     }
 
     private void dataValidatorTrip(int seatsAvailable, String tripDate, String startCity, String endCity, long idDriver){

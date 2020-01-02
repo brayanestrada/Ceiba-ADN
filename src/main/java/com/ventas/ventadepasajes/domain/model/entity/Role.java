@@ -7,26 +7,26 @@ public class Role {
     private static final String ERROR_NAME_MANDATORY = "Error: Name is mandatory";
     private static final String ERROR_NAME_LENGTH = "Error: Name characters must be between 2 and 35 characters";
 
-    private long id;
-    private String name;
+    private long idModel;
+    private String nameModel;
 
     public Role(long id, String name){
         validate(name);
-        this.name = name;
-        this.id = id;
+        this.nameModel = name;
+        this.idModel = id;
     }
 
     public Role(String name){
         validate(name);
-        this.name = name;
+        this.nameModel = name;
     }
 
     public long getId() {
-        return id;
+        return idModel;
     }
 
     public String getName() {
-        return name;
+        return nameModel;
     }
 
     private void validate(String name){

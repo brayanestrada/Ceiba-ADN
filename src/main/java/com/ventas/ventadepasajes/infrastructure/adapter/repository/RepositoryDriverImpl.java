@@ -26,7 +26,7 @@ public class RepositoryDriverImpl implements RepositoryDriver {
     public Driver createDriver(Driver driver) {
         EntityDriver entityDriver = this.mapperDriver.modelToEntity(driver);
         EntityDriver entityDriverSaved = this.jpaDriverRepository.save(entityDriver);
-        return new Driver(entityDriverSaved.getId(), entityDriverSaved.getName(), entityDriverSaved.getLastName(), entityDriverSaved.getIdentification());
+        return new Driver(entityDriverSaved.getIdEntity(), entityDriverSaved.getNameEntity(), entityDriverSaved.getLastNameEntity(), entityDriverSaved.getIdentificationEntity());
     }
 
     @Override
@@ -51,19 +51,19 @@ public class RepositoryDriverImpl implements RepositoryDriver {
         EntityDriver entityDriver = this.mapperDriver.modelToEntity(newDriver);
         EntityDriver entityDriverUpdated =  jpaDriverRepository.findById(id)
                 .map(driver ->{
-                    driver.setName(newDriver.getName());
-                    driver.setLastName(newDriver.getLastName());
-                    driver.setIdentification(newDriver.getIdentification());
+                    driver.setNameEntity(newDriver.getName());
+                    driver.setLastNameEntity(newDriver.getLastName());
+                    driver.setIdentificationEntity(newDriver.getIdentification());
                     return jpaDriverRepository.save(driver);
                 })
                 .orElseGet(()->{
-                    entityDriver.setId(id);
-                    entityDriver.setName(newDriver.getName());
-                    entityDriver.setLastName(newDriver.getLastName());
-                    entityDriver.setIdentification(newDriver.getIdentification());
+                    entityDriver.setIdEntity(id);
+                    entityDriver.setNameEntity(newDriver.getName());
+                    entityDriver.setLastNameEntity(newDriver.getLastName());
+                    entityDriver.setIdentificationEntity(newDriver.getIdentification());
                     return jpaDriverRepository.save(entityDriver);
                 });
-        return new Driver(entityDriverUpdated.getId(), entityDriverUpdated.getName(), entityDriverUpdated.getLastName(), entityDriverUpdated.getIdentification());
+        return new Driver(entityDriverUpdated.getIdEntity(), entityDriverUpdated.getNameEntity(), entityDriverUpdated.getLastNameEntity(), entityDriverUpdated.getIdentificationEntity());
     }
 
     @Override

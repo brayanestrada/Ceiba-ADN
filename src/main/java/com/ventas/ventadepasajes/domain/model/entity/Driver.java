@@ -20,40 +20,40 @@ public class Driver {
     private static final String ERROR_IDENTIFICATION_MIN_LENGTH = "Identification "+ MUST_HAVE_MIN + IDENTIFICATION_MIN_LENGTH;
     private static final String ERROR_IDENTIFICATION_MAX_LENGTH = "Identification must have max " + IDENTIFICATION_MAX_LENGTH;
 
-    private Long id;
-    private String name;
-    private String lastName;
-    private String identification;
+    private Long idModel;
+    private String nameModel;
+    private String lastNameModel;
+    private String identificationModel;
 
     public Driver(Long id, String name, String lastName, String identification){
         dataValidatorDriver(name, lastName, identification);
-        this.id = id;
-        this.lastName = lastName;
-        this.name = name;
-        this.identification = identification;
+        this.idModel = id;
+        this.lastNameModel = lastName;
+        this.nameModel = name;
+        this.identificationModel = identification;
     }
 
     public Driver( String name, String lastName, String identification){
         dataValidatorDriver(name, lastName, identification);
-        this.name = name;
-        this.lastName = lastName;
-        this.identification = identification;
+        this.nameModel = name;
+        this.lastNameModel = lastName;
+        this.identificationModel = identification;
     }
 
     public Long getId() {
-        return id;
+        return idModel;
     }
 
     public String getName() {
-        return name;
+        return nameModel;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastNameModel;
     }
 
     public String getIdentification() {
-        return identification;
+        return identificationModel;
     }
 
     private void dataValidatorDriver(String name, String lastName, String identification){

@@ -24,7 +24,7 @@ public class RepositoryUserImpl implements RepositoryUser {
     @Override
     public User createUser(User user) {
         EntityUser entityUser = jpaUserRepository.save(mapperUser.modelToEntity(user));
-        return new User(entityUser.getId(),entityUser.getName(), entityUser.getLastName(), entityUser.getEmail(), entityUser.getPhone(), entityUser.getRole(), user.getPassword());
+        return new User(entityUser.getIdEntity(),entityUser.getNameEntity(), entityUser.getLastNameEntity(), entityUser.getEmailEntity(), entityUser.getPhoneEntity(), entityUser.getRoleEntity(), user.getPassword());
     }
 
     @Override
@@ -48,21 +48,21 @@ public class RepositoryUserImpl implements RepositoryUser {
         EntityUser entityUser = this.mapperUser.modelToEntity(newUser);
         EntityUser entityUserUpdated = this.jpaUserRepository.findById(id)
                 .map(user ->{
-                    user.setId(newUser.getId());
-                    user.setName(newUser.getName());
-                    user.setLastName(newUser.getLastName());
-                    user.setEmail(newUser.getEmail());
-                    user.setPhone(newUser.getPhone());
+                    user.setIdEntity(newUser.getId());
+                    user.setNameEntity(newUser.getName());
+                    user.setLastNameEntity(newUser.getLastName());
+                    user.setEmailEntity(newUser.getEmail());
+                    user.setPhoneEntity(newUser.getPhone());
                     return jpaUserRepository.save(user);
                 }).orElseGet(()->{
-                    entityUser.setId(id);
-                    entityUser.setName(newUser.getName());
-                    entityUser.setLastName(newUser.getName());
-                    entityUser.setEmail(newUser.getName());
-                    entityUser.setPhone(newUser.getName());
+                    entityUser.setIdEntity(id);
+                    entityUser.setNameEntity(newUser.getName());
+                    entityUser.setLastNameEntity(newUser.getName());
+                    entityUser.setEmailEntity(newUser.getName());
+                    entityUser.setPhoneEntity(newUser.getName());
                     return jpaUserRepository.save(entityUser);
                 });
-        return new User(entityUserUpdated.getId(), entityUserUpdated.getName(), entityUserUpdated.getLastName(), entityUserUpdated.getEmail(), entityUserUpdated.getPhone(), entityUserUpdated.getRole(), entityUserUpdated.getPassword());
+        return new User(entityUserUpdated.getIdEntity(), entityUserUpdated.getNameEntity(), entityUserUpdated.getLastNameEntity(), entityUserUpdated.getEmailEntity(), entityUserUpdated.getPhoneEntity(), entityUserUpdated.getRoleEntity(), entityUserUpdated.getPasswordEntity());
     }
 
     @Override

@@ -24,7 +24,7 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
     public Purchase createPurchase(Purchase purchase) {
         EntityPurchase entityPurchase = this.mapperPurchase.modelToEntity(purchase);
         EntityPurchase entityPurchaseSaved = this.jpaPurchaseRepository.save(entityPurchase);
-        return new Purchase(entityPurchaseSaved.getId(), entityPurchase.getNumberPurchasedTickets(), entityPurchase.getTicketAmount(), purchase.getDiscountPercentage(), purchase.getTotalPurchaseAmount(), purchase.getIdTrip(), purchase.getPurchaseDate(), purchase.getTripDate());
+        return new Purchase(entityPurchaseSaved.getIdEntity(), entityPurchase.getNumberPurchasedTicketsEntity(), entityPurchase.getTicketAmountEntity(), purchase.getDiscountPercentage(), purchase.getTotalPurchaseAmount(), purchase.getIdTrip(), purchase.getPurchaseDate(), purchase.getTripDate());
     }
 
     @Override
@@ -49,24 +49,24 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
         String newPurchaseDate = newPurchase.getPurchaseDate();
         EntityPurchase entityPurchaseUpdated = this.jpaPurchaseRepository.findById(id)
                 .map(purchase ->{
-                    purchase.setId(newPurchase.getId());
-                    purchase.setNumberPurchasedTickets(newPurchase.getNumberPurchasedTickets());
-                    purchase.setTicketAmount(newPurchase.getTicketAmount());
-                    purchase.setDiscountPercentage(newPurchase.getDiscountPercentage());
-                    purchase.setTotalPurchaseAmount(newPurchase.getTotalPurchaseAmount());
-                    purchase.setIdTrip(newPurchase.getIdTrip());
-                    purchase.setPurchaseDate(newPurchaseDate);
+                    purchase.setIdEntity(newPurchase.getId());
+                    purchase.setNumberPurchasedTicketsEntity(newPurchase.getNumberPurchasedTickets());
+                    purchase.setTicketAmountEntity(newPurchase.getTicketAmount());
+                    purchase.setDiscountPercentageEntity(newPurchase.getDiscountPercentage());
+                    purchase.setTotalPurchaseAmountEntity(newPurchase.getTotalPurchaseAmount());
+                    purchase.setIdTripEntity(newPurchase.getIdTrip());
+                    purchase.setPurchaseDateEntity(newPurchaseDate);
                     return jpaPurchaseRepository.save(purchase);
                 }).orElseGet(() ->{
-                    entityPurchase.setId(id);
-                    entityPurchase.setNumberPurchasedTickets(newPurchase.getNumberPurchasedTickets());
-                    entityPurchase.setTicketAmount(newPurchase.getTicketAmount());
-                    entityPurchase.setDiscountPercentage(newPurchase.getDiscountPercentage());
-                    entityPurchase.setTotalPurchaseAmount(newPurchase. getTotalPurchaseAmount());
-                    entityPurchase.setIdTrip(newPurchase.getIdTrip());
-                    entityPurchase.setPurchaseDate(newPurchaseDate);
+                    entityPurchase.setIdEntity(id);
+                    entityPurchase.setNumberPurchasedTicketsEntity(newPurchase.getNumberPurchasedTickets());
+                    entityPurchase.setTicketAmountEntity(newPurchase.getTicketAmount());
+                    entityPurchase.setDiscountPercentageEntity(newPurchase.getDiscountPercentage());
+                    entityPurchase.setTotalPurchaseAmountEntity(newPurchase. getTotalPurchaseAmount());
+                    entityPurchase.setIdTripEntity(newPurchase.getIdTrip());
+                    entityPurchase.setPurchaseDateEntity(newPurchaseDate);
                     return jpaPurchaseRepository.save(entityPurchase);
                 });
-        return new Purchase(entityPurchaseUpdated.getId(), entityPurchaseUpdated.getNumberPurchasedTickets(), entityPurchaseUpdated.getTicketAmount(), entityPurchaseUpdated.getDiscountPercentage(), entityPurchaseUpdated.getTotalPurchaseAmount(), entityPurchaseUpdated.getIdTrip(), entityPurchaseUpdated.getPurchaseDate(), entityPurchaseUpdated.getTripDate());
+        return new Purchase(entityPurchaseUpdated.getIdEntity(), entityPurchaseUpdated.getNumberPurchasedTicketsEntity(), entityPurchaseUpdated.getTicketAmountEntity(), entityPurchaseUpdated.getDiscountPercentageEntity(), entityPurchaseUpdated.getTotalPurchaseAmountEntity(), entityPurchaseUpdated.getIdTripEntity(), entityPurchaseUpdated.getPurchaseDateEntity(), entityPurchaseUpdated.getTripDateEntity());
     }
 }

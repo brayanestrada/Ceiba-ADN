@@ -14,19 +14,19 @@ public class MapperUser {
     }
 
     private static User valueOfModel(EntityUser entity){
-        return new User(entity.getId(),
-                entity.getName(),
-                entity.getLastName(),
-                entity.getEmail(),
-                entity.getPhone(),
-                entity.getRole(),
-                entity.getPassword()
+        return new User(entity.getIdEntity(),
+                entity.getNameEntity(),
+                entity.getLastNameEntity(),
+                entity.getEmailEntity(),
+                entity.getPhoneEntity(),
+                entity.getRoleEntity(),
+                entity.getPasswordEntity()
         );
     }
 
     public User entityToModel(EntityUser entityUser){
-        return new User(entityUser.getId(), entityUser.getName(), entityUser.getLastName(), entityUser.getEmail(),
-                entityUser.getPhone(), entityUser.getRole(), entityUser.getPassword());
+        return new User(entityUser.getIdEntity(), entityUser.getNameEntity(), entityUser.getLastNameEntity(), entityUser.getEmailEntity(),
+                entityUser.getPhoneEntity(), entityUser.getRoleEntity(), entityUser.getPasswordEntity());
     }
 
     public EntityUser modelToEntity(User user){

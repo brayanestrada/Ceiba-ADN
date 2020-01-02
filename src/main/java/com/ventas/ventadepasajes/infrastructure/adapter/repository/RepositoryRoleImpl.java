@@ -27,7 +27,7 @@ public class RepositoryRoleImpl implements RepositoryRole {
     public Role createRole(Role role) {
         EntityRole entityRole = this.mapperRole.modelToEntity(role);
         EntityRole entityRoleSaved = this.jpaRoleRepository.save(entityRole);
-        return new Role(entityRoleSaved.getId(), entityRoleSaved.getName());
+        return new Role(entityRoleSaved.getIdEntity(), entityRoleSaved.getNameEntity());
     }
 
     @Override
@@ -51,16 +51,16 @@ public class RepositoryRoleImpl implements RepositoryRole {
         EntityRole entityRole = this.mapperRole.modelToEntity(newRole);
         EntityRole entityRoleUpdated = this.jpaRoleRepository.findById(id)
                 .map(role ->{
-                    role.setId(newRole.getId());
-                    role.setName(newRole.getName());
+                    role.setIdEntity(newRole.getId());
+                    role.setNameEntity(newRole.getName());
                     return jpaRoleRepository.save(role);
                 }).orElseGet(() ->{
-                    entityRole.setId(id);
-                    entityRole.setName(newRole.getName());
+                    entityRole.setIdEntity(id);
+                    entityRole.setNameEntity(newRole.getName());
                     return jpaRoleRepository.save(entityRole);
                 });
 
-        return new Role(entityRoleUpdated.getId(), entityRoleUpdated.getName());
+        return new Role(entityRoleUpdated.getIdEntity(), entityRoleUpdated.getNameEntity());
     }
 
     @Override

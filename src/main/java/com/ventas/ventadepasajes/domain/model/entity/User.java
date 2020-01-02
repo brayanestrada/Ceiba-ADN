@@ -31,54 +31,54 @@ public class User{
     private static final String ERROR_PASS_MIN_LENGTH = "Password "+ MUST_HAVE_MIN + PASSWORD_MIN_LENGTH + CHARACTERS;
     private static final String ERROR_PASS_MAX_LENGTH = "Password " + MUST_HAVE_MAX + PASSWORD_MAX_LENGTH + CHARACTERS;
 
-    private Long id;
-    private String name;
-    private String lastName;
-    private String email;
-    private String phone;
-    private long role;
-    private String password;
+    private Long idModel;
+    private String nameModel;
+    private String lastNameModel;
+    private String emailModel;
+    private String phoneModel;
+    private long roleModel;
+    private String passwordModel;
 
     public User(Long id, String name, String lastName, String email, String phone, long role, String password){
         validate(name, lastName, email, phone, password, role);
-        this.name = name;
-        this.phone = phone;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-        this.id = id;
+        this.nameModel = name;
+        this.phoneModel = phone;
+        this.lastNameModel = lastName;
+        this.emailModel = email;
+        this.passwordModel = password;
+        this.roleModel = role;
+        this.idModel = id;
     }
     public User(String name, String lastName, String email, String phone, long role, String password){
         validate(name, lastName, email, phone, password, role);
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.role = role;
-        this.password = password;
+        this.nameModel = name;
+        this.lastNameModel = lastName;
+        this.emailModel = email;
+        this.phoneModel = phone;
+        this.roleModel = role;
+        this.passwordModel = password;
     }
 
-    public Long getId() { return id; }
+    public Long getId() { return idModel; }
 
-    public String getName() { return name; }
+    public String getName() { return nameModel; }
 
-    public String getLastName() { return lastName; }
+    public String getLastName() { return lastNameModel; }
 
     public String getEmail() {
-        return email;
+        return emailModel;
     }
 
     public String getPhone() {
-        return phone;
+        return phoneModel;
     }
 
     public long getRole() {
-        return role;
+        return roleModel;
     }
 
     public String getPassword() {
-        return password;
+        return passwordModel;
     }
 
     private void validate(String name, String lastName, String email, String phone, String password, long role){

@@ -31,53 +31,53 @@ public class EntityUser {
         this.phone = phone;
     }
 
-    public Long getId() {
+    public Long getIdEntity() {
         return id;
     }
 
-    public String getName() {
+    public String getNameEntity() {
         return name;
     }
 
-    public String getLastName() {
+    public String getLastNameEntity() {
         return lastName;
     }
 
-    public void setId(Long id) { this.id = id; }
+    public void setIdEntity(Long id) { this.id = id; }
 
-    public void setName(String name) { this.name = name; }
+    public void setNameEntity(String name) { this.name = name; }
 
-    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setLastNameEntity(String lastName) { this.lastName = lastName; }
 
-    public String getEmail() {
+    public String getEmailEntity() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmailEntity(String email) {
         this.email = email;
     }
 
-    public String getPhone() {
+    public String getPhoneEntity() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhoneEntity(String phone) {
         this.phone = phone;
     }
 
-    public long getRole() {
+    public long getRoleEntity() {
         return role;
     }
 
-    public void setRole(long role) {
+    public void setRoleEntity(long role) {
         this.role = role;
     }
 
-    public String getPassword() {
+    public String getPasswordEntity() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPasswordEntity(String password) {
         this.password = password;
     }
 }

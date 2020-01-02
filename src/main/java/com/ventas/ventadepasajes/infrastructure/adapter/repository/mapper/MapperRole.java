@@ -13,7 +13,7 @@ public class MapperRole {
     }
 
     private static Role valueOfModel(EntityRole entityRole){
-        return new Role(entityRole.getId(), entityRole.getName());
+        return new Role(entityRole.getIdEntity(), entityRole.getNameEntity());
     }
 
     public EntityRole modelToEntity(Role role){
