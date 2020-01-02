@@ -43,19 +43,19 @@ pipeline {
        }
     }
 
-    stage('Build') {
-       steps {
-         echo "------------>Build<------------"
-         sh 'gradle --b ./build.gradle build -x test'
-      }
-    }
-
     stage('Static Code Analysis') {
       steps{
         echo '------------>Análisis de código estático<------------'
         withSonarQubeEnv('Sonar') {
             sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
         }
+      }
+    }
+
+    stage('Build') {
+       steps {
+         echo "------------>Build<------------"
+         sh 'gradle --b ./build.gradle build -x test'
       }
     }
   }
