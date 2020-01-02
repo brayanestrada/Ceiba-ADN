@@ -11,40 +11,40 @@ public class CommandTrip {
     private double ticketAmount;
 
     public CommandTrip(int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
-        this.seatsSold = seatsSold;
-        this.endCity = endCity;
-        this.startCity = startCity;
-        this.tripDate = tripDate;
         this.seatsAvailable = seatsAvailable;
-        this.ticketAmount = ticketAmount;
+        this.endCity = endCity;
         this.idDriver = idDriver;
+        this.tripDate = tripDate;
+        this.seatsSold = seatsSold;
+        this.startCity = startCity;
+        this.ticketAmount = ticketAmount;
     }
 
-    public int getSeatsAvailableCommand() {
+    public int getSeatsAvailable() {
         return seatsAvailable;
     }
 
-    public int getSeatsSoldCommand() {
+    public int getSeatsSold() {
         return seatsSold;
     }
 
-    public long getIdDriverCommand() {
-        return idDriver;
-    }
-
-    public String getStartCityCommand() {
+    public String getStartCity() {
         return startCity;
     }
 
-    public String getTripDateCommand() {
-        return tripDate;
-    }
-
-    public String getEndCityCommand() {
+    public String getEndCity() {
         return endCity;
     }
 
-    public double getTicketAmountCommand() {
+    public long getIdDriver() {
+        return idDriver;
+    }
+
+    public String getTripDate() {
+        return tripDate;
+    }
+
+    public double getTicketAmount() {
         return ticketAmount;
     }
 

@@ -18,27 +18,27 @@ public class CommandUser {
         this.email = email;
     }
 
-    public String getNameCommand() {
+    public String getName() {
         return name;
     }
 
-    public String getPhoneCommand() {
+    public String getPhone() {
         return phone;
     }
 
-    public String getLastNameCommand() {
+    public String getLastName() {
         return lastName;
     }
 
-    public long getRoleCommand() {
+    public long getRole() {
         return role;
     }
 
-    public String getEmailCommand() {
+    public String getEmail() {
         return email;
     }
 
-    public String getPasswordCommand() {
+    public String getPassword() {
         return password;
     }
 
