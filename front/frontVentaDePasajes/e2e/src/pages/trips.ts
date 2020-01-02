@@ -3,14 +3,16 @@ import { element, by, browser } from 'protractor';
 // tslint:disable-next-line: class-name
 export class tripsPage {
   private createButton = element(by.xpath('/html/body/app-root/app-navbar/app-list-trip/div/button'));
-  private seatsAvailableInput = element(by.xpath('/html/body/app-root/app-navbar/app-create-trip/div/form/div/div[1]/div/input'));
-  private startCityInput = element(by.xpath('/html/body/app-root/app-navbar/app-create-trip/div/form/div/div[2]/div/input'));
-  private endCityInput = element(by.xpath('/html/body/app-root/app-navbar/app-create-trip/div/form/div/div[3]/div/input'));
-  private ticketCostInput = element(by.xpath('/html/body/app-root/app-navbar/app-create-trip/div/form/div/div[4]/div/input'));
-  private dateInput = element(by.xpath('/html/body/app-root/app-navbar/app-create-trip/div/form/div/div[5]/div/input'));
-  private selectFirstDriver = element(by.xpath('/html/body/app-root/app-navbar/app-create-trip/div/form/div/div[6]/div/select/option[2]'));
-  private saveButton = element(by.xpath('/html/body/app-root/app-navbar/app-create-trip/div/form/div/div[7]/button'));
-  private tripTitle = element(by.xpath('/html/body/app-root/app-navbar/app-create-trip/div/h2'));
+  private seatsAvailableInput = element(by.xpath('/html/body/app-root/app-navbar/app-create-second/div/div/form/div[2]/input'));
+  private startCityInput = element(by.xpath('/html/body/app-root/app-navbar/app-create-second/div/div/form/div[1]/div[2]/input'));
+  private endCityInput = element(by.xpath('/html/body/app-root/app-navbar/app-create-second/div/div/form/div[1]/div[3]/input'));
+  private ticketCostInput = element(by.xpath('/html/body/app-root/app-navbar/app-create-second/div/div/form/div[3]/div[1]/input'));
+  private dateInput = element(by.xpath('/html/body/app-root/app-navbar/app-create-second/div/div/form/div[3]/div[2]/input'));
+  private selectFirstDriver = element(by.xpath('/html/body/app-root/app-navbar/app-create-second/div/div/form/div[1]/div[1]/select/option[2]'));
+  private saveButton = element(by.xpath('/html/body/app-root/app-navbar/app-create-second/div/div/form/div[4]/div/input'));
+  private numberOfTicketsInput = element(by.xpath('/html/body/app-root/app-navbar/app-list-trip/div/div/div[1]/div/div[3]/div[1]/form/input[1]'));
+  private buyTicketButton = element(by.xpath('/html/body/app-root/app-navbar/app-list-trip/div/div/div[1]/div/div[3]/div[1]/form/input[2]'));
+  private deleteTripButton = element(by.xpath('/html/body/app-root/app-navbar/app-list-trip/div/div/div[1]/div/div[3]/div[3]/button'));
 
   constructor() {}
 
@@ -50,7 +52,15 @@ export class tripsPage {
     this.saveButton.click();
   }
 
-  public clickTripTitle() {
-    this.tripTitle.click();
+  public fillNumberOfTicketsInput(value: string){
+    this.numberOfTicketsInput.sendKeys(value);
+  }
+
+  public clickBuyTicketsButton(){
+    this.buyTicketButton.click();
+  }
+
+  public clickDeleteTripButton(){
+    this.deleteTripButton.click();
   }
 }

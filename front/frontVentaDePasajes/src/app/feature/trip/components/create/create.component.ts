@@ -33,6 +33,7 @@ export class CreateTripComponent implements OnInit {
     this.convertDate();
     if ( form.invalid ) {return; }
     this.getIdDriver(this.idDriver);
+    console.log(this.tripModel.idDriver)
     this.createService.createTrip(this.tripModel)
     .subscribe(data => {
       this.tripModel = data;

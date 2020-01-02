@@ -24,7 +24,7 @@ export class ListDriversComponent implements OnInit {
     });
   }
 
-  getDrivers(driver: Driver) {
+  getDrivers() {
     this.listDriverService.getDrivers().subscribe((data: any) => {
       this.drivers = data;
     });

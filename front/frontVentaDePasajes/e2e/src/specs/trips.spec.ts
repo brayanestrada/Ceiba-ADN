@@ -27,7 +27,7 @@ describe('Testing trips section', async () => {
   it('Create Trip', () => {
     trips.clickCreateButton();
     trips.clickAnyPart();
-    trips.fillSeatsAvailableInput(10);
+    trips.fillSeatsAvailableInput(40);
     trips.fillStartCityInput('Medellín');
     trips.fillEndCityInput('Bogotá');
     trips.fillTicketCostInput(35000);
@@ -36,4 +36,9 @@ describe('Testing trips section', async () => {
     trips.clickSaveButton();
     expect(browser.getCurrentUrl()).toEqual(expectedCurrentUrl);
   });
+
+  it('Create Purchase', () => {
+    trips.fillNumberOfTicketsInput('3');
+    trips.clickBuyTicketsButton();
+  })
 });

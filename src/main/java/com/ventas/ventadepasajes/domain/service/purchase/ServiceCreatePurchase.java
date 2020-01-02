@@ -60,7 +60,7 @@ public class ServiceCreatePurchase {
     }
 
     private void updateTrip(Trip trip){
-        trip.setSeatsAvailable(trip.getSeatsAvailable()-1);
+        trip.setSeatsAvailable(trip.getSeatsAvailable()-purchase.getNumberPurchasedTickets());
         trip.setSeatsSold(trip.getSeatsSold()+1);
         this.repositoryTrip.updateTrip(trip.getId(), trip);
     }
