@@ -26,7 +26,7 @@ public class ServiceCreatePurchase {
         this.repositoryTrip = repositoryTrip;
     }
 
-    public Purchase run(Purchase purchase) throws ExceptionParsing {
+    public Purchase run(Purchase purchase) throws ParseException {
         this.purchase = purchase;
         Trip trip = getTrip(purchase.getIdTrip());
         getDayOfWeek(trip.getTripDate());
@@ -40,13 +40,9 @@ public class ServiceCreatePurchase {
         return now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
-    private void getDayOfWeek(String tripDate) throws ExceptionParsing {
+    private void getDayOfWeek(String tripDate) throws ParseException {
         Date date = null;
-        try {
-            date = new SimpleDateFormat("yyyy-MM-dd").parse(tripDate);
-        } catch (ParseException e) {
-            throw new ExceptionParsing("Error parsing date");
-        }
+        date = new SimpleDateFormat("yyyy-MM-dd").parse(tripDate);
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(date);
         this.weekDay = calendar.get(Calendar.DAY_OF_WEEK);
@@ -54,8 +50,12 @@ public class ServiceCreatePurchase {
 
     private int getDiscountPercentage(int numberPurchasedTickets, int weekDay){
         int discountPercentage = 0;
-        if( numberPurchasedTickets >= 4 ) { discountPercentage+=10; }
-        if( weekDay<=4 ) { discountPercentage+=10; }
+        if( numberPurchasedTickets >= 4 ) {
+            discountPercentage+=10;
+        }
+        if( weekDay<=4 ) {
+            discountPercentage+=10;
+        }
         return  discountPercentage;
     }
 

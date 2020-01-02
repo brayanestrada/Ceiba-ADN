@@ -6,6 +6,8 @@ import com.ventas.ventadepasajes.domain.exceptions.ExceptionParsing;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+
 @RestController
 @RequestMapping("/api/purchase")
 public class ControllerCreatePurchase {
@@ -18,7 +20,7 @@ public class ControllerCreatePurchase {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createPurchase(@RequestBody CommandPurchase commandPurchase) throws ExceptionParsing {
+    public void createPurchase(@RequestBody CommandPurchase commandPurchase) throws ParseException {
         this.handlerCreatePurchase.run(commandPurchase);
     }
 }

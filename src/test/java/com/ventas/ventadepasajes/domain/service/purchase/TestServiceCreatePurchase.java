@@ -10,12 +10,39 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestServiceCreatePurchase {
 
+    private RepositoryPurchase repoMocked = Mockito.mock(RepositoryPurchase.class);
+
     @Test
     public void createPurchase(){
         Purchase purchase = new PurchaseTestDataBuilder().build();
-        RepositoryPurchase repoMocked = Mockito.mock(RepositoryPurchase.class);
-        Mockito.when(repoMocked.createPurchase(purchase)).thenReturn(purchase);
-        Purchase purchaseSaved = repoMocked.createPurchase(purchase);
+        Mockito.when(this.repoMocked.createPurchase(purchase)).thenReturn(purchase);
+        Purchase purchaseSaved = this.repoMocked.createPurchase(purchase);
+        assertEquals(purchase.getNumberPurchasedTickets(), purchaseSaved.getNumberPurchasedTickets());
+        assertEquals(purchase.getDiscountPercentage(), purchaseSaved.getDiscountPercentage());
+        assertEquals(purchase.getIdTrip(), purchaseSaved.getIdTrip());
+        assertEquals(purchase.getPurchaseDate(), purchaseSaved.getPurchaseDate());
+        assertEquals(purchase.getTicketAmount(), purchaseSaved.getTicketAmount());
+        assertEquals(purchase.getTotalPurchaseAmount(), purchaseSaved.getTotalPurchaseAmount());
+    }
+
+    @Test
+    public void createPurchasePurchasedTickets(){
+        Purchase purchase = new PurchaseTestDataBuilder().buildMoreThanFourTickets();
+        Mockito.when(this.repoMocked.createPurchase(purchase)).thenReturn(purchase);
+        Purchase purchaseSaved = this.repoMocked.createPurchase(purchase);
+        assertEquals(purchase.getNumberPurchasedTickets(), purchaseSaved.getNumberPurchasedTickets());
+        assertEquals(purchase.getDiscountPercentage(), purchaseSaved.getDiscountPercentage());
+        assertEquals(purchase.getIdTrip(), purchaseSaved.getIdTrip());
+        assertEquals(purchase.getPurchaseDate(), purchaseSaved.getPurchaseDate());
+        assertEquals(purchase.getTicketAmount(), purchaseSaved.getTicketAmount());
+        assertEquals(purchase.getTotalPurchaseAmount(), purchaseSaved.getTotalPurchaseAmount());
+    }
+
+    @Test
+    public void createPurchaseSaturday(){
+        Purchase purchase = new PurchaseTestDataBuilder().buildSaturday();
+        Mockito.when(this.repoMocked.createPurchase(purchase)).thenReturn(purchase);
+        Purchase purchaseSaved = this.repoMocked.createPurchase(purchase);
         assertEquals(purchase.getNumberPurchasedTickets(), purchaseSaved.getNumberPurchasedTickets());
         assertEquals(purchase.getDiscountPercentage(), purchaseSaved.getDiscountPercentage());
         assertEquals(purchase.getIdTrip(), purchaseSaved.getIdTrip());

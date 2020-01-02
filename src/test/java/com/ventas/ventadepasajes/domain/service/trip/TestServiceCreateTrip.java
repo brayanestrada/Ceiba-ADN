@@ -23,28 +23,5 @@ public class TestServiceCreateTrip {
         assertEquals(trip.getTicketAmount(), tripSaved.getTicketAmount());
         assertEquals(trip.getTripDate(), tripSaved.getTripDate());
         assertEquals(trip.getIdDriver(), tripSaved.getIdDriver());
-
-
-        /*
-
-        Mockito.when(mockRepoDriver.listDriver()).thenReturn(list);
-        ServiceCreateDriver serviceCreateDriver = new ServiceCreateDriver(mockRepoDriver);
-
-        Driver driver1 = serviceCreateDriver.run(driver);
-        list = serviceListDriver.run();
-        System.out.println(list.get(0).getName());*/
-
-
-
-/*
-        Mockito.when(repoTripMock.createTrip(trip)).then((Answer<?>) repoDriverMock.createDriver(driver)).thenReturn(trip);
-        ServiceCreateDriver serviceCreateDriver1 = new ServiceCreateDriver(repoDriverMock);
-        //driver1 = serviceCreateDriver.run(driver);
-        System.out.println(driver1.getName());
-        Mockito.when(repoTripMock.createTrip(trip)).thenReturn(trip);
-        ServiceCreateTrip serviceCreateTrip = new ServiceCreateTrip(repoTripMock, repoDriverMock);
-        tripSaved = serviceCreateTrip.run(trip);
-        System.out.println(tripSaved.getId());
-        System.out.println(tripSaved.getStartCity());*/
     }
 }

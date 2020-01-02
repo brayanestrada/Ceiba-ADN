@@ -17,7 +17,7 @@ import java.util.Optional;
 public class RepositoryDriverImpl implements RepositoryDriver {
 
     private JpaDriverRepository jpaDriverRepository;
-    private Logger logger = LoggerFactory.getLogger(RepositoryDriverImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(RepositoryDriverImpl.class);
     private MapperDriver mapperDriver = new MapperDriver();
 
     public RepositoryDriverImpl(JpaDriverRepository jpaDriverRepository){this.jpaDriverRepository = jpaDriverRepository;}
@@ -48,7 +48,6 @@ public class RepositoryDriverImpl implements RepositoryDriver {
 
     @Override
     public Driver updateDriver(Long id, Driver newDriver) {
-        EntityDriver entityDriver = this.mapperDriver.modelToEntity(newDriver);
         EntityDriver entityDriverUpdated =  jpaDriverRepository.findById(id)
                 .map(driver ->{
                     driver.setNameEntity(newDriver.getName());
@@ -57,10 +56,7 @@ public class RepositoryDriverImpl implements RepositoryDriver {
                     return jpaDriverRepository.save(driver);
                 })
                 .orElseGet(()->{
-                    entityDriver.setIdEntity(id);
-                    entityDriver.setNameEntity(newDriver.getName());
-                    entityDriver.setLastNameEntity(newDriver.getLastName());
-                    entityDriver.setIdentificationEntity(newDriver.getIdentification());
+                    EntityDriver entityDriver = new EntityDriver(id, newDriver.getName(), newDriver.getLastName(),newDriver.getIdentification());
                     return jpaDriverRepository.save(entityDriver);
                 });
         return new Driver(entityDriverUpdated.getIdEntity(), entityDriverUpdated.getNameEntity(), entityDriverUpdated.getLastNameEntity(), entityDriverUpdated.getIdentificationEntity());

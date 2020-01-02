@@ -4,6 +4,8 @@ import com.ventas.ventadepasajes.aplication.command.handler.command.CommandPurch
 import com.ventas.ventadepasajes.aplication.command.handler.purchase.HandlerUpdatePurchase;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+
 @RestController
 @RequestMapping("/api/purchase")
 public class ControllerUpdatePurchase {
@@ -14,7 +16,7 @@ public class ControllerUpdatePurchase {
     }
 
     @PutMapping("/update/{id}")
-    public void update(@RequestBody CommandPurchase commandPurchase, @PathVariable long id){
+    public void update(@RequestBody CommandPurchase commandPurchase, @PathVariable long id) throws ParseException {
         this.handlerUpdatePurchase.run(id, commandPurchase);
     }
 }

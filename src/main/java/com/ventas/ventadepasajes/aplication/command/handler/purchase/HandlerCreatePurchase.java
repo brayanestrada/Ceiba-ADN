@@ -7,6 +7,8 @@ import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.service.purchase.ServiceCreatePurchase;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
+
 @Component
 public class HandlerCreatePurchase {
 
@@ -18,7 +20,7 @@ public class HandlerCreatePurchase {
         this.serviceCreatePurchase = serviceCreatePurchase;
     }
 
-    public Purchase run(CommandPurchase commandPurchase) throws ExceptionParsing {
+    public Purchase run(CommandPurchase commandPurchase) throws ParseException {
         return this.serviceCreatePurchase.run(this.factoryPurchase.create(commandPurchase));
     }
 }

@@ -50,20 +50,20 @@ public class RepositoryPurchaseImpl implements RepositoryPurchase {
         EntityPurchase entityPurchaseUpdated = this.jpaPurchaseRepository.findById(id)
                 .map(purchase ->{
                     purchase.setIdEntity(newPurchase.getId());
-                    purchase.setNumberPurchasedTicketsEntity(newPurchase.getNumberPurchasedTickets());
                     purchase.setTicketAmountEntity(newPurchase.getTicketAmount());
+                    purchase.setNumberPurchasedTicketsEntity(newPurchase.getNumberPurchasedTickets());
                     purchase.setDiscountPercentageEntity(newPurchase.getDiscountPercentage());
-                    purchase.setTotalPurchaseAmountEntity(newPurchase.getTotalPurchaseAmount());
-                    purchase.setIdTripEntity(newPurchase.getIdTrip());
                     purchase.setPurchaseDateEntity(newPurchaseDate);
+                    purchase.setIdTripEntity(newPurchase.getIdTrip());
+                    purchase.setTotalPurchaseAmountEntity(newPurchase.getTotalPurchaseAmount());
                     return jpaPurchaseRepository.save(purchase);
                 }).orElseGet(() ->{
                     entityPurchase.setIdEntity(id);
                     entityPurchase.setNumberPurchasedTicketsEntity(newPurchase.getNumberPurchasedTickets());
                     entityPurchase.setTicketAmountEntity(newPurchase.getTicketAmount());
-                    entityPurchase.setDiscountPercentageEntity(newPurchase.getDiscountPercentage());
-                    entityPurchase.setTotalPurchaseAmountEntity(newPurchase. getTotalPurchaseAmount());
                     entityPurchase.setIdTripEntity(newPurchase.getIdTrip());
+                    entityPurchase.setTotalPurchaseAmountEntity(newPurchase.getTotalPurchaseAmount());
+                    entityPurchase.setDiscountPercentageEntity(newPurchase.getDiscountPercentage());
                     entityPurchase.setPurchaseDateEntity(newPurchaseDate);
                     return jpaPurchaseRepository.save(entityPurchase);
                 });
