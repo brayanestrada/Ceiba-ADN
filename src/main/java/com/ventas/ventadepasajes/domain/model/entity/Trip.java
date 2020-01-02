@@ -13,7 +13,6 @@ public class Trip {
     private long idModel;
     private long idDriverModel;
     private int seatsAvailableModel;
-    private int seatsSoldModel;
     private String tripDateModel;
     private double ticketAmountModel;
     private String startCityModel;
@@ -21,11 +20,10 @@ public class Trip {
 
     private Trip(){}
 
-    public Trip(long id, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
+    public Trip(long id, int seatsAvailable, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
         dataValidatorTrip(seatsAvailable, tripDate, startCity, endCity, idDriver);
         this.idModel = id;
         this.endCityModel = endCity;
-        this.seatsSoldModel = seatsSold;
         this.tripDateModel = tripDate;
         this.startCityModel = startCity;
         this.idDriverModel = idDriver;
@@ -33,10 +31,9 @@ public class Trip {
         this.ticketAmountModel = ticketAmount;
     }
 
-    public Trip( int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
+    public Trip( int seatsAvailable, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
         dataValidatorTrip(seatsAvailable, tripDate, startCity, endCity, idDriver);
         this.seatsAvailableModel = seatsAvailable;
-        this.seatsSoldModel = seatsSold;
         this.idDriverModel = idDriver;
         this.endCityModel = endCity;
         this.startCityModel = startCity;
@@ -54,14 +51,6 @@ public class Trip {
 
     public void setSeatsAvailable(int seatsAvailable) {
         this.seatsAvailableModel = seatsAvailable;
-    }
-
-    public int getSeatsSold() {
-        return seatsSoldModel;
-    }
-
-    public void setSeatsSold(int seatsSold) {
-        this.seatsSoldModel = seatsSold;
     }
 
     public String getStartCity() {

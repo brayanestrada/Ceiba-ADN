@@ -1,6 +1,5 @@
 package com.ventas.ventadepasajes.domain.service.purchase;
 
-import com.ventas.ventadepasajes.domain.exceptions.ExceptionParsing;
 import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.model.entity.Trip;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryPurchase;
@@ -32,6 +31,7 @@ public class ServiceCreatePurchase {
         getDayOfWeek(trip.getTripDate());
         setPurchaseValues(purchase, trip, this.weekDay);
         updateTrip(trip);
+        purchase.setDiscountPercentage(getDiscountPercentage(purchase.getNumberPurchasedTickets(), this.weekDay));
         return this.repositoryPurchase.createPurchase(this.purchase);
     }
 
@@ -61,7 +61,6 @@ public class ServiceCreatePurchase {
 
     private void updateTrip(Trip trip){
         trip.setSeatsAvailable(trip.getSeatsAvailable()-purchase.getNumberPurchasedTickets());
-        trip.setSeatsSold(trip.getSeatsSold()+1);
         this.repositoryTrip.updateTrip(trip.getId(), trip);
     }
 

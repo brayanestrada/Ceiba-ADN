@@ -10,7 +10,6 @@ public class EntityTrip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private int seatsAvailable;
-    private int seatsSold;
     private String startCity;
     private String endCity;
     private String tripDate;
@@ -21,14 +20,12 @@ public class EntityTrip {
 
     public EntityTrip(long id,
                       int seatsAvailable,
-                      int seatsSold,
                       String startCity,
                       String endCity,
                       String tripDate,
                       double ticketAmount,
                       long idDriver){
         this.id = id;
-        this.seatsSold = seatsSold;
         this.ticketAmount = ticketAmount;
         this.seatsAvailable = seatsAvailable;
         this.startCity = startCity;
@@ -51,14 +48,6 @@ public class EntityTrip {
 
     public void setSeatsAvailableEntity(int seatsAvailable) {
         this.seatsAvailable = seatsAvailable;
-    }
-
-    public int getSeatsSoldEntity() {
-        return seatsSold;
-    }
-
-    public void setSeatsSoldEntity(int seatsSold) {
-        this.seatsSold = seatsSold;
     }
 
     public String getStartCityEntity() {

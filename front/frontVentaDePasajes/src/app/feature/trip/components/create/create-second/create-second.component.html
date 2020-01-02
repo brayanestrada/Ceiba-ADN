@@ -10,8 +10,8 @@
                         <option value="" disabled>Select a driver</option>
                         <option *ngFor="let driver of driverModel" value={{driver.id}}>{{ driver.name }}</option>
                     </select>
-                    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                        <div *ngIf="f.title?.errors.required">Title is required</div>
+                    <div *ngIf="submitted && f.idDriver.errors" class="invalid-feedback">
+                        <div *ngIf="f.idDriver?.errors.required">Title is required</div>
                     </div>
                 </div>
                 <div class="form-group col-5">

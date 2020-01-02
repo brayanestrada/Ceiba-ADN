@@ -59,7 +59,6 @@ public class ServiceUpdatePurchase {
 
     private void updateTrip(Trip trip){
         trip.setSeatsAvailable(trip.getSeatsAvailable()-1);
-        trip.setSeatsSold(trip.getSeatsSold()+1);
         this.repositoryTrip.updateTrip(trip.getId(), trip);
     }
 

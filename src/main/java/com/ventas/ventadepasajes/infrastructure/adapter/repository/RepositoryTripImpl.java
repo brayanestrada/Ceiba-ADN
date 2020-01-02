@@ -25,7 +25,7 @@ public class RepositoryTripImpl implements RepositoryTrip {
     public Trip createTrip(Trip trip) {
         EntityTrip entityTrip = this.mapperTrip.modelToEntity(trip);
         EntityTrip entityTripSaved = this.jpaTripRepository.save(entityTrip);
-        return new Trip(entityTripSaved.getIdEntity(), entityTripSaved.getSeatsAvailableEntity(), entityTripSaved.getSeatsSoldEntity(), entityTripSaved.getStartCityEntity(), entityTripSaved.getEndCityEntity(), entityTripSaved.getIdDriverEntity(), entityTripSaved.getTripDateEntity(), entityTrip.getTicketAmountEntity());
+        return new Trip(entityTripSaved.getIdEntity(), entityTripSaved.getSeatsAvailableEntity(), entityTripSaved.getStartCityEntity(), entityTripSaved.getEndCityEntity(), entityTripSaved.getIdDriverEntity(), entityTripSaved.getTripDateEntity(), entityTrip.getTicketAmountEntity());
     }
 
     @Override
@@ -52,7 +52,6 @@ public class RepositoryTripImpl implements RepositoryTrip {
                 .map(trip ->{
                     trip.setIdEntity(newTrip.getId());
                     trip.setSeatsAvailableEntity(newTrip.getSeatsAvailable());
-                    trip.setSeatsSoldEntity(newTrip.getSeatsSold());
                     trip.setStartCityEntity(newTrip.getStartCity());
                     trip.setEndCityEntity(newTrip.getEndCity());
                     trip.setTicketAmountEntity(newTrip.getTicketAmount());
@@ -61,14 +60,13 @@ public class RepositoryTripImpl implements RepositoryTrip {
                 }).orElseGet(()->{
                     entityTrip.setIdEntity(id);
                     entityTrip.setSeatsAvailableEntity(newTrip.getSeatsAvailable());
-                    entityTrip.setSeatsSoldEntity(newTrip.getSeatsSold());
                     entityTrip.setStartCityEntity(newTrip.getStartCity());
                     entityTrip.setEndCityEntity(newTrip.getEndCity());
                     entityTrip.setIdDriverEntity(newTrip.getIdDriver());
                     entityTrip.setTicketAmountEntity(newTrip.getTicketAmount());
                     return jpaTripRepository.save(entityTrip);
                 });
-        return new Trip(entityTripUpdated.getIdEntity(), entityTrip.getSeatsAvailableEntity(), entityTrip.getSeatsSoldEntity(), entityTripUpdated.getStartCityEntity(), entityTrip.getEndCityEntity(), entityTrip.getIdDriverEntity(), entityTrip.getTripDateEntity(), entityTrip.getTicketAmountEntity());
+        return new Trip(entityTripUpdated.getIdEntity(), entityTrip.getSeatsAvailableEntity(), entityTripUpdated.getStartCityEntity(), entityTrip.getEndCityEntity(), entityTrip.getIdDriverEntity(), entityTrip.getTripDateEntity(), entityTrip.getTicketAmountEntity());
     }
 
     @Override

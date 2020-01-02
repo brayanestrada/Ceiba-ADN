@@ -15,8 +15,6 @@ const routes: Routes = [
     () => import('./feature/user/user.module').then(mod => mod.UserModule)},
   { path: 'driver' , loadChildren :
       () => import('./feature/driver/driver.module').then(mod => mod.DriverModule)},
-  // { path: 'trip/create', component: CreateTripComponent},
-  //{ path: 'driver/list', component: ListDriversComponent}
 ];
 
 @NgModule({

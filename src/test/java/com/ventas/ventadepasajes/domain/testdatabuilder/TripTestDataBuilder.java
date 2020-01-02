@@ -52,7 +52,7 @@ public class TripTestDataBuilder {
         this.tripDateTest = "12/12/2019";
     }
 
-    public Trip build(){return new Trip(this.idTest, this.seatsAvailableTest, this.seatsSoldTest, this.startCityTest, this.endCityTest, this.idDriverTest, this.tripDateTest, this.ticketAmountTest); }
+    public Trip build(){return new Trip(this.idTest, this.seatsAvailableTest, this.startCityTest, this.endCityTest, this.idDriverTest, this.tripDateTest, this.ticketAmountTest); }
 
     public Trip buildWithoutId(){return new Trip(this.seatsAvailableTest, this.seatsSoldTest, this.startCityTest, this.endCityTest, this.idDriverTest, this.tripDateTest, this.ticketAmountTest); }
 

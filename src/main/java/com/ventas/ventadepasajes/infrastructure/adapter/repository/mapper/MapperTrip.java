@@ -15,7 +15,6 @@ public class MapperTrip {
     private static Trip valueOfModel(EntityTrip entityTrip){
         return new Trip(entityTrip.getIdEntity(),
                 entityTrip.getSeatsAvailableEntity(),
-                entityTrip.getSeatsSoldEntity(),
                 entityTrip.getStartCityEntity(),
                 entityTrip.getEndCityEntity(),
                 entityTrip.getIdDriverEntity(),
@@ -27,7 +26,6 @@ public class MapperTrip {
     public EntityTrip modelToEntity(Trip trip){
         return new EntityTrip(trip.getId(),
                 trip.getSeatsAvailable(),
-                trip.getSeatsSold(),
                 trip.getStartCity(),
                 trip.getEndCity(),
                 trip.getTripDate(),
@@ -38,7 +36,6 @@ public class MapperTrip {
     public Trip entityToModel(EntityTrip entityTrip){
         return new Trip(entityTrip.getIdEntity(),
                 entityTrip.getSeatsAvailableEntity(),
-                entityTrip.getSeatsSoldEntity(),
                 entityTrip.getStartCityEntity(),
                 entityTrip.getEndCityEntity(),
                 entityTrip.getIdDriverEntity(),

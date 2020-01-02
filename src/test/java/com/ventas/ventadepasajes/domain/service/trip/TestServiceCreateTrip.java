@@ -17,7 +17,6 @@ public class TestServiceCreateTrip {
         Mockito.when(repoMocked.createTrip(trip)).thenReturn(trip);
         Trip tripSaved = repoMocked.createTrip(trip);
         assertEquals(trip.getSeatsAvailable(), tripSaved.getSeatsAvailable());
-        assertEquals(trip.getSeatsSold(), tripSaved.getSeatsSold());
         assertEquals(trip.getStartCity(), tripSaved.getStartCity());
         assertEquals(trip.getEndCity(), tripSaved.getEndCity());
         assertEquals(trip.getTicketAmount(), tripSaved.getTicketAmount());

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 public class FactoryTrip {
 
     public Trip create(CommandTrip commandTrip){
-        return new Trip(commandTrip.getSeatsAvailable(), commandTrip.getSeatsSold(), commandTrip.getStartCity(), commandTrip.getEndCity(), commandTrip.getIdDriver(), commandTrip.getTripDate(), commandTrip.getTicketAmount());
+        return new Trip(commandTrip.getSeatsAvailable(), commandTrip.getStartCity(), commandTrip.getEndCity(), commandTrip.getIdDriver(), commandTrip.getTripDate(), commandTrip.getTicketAmount());
     }
 
     public Trip update(long id, CommandTrip commandTrip){
-        return new Trip(id, commandTrip.getSeatsAvailable(), commandTrip.getSeatsSold(), commandTrip.getStartCity(), commandTrip.getEndCity(), commandTrip.getIdDriver(), commandTrip.getTripDate(), commandTrip.getTicketAmount());
+        return new Trip(id, commandTrip.getSeatsAvailable(), commandTrip.getStartCity(), commandTrip.getEndCity(), commandTrip.getIdDriver(), commandTrip.getTripDate(), commandTrip.getTicketAmount());
     }
 }
