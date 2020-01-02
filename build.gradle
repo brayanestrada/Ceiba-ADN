@@ -13,12 +13,6 @@ group = 'com.ventas'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-jacocoTestReport {
-    reports {
-        xml.enabled true
-    }
-}
-
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -48,4 +42,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
 }
