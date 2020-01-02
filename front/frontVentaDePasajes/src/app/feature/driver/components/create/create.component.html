@@ -1,50 +1,49 @@
 <div class="container main-form">
-    <h2>Create driver</h2>
-    <form (ngSubmit)="onSubmit( f )" #f="ngForm">
-      <div>
-        <div class="form-group row">
-          <label class="col-2 col-form-label">Name</label>
-          <div class="col-8">
-            <input type="text"
-              class="form-control"
-              placeholder="Name"
-              name="name"
-              [(ngModel)] = "driver.name"
-              required>
-              <span class="txt-error" *ngIf="f.submitted && f.controls['name'].errors?.required">*Name is mandatory</span>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-2 col-form-label">Last Name</label>
-          <div class="col-8">
-            <input type="text"
-              class="form-control"
-              placeholder="Last Name"
-              name="lastName"
-              [(ngModel)] = "driver.lastName"
-              required>
-              <span class="txt-error" *ngIf="f.submitted && f.controls['lastName'].errors?.required">*Last name is mandatory</span>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-2 col-form-label">Identification</label>
-          <div class="col-8">
-            <input type="text"
-              class="form-control"
-              placeholder="Identification"
-              name="identification"
-              [(ngModel)] = "driver.identification"
-              required>
-              <span class="txt-error" *ngIf="f.submitted && f.controls['identification'].errors?.required">*Identification is mandatory</span>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-2 col-form-label">&nbsp;</label>
-          <div class="input-group col-md-8">
-            <input type="submit" class="btn btn-outline-primary" value="Send">
-          </div>
+  <h2>Create driver</h2>
+  <form (ngSubmit)="onSubmit( f )" #f="ngForm">
+    <div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Name</label>
+        <div class="col-8">
+          <input type="text"
+            class="form-control"
+            placeholder="Name"
+            name="name"
+            [(ngModel)] = "driver.name"
+            required>
+            <span class="txt-error" *ngIf="f.submitted && f.controls['name'].errors?.required">*Name is mandatory</span>
         </div>
       </div>
-    </form>
-  </div>
-  
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Last Name</label>
+        <div class="col-8">
+          <input type="text"
+            class="form-control"
+            placeholder="Last Name"
+            name="lastName"
+            [(ngModel)] = "driver.lastName"
+            required>
+            <span class="txt-error" *ngIf="f.submitted && f.controls['lastName'].errors?.required">*Last name is mandatory</span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Identification</label>
+        <div class="col-8">
+          <input type="text"
+            class="form-control"
+            placeholder="Identification"
+            name="identification"
+            [(ngModel)] = "driver.identification"
+            required>
+            <span class="txt-error" *ngIf="f.submitted && f.controls['identification'].errors?.required">*Identification is mandatory</span>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+          <input type="submit" class="btn btn-outline-primary" value="Send">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

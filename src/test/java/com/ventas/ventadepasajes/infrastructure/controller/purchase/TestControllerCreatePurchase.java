@@ -82,12 +82,12 @@ public class TestControllerCreatePurchase {
     public Boolean callCreatePurchase(CommandPurchase commandPurchase) throws Exception {
         int tripId = callCreateTrip();
         commandPurchase = commandPurchaseDataBuilder.buildWithTripId(commandPurchase,tripId);
-        mockMvc.perform(post("/purchase/create")
+        mockMvc.perform(post("/api/purchase/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandPurchase)))
                 .andExpect(status().isCreated());
 
-        MvcResult mvcResult  = mockMvc.perform(get("/purchase/list")
+        MvcResult mvcResult  = mockMvc.perform(get("/api/purchase/list")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String mvc = mvcResult.getResponse().getContentAsString();
@@ -98,7 +98,7 @@ public class TestControllerCreatePurchase {
     public Boolean callCreateBadPurchase(CommandPurchase commandPurchase, String message) throws Exception {
         int tripId = callCreateTrip();
         commandPurchase = commandPurchaseDataBuilder.buildWithTripId(commandPurchase,tripId);
-        MvcResult mvcResult = mockMvc.perform(post("/purchase/create")
+        MvcResult mvcResult = mockMvc.perform(post("/api/purchase/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandPurchase)))
                 .andExpect(status().isBadRequest()).andReturn();
@@ -113,12 +113,12 @@ public class TestControllerCreatePurchase {
     private int callCreateDriver() throws Exception {
         CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
         CommandDriver commandRole = commandDriverDataBuilder.build();
-        mockMvc.perform(post("/driver/create")
+        mockMvc.perform(post("/api/driver/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandRole)))
                 .andExpect(status().isCreated());
 
-        MvcResult mvcResult  = mockMvc.perform(get("/driver/list")
+        MvcResult mvcResult  = mockMvc.perform(get("/api/driver/list")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String mvc = mvcResult.getResponse().getContentAsString();
@@ -132,12 +132,12 @@ public class TestControllerCreatePurchase {
         CommandTrip commandTrip = commandTripDataBuilder.build();
         commandTrip = commandTripDataBuilder.buildWithDriverId(commandTrip, idDriver);
 
-        mockMvc.perform(post("/trip/create")
+        mockMvc.perform(post("/api/trip/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandTrip)))
                 .andExpect(status().isCreated());
 
-        MvcResult mvcResult  = mockMvc.perform(get("/trip/list")
+        MvcResult mvcResult  = mockMvc.perform(get("/api/trip/list")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String mvc = mvcResult.getResponse().getContentAsString();

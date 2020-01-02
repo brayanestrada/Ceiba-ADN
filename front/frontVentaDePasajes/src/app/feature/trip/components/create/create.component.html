@@ -5,7 +5,7 @@
       <div class="form-group row">
         <label class="col-2 col-form-label">Seats available</label>
         <div class="col-8">
-          <input type="text"
+          <input type="number"
             class="form-control"
             placeholder="Seats available"
             name="seatsAvailable"
@@ -41,23 +41,10 @@
             <span class="txt-error" *ngIf="f.submitted && f.controls['endCity'].errors?.required">End city is mandatory</span>
         </div>
       </div>
-      <!--<div class="form-group row">
-        <label class="col-2 col-form-label">Trip Date</label>
-        <div class="col-8">
-          <input type="text"
-            class="form-control"
-            placeholder="12-12-2019"
-            name="tripDate"
-            autocomplete="off"
-            [(ngModel)] = "tripModel.tripDate"
-            required>
-            <span class="txt-error" *ngIf="f.submitted && f.controls['tripDate'].errors?.required">Trip date is mandatory</span>
-        </div>
-      </div>-->
       <div class="form-group row">
         <label class="col-2 col-form-label">Ticket cost</label>
         <div class="col-8">
-          <input type="text"
+          <input type="number"
             class="form-control"
             placeholder="ticketAmount"
             name="ticketAmount"
@@ -82,16 +69,15 @@
       <div class="form-group row">
         <label class="col-2 col-form-label">Driver</label>
         <div class="col-8">
-
-            <select (change)="getIdDriver($event.target.value)">
-              <option disabled>Select a driver</option>
-              <option *ngFor="let driver of driverModel"
+          <select (change)="getIdDriver($event.target.value)">
+            <option disabled>Select a driver</option>
+            <option *ngFor="let driver of driverModel"
               name="idDriver"
-              [ngValue] = "driver.id" value="{{driver.id}}"
-              [(ngModel)] = "tripModel.idDriver">
-                {{ driver.name }}
-              </option>
-            </select>
+              value={{driver.id}}
+              [(ngModel)] = "idDriver">
+              {{ driver.name }}
+            </option>
+          </select>
             <span class="txt-error" *ngIf="f.submitted && f.controls['idDriver'].errors?.required">Ticket cost is mandatory</span>
         </div>
       </div>

@@ -1,0 +1,62 @@
+<!-- main app container -->
+<div class="card m-3">
+    <h5 class="card-header">Angular 8 Reactive Form Validation</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Driver</label>
+                    <select formControlName="idDriver" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.idDriver?.errors }">
+                        <option value="" disabled>Select a driver</option>
+                        <option *ngFor="let driver of driverModel" value={{driver.id}}>{{ driver.name }}</option>
+                    </select>
+                    <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                        <div *ngIf="f.title?.errors.required">Title is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Start City</label>
+                    <input type="text" formControlName="startCity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startCity?.errors }" />
+                    <div *ngIf="submitted && f.startCity.errors" class="invalid-feedback">
+                        <div *ngIf="f.startCity?.errors.required">Seats Available</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>End City</label>
+                    <input type="text" formControlName="endCity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endCity?.errors }" />
+                    <div *ngIf="submitted && f.endCity.errors" class="invalid-feedback">
+                        <div *ngIf="f.endCity?.errors.required">End City is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Seats Available</label>
+                <input type="number" min="1" max="60" formControlName="seatsAvailable" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.seatsAvailable?.errors }" />
+                <div *ngIf="submitted && f.seatsAvailable?.errors" class="invalid-feedback">
+                    <div *ngIf="f.seatsAvailable?.errors.required">Seats Available is required</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Ticket cost</label>
+                    <input type="number" min="0" formControlName="ticketAmount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ticketAmount?.errors }" />
+                    <div *ngIf="submitted && f.ticketAmount?.errors" class="invalid-feedback">
+                        <div *ngIf="f.ticketAmount?.errors.required">Ticket Cost is required</div>
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label>Trip Date</label>
+                    <input type="date" formControlName="tripDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tripDate?.errors }" />
+                    <div *ngIf="submitted && f.tripDate?.errors" class="invalid-feedback">
+                        <div *ngIf="f.tripDate?.errors.required">Trip date is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <input type="submit" class="btn btn-primary" value="save"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

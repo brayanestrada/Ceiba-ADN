@@ -43,7 +43,7 @@ public class TestControllerCreateUser {
     @Autowired
     private MockMvc mockMvc;
 
-    private String uri = "/user/create";
+    private String uri = "/api/user/create";
 
     private CommandUserDataBuilder commandUserDataBuilder = new CommandUserDataBuilder();
 
@@ -148,12 +148,12 @@ public class TestControllerCreateUser {
     public int callCreateRole() throws Exception {
         CommandRoleDataBuilder commandRoleDataBuilder = new CommandRoleDataBuilder();
         CommandRole commandRole = commandRoleDataBuilder.build();
-        mockMvc.perform(post("/role/create")
+        mockMvc.perform(post("/api/role/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandRole)))
                 .andExpect(status().isCreated());
 
-        MvcResult mvcResult  = mockMvc.perform(get("/role/list")
+        MvcResult mvcResult  = mockMvc.perform(get("/api/role/list")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String mvc = mvcResult.getResponse().getContentAsString();

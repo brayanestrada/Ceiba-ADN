@@ -13,8 +13,8 @@ public class EntityRole {
     private EntityRole(){}
 
     public EntityRole(long id, String name){
-        this.id = id;
         this.name = name;
+        this.id = id;
     }
 
     public long getId() {

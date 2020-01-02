@@ -12,8 +12,8 @@ public class Role {
 
     public Role(long id, String name){
         validate(name);
-        this.id = id;
         this.name = name;
+        this.id = id;
     }
 
     public Role(String name){

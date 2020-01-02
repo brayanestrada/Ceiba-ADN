@@ -40,11 +40,7 @@ public class TestControllerDeleteDriver {
 
     private CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
 
-    private CommandDriver commandDriver;
-
-    private String uriDriverCreate = "/driver/create";
-    private String uriDriverList = "/driver/list";
-    private String uriDriverDelete = "/driver/delete/";
+    private String uriDriverList = "/api/driver/list";
 
     @Before
     public void setUp(){
@@ -53,7 +49,7 @@ public class TestControllerDeleteDriver {
 
     @Test
     public void listSuccessful() throws Exception {
-        commandDriver = commandDriverDataBuilder.build();
+        CommandDriver commandDriver = commandDriverDataBuilder.build();
         int id = callRequestCreateDriver(commandDriver);
         assertTrue(validateCreatedDriver());
         callRequestDeleteDriver(id);
@@ -80,6 +76,7 @@ public class TestControllerDeleteDriver {
     }
 
     private int callRequestCreateDriver(CommandDriver commandDriver) throws Exception {
+        String uriDriverCreate = "/api/driver/create";
         mockMvc.perform(post(uriDriverCreate)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandDriver)))
@@ -93,6 +90,7 @@ public class TestControllerDeleteDriver {
     }
 
     private void callRequestDeleteDriver(int id) throws Exception {
+        String uriDriverDelete = "/api/driver/delete/";
         mockMvc.perform(delete(uriDriverDelete + id)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());

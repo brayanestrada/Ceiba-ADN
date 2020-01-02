@@ -3,13 +3,13 @@ package com.ventas.ventadepasajes.domain.model.entity;
 public class Purchase {
 
     private long id;
+    private double totalPurchaseAmount;
     private int numberPurchasedTickets;
     private double ticketAmount;
-    private int discountPercentage;
-    private double totalPurchaseAmount;
-    private String purchaseDate;
     private long idTrip;
+    private String purchaseDate;
     private String tripDate;
+    private int discountPercentage;
 
     private static final String ERROR_DATE_FORMAT = "Error: Date hasn't the correct format, it's dd-MM-yyyy";
     private static final String ERROR_NUMBER_PURCHASED_TICKETS_MANDATORY = "Error: Number of purchased tickets is mandatory";
@@ -25,28 +25,28 @@ public class Purchase {
         DataValidator.validateDateFormat(tripDate, ERROR_DATE_FORMAT);
         this.id = id;
         this.numberPurchasedTickets = numberPurchasedTickets;
+        this.purchaseDate = purchaseDate;
         this.ticketAmount = ticketAmount;
+        this.idTrip = idTrip;
         this.discountPercentage = discountPercentage;
         this.totalPurchaseAmount = totalPurchaseAmount;
-        this.idTrip = idTrip;
-        this.purchaseDate = purchaseDate;
         this.tripDate = tripDate;
     }
 
     public Purchase(long id, int numberPurchasedTickets, long idTrip){
         validate(numberPurchasedTickets, idTrip);
         this.id = id;
-        this.numberPurchasedTickets = numberPurchasedTickets;
         this.discountPercentage = 0;
         this.totalPurchaseAmount = 0;
+        this.numberPurchasedTickets = numberPurchasedTickets;
         this.idTrip = idTrip;
     }
 
     public Purchase(int numberPurchasedTickets, long idTrip){
         validate(numberPurchasedTickets, idTrip);
         this.numberPurchasedTickets = numberPurchasedTickets;
-        this.discountPercentage = 0;
         this.totalPurchaseAmount = 0;
+        this.discountPercentage = 0;
         this.idTrip = idTrip;
     }
 
@@ -62,9 +62,7 @@ public class Purchase {
         return numberPurchasedTickets;
     }
 
-    public void setNumberPurchasedTickets(int numberPurchasedTickets) {
-        this.numberPurchasedTickets = numberPurchasedTickets;
-    }
+    public void setNumberPurchasedTickets(int numberPurchasedTickets) { this.numberPurchasedTickets = numberPurchasedTickets; }
 
     public double getTicketAmount() {
         return ticketAmount;

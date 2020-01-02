@@ -13,22 +13,6 @@ group = 'com.ventas'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-jacoco {
-    toolVersion = "0.8.5"
-    reportsDir = file("$buildDir/reports/jacoco")
-}
-
-jacocoTestReport{
-    additionalSourceDirs.from = files(sourceSets.main.allJava.srcDirs)
-    reports {
-        html.enabled true
-        xml.enabled false
-        csv.enabled false
-        html.destination file("build/reports/jacoco/html")
-    }
-    executionData.from = files('build/jacoco/test.exec')
-}
-
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -58,4 +42,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
 }

@@ -42,11 +42,6 @@ public class TestControllerListDriver {
 
     private CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
 
-    private CommandDriver commandDriver;
-
-    private String uriDriverCreate = "/driver/create";
-    private String uriDriverList = "/driver/list";
-
     @Before
     public void setUp(){
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
@@ -54,12 +49,13 @@ public class TestControllerListDriver {
 
     @Test
     public void listSuccessful() throws Exception {
-        commandDriver = commandDriverDataBuilder.build();
+        CommandDriver commandDriver = commandDriverDataBuilder.build();
         callRequestCreateDriver(commandDriver);
         assertTrue(validateCreatedDriver());
     }
 
     private String callRequestListDriver() throws Exception {
+        String uriDriverList = "/api/driver/list";
         MvcResult result = mockMvc.perform(get(uriDriverList)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
@@ -75,6 +71,7 @@ public class TestControllerListDriver {
     }
 
     private void callRequestCreateDriver(CommandDriver commandDriver) throws Exception {
+        String uriDriverCreate = "/api/driver/create";
         mockMvc.perform(post(uriDriverCreate)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandDriver)))

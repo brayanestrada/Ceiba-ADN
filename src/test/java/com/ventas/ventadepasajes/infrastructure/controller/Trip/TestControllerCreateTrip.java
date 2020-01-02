@@ -43,7 +43,7 @@ public class TestControllerCreateTrip {
     @Autowired
     private MockMvc mockMvc;
 
-    private String uri = "/trip/create";
+    private String uri = "/api/trip/create";
     private CommandTripDataBuilder commandTripDataBuilder = new CommandTripDataBuilder();
     private CommandTrip commandTrip;
 
@@ -96,11 +96,11 @@ public class TestControllerCreateTrip {
     private int callRequestCreateDriver() throws Exception {
         CommandDriverDataBuilder commandDriverDataBuilder = new CommandDriverDataBuilder();
         CommandDriver commandDriver = commandDriverDataBuilder.build();
-        mockMvc.perform(post("/driver/create")
+        mockMvc.perform(post("/api/driver/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandDriver)))
                 .andExpect(status().isCreated());
-        MvcResult mvcResult  = mockMvc.perform(get("/driver/list")
+        MvcResult mvcResult  = mockMvc.perform(get("/api/driver/list")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         String mvc = mvcResult.getResponse().getContentAsString();

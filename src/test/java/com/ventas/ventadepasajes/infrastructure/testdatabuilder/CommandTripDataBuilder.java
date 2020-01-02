@@ -9,7 +9,7 @@ public class CommandTripDataBuilder {
     private static final String startCity = "Medellín";
     private static final String endCity = "Armenia";
     private static final long idDriver = 7;
-    private static final String tripDate = "12-12-2019";
+    private static final String tripDate = "2019-12-21";
     private static final double ticketAmount = 5000;
     private static final String badTripDate = "12/12/2019";
     private static final int minimumSeatsAvailable = -1;

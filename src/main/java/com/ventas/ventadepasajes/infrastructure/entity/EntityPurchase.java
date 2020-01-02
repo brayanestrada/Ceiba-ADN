@@ -21,13 +21,13 @@ public class EntityPurchase {
 
     public EntityPurchase(long id, int numberPurchasedTickets, double ticketAmount, int discountPercentage, double totalPurchaseAmount, long idTrip, String purchaseDate, String tripDate){
         this.id = id;
-        this.numberPurchasedTickets = numberPurchasedTickets;
-        this.ticketAmount = ticketAmount;
-        this.discountPercentage = discountPercentage;
         this.totalPurchaseAmount = totalPurchaseAmount;
-        this.idTrip = idTrip;
         this.purchaseDate = purchaseDate;
         this.tripDate = tripDate;
+        this.numberPurchasedTickets = numberPurchasedTickets;
+        this.discountPercentage = discountPercentage;
+        this.ticketAmount = ticketAmount;
+        this.idTrip = idTrip;
     }
 
     public long getId() {

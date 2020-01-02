@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreateDriverComponent } from './components/create/create.component';
 import { ListDriversComponent } from './components/list/list.component';
-
+import { CreateDriverComponent } from './components/create/create.component';
 
 const routes: Routes = [
   { path: '',

@@ -23,12 +23,12 @@ public class EntityUser {
 
     public EntityUser(Long id, String name, String lastName, String email, String phone, long roleId, String password){
         this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.role = roleId;
         this.password = password;
+        this.name = name;
+        this.role = roleId;
+        this.email = email;
+        this.lastName = lastName;
+        this.phone = phone;
     }
 
     public Long getId() {

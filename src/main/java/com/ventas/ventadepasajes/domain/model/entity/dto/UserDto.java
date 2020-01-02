@@ -10,11 +10,11 @@ public class UserDto {
 
     public UserDto(long id, String name, String lastName, String email, String phone, long role){
         this.id = id;
-        this.name = name;
-        this.lastName = lastName;
         this.email = email;
-        this.phone = phone;
+        this.name = name;
         this.role = role;
+        this.lastName = lastName;
+        this.phone = phone;
     }
 
     public Long getId() {

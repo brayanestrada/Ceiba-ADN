@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Trips</h2>
-  <button class="btn btn-success" routerLink="/trip/create">Create</button>
+  <button class="btn btn-success" routerLink="/trip/createSecond">Create</button>
   <div class="space" >
       <div class="text-center newtrip col-lg-4 col-md-6 col-sm-12" *ngFor="let trip of trips">
           <div class="container card">
@@ -30,10 +30,10 @@
                       <input type="submit" class="btn btn-success total" value="Buy tickets"/>
                   </form>
                   </div>
-                  <!--<div class="center-content col-6 inline center">
+                  <div class="center-content col-6 inline center">
                       <button class="btn btn-primary">Update</button>
-                  </div>-->
-                  <div class="center-content col-12 inline center">
+                  </div>
+                  <div class="center-content col-6 inline center">
                       <button class="btn btn-danger total" (click)="onDelete(trip.id)" >Delete</button>
                   </div>
               </div>

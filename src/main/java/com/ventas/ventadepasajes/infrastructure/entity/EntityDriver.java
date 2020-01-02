@@ -17,9 +17,9 @@ public class EntityDriver {
 
     public EntityDriver(Long id, String name, String lastName, String identification){
         this.id = id;
-        this.name = name;
-        this.lastName = lastName;
         this.identification = identification;
+        this.lastName = lastName;
+        this.name = name;
     }
 
     public Long getId() { return id; }

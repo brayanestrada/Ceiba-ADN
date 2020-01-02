@@ -20,12 +20,12 @@ export class CreateDriverComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(form: NgForm){
+  onSubmit(form: NgForm) {
     if ( form.invalid ) { return; }
     console.log(this.driver.name);
     console.log(this.driver.lastName);
     console.log(this.driver.identification);
-    this.createDriver.createDriver(this.driver).subscribe( data =>{
+    this.createDriver.createDriver(this.driver).subscribe( data => {
         this.driver = data;
         this.router.navigate(['/driver/list']);
       }

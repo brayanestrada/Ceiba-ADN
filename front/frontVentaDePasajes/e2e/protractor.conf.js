@@ -10,8 +10,10 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 exports.config = {
   allScriptsTimeout: 11000,
   specs: [
-    './src/specs/navbar.spec.ts',
-    './src/specs/drivers.spec.ts'
+     './src/specs/navbar.spec.ts',
+     './src/specs/drivers.spec.ts',
+     './src/specs/trips.spec.ts',
+    './src/specs/purchase.spec.ts'
   ],
   capabilities: {
     browserName: 'chrome'

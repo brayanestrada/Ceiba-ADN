@@ -28,13 +28,13 @@ public class EntityTrip {
                       double ticketAmount,
                       long idDriver){
         this.id = id;
-        this.seatsAvailable = seatsAvailable;
         this.seatsSold = seatsSold;
-        this.startCity = startCity;
-        this.endCity = endCity;
-        this.tripDate = tripDate;
         this.ticketAmount = ticketAmount;
+        this.seatsAvailable = seatsAvailable;
+        this.startCity = startCity;
         this.idDriver = idDriver;
+        this.tripDate = tripDate;
+        this.endCity = endCity;
     }
 
     public long getId() {

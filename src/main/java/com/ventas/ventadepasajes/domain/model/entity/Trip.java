@@ -11,25 +11,25 @@ public class Trip {
     private static final String ERROR_ID_DRIVER_MANDATORY = "Error: Driver id is mandatory";
 
     private long id;
+    private long idDriver;
     private int seatsAvailable;
     private int seatsSold;
+    private String tripDate;
+    private double ticketAmount;
     private String startCity;
     private String endCity;
-    private String tripDate;
-    private long idDriver;
-    private double ticketAmount;
 
     private Trip(){}
 
     public Trip(long id, int seatsAvailable, int seatsSold, String startCity, String endCity, long idDriver, String tripDate, double ticketAmount){
         dataValidatorTrip(seatsAvailable, tripDate, startCity, endCity, idDriver);
         this.id = id;
-        this.seatsAvailable = seatsAvailable;
-        this.seatsSold = seatsSold;
-        this.startCity = startCity;
         this.endCity = endCity;
+        this.seatsSold = seatsSold;
         this.tripDate = tripDate;
+        this.startCity = startCity;
         this.idDriver = idDriver;
+        this.seatsAvailable = seatsAvailable;
         this.ticketAmount = ticketAmount;
     }
 
@@ -37,11 +37,11 @@ public class Trip {
         dataValidatorTrip(seatsAvailable, tripDate, startCity, endCity, idDriver);
         this.seatsAvailable = seatsAvailable;
         this.seatsSold = seatsSold;
-        this.startCity = startCity;
-        this.endCity = endCity;
-        this.tripDate = tripDate;
         this.idDriver = idDriver;
+        this.endCity = endCity;
+        this.startCity = startCity;
         this.ticketAmount = ticketAmount;
+        this.tripDate = tripDate;
     }
 
     public long getId() {

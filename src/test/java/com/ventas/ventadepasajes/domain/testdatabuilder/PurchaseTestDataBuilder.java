@@ -19,9 +19,9 @@ public class PurchaseTestDataBuilder {
         this.ticketAmountTest = 5000;
         this.discountPercentageTest = 10;
         this.totalPurchaseAmountTest = 25000;
-        this.purchaseDateTest = "01-01-2020";
+        this.purchaseDateTest = "2020-01-01";
         this.idTripTest = 1;
-        this.tripDateTest = "30-12-2019";
+        this.tripDateTest = "2019-12-03";
     }
 
     public void withoutIdTrip(){

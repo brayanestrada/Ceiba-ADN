@@ -73,14 +73,14 @@ public class TestControllerCreateRole {
 
 
     private void callRequestCreateDriver(CommandRole commandRole) throws Exception {
-        mockMvc.perform(post("/role/create")
+        mockMvc.perform(post("/api/role/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandRole)))
                 .andExpect(status().isCreated());
     }
 
     private void callRequestCreateBadDriver(CommandRole commandRole, String message) throws Exception {
-        MvcResult mvcResult = mockMvc.perform(post("/role/create")
+        MvcResult mvcResult = mockMvc.perform(post("/api/role/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(commandRole)))
                 .andExpect(status().isBadRequest())

@@ -42,7 +42,7 @@ public class TestControllerCreateDriver {
 
     private CommandDriver commandDriver;
 
-    private String uri = "/driver/create";
+    private String uri = "/api/driver/create";
 
     @Before
     public void setUp(){
