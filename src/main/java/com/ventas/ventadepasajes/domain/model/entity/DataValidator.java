@@ -49,7 +49,8 @@ public final class DataValidator {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date dateType = sdf.parse(date);
             if(!date.equals(sdf.format(dateType))){
-                throw new ExceptionGeneral(message);}
+                throw new ExceptionGeneral(message);
+            }
         } catch (ParseException e) {
             throw new ExceptionGeneral(message);
         }

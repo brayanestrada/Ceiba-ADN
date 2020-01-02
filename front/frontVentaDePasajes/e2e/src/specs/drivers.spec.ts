@@ -18,12 +18,14 @@ describe('Testing driver section:', () => {
     });
 
     it('Validate current URL', () => {
+      browser.waitForAngular();
       driver.crate_button_click();
       const url = browser.getCurrentUrl();
       expect(url).toEqual(expectedCurrentUrl);
     });
 
     it('Creating a driver', () => {
+      browser.waitForAngular();
       driver.fill_name_input(driverName);
       driver.fill_last_name_input(driverLastName);
       driver.fill_identification_input(driverIdentification);
@@ -31,6 +33,7 @@ describe('Testing driver section:', () => {
     });
 
     it('Validate created driver', () => {
+      browser.waitForAngular();
       driver.crate_button_click();
       driver.fill_name_input(driverName);
       driver.fill_last_name_input(driverLastName);

@@ -40,5 +40,5 @@ describe('Testing trips section', async () => {
   it('Create Purchase', () => {
     trips.fillNumberOfTicketsInput('3');
     trips.clickBuyTicketsButton();
-  })
+  });
 });

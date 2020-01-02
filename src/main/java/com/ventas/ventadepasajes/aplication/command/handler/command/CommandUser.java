@@ -3,42 +3,44 @@ package com.ventas.ventadepasajes.aplication.command.handler.command;
 public class CommandUser {
 
     private String name;
+    private String phone;
     private String lastName;
     private String email;
-    private String phone;
-    private long role;
     private String password;
+    private long role;
 
     public CommandUser(String name, String lastName, String email, String phone, long role, String password){
         this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.role = role;
         this.password = password;
+        this.phone = phone;
+        this.lastName = lastName;
+        this.role = role;
+        this.email = email;
     }
 
-    public String getName() {
+    public String getNameCommand() {
         return name;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhone() {
+    public String getPhoneCommand() {
         return phone;
     }
 
-    public long getRole() {
+    public String getLastNameCommand() {
+        return lastName;
+    }
+
+    public long getRoleCommand() {
         return role;
     }
 
-    public String getPassword() {
+    public String getEmailCommand() {
+        return email;
+    }
+
+    public String getPasswordCommand() {
         return password;
     }
+
+
 }

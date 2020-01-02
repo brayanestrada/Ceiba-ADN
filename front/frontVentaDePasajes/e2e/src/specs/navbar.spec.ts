@@ -9,10 +9,11 @@ describe('Testing the navbar redirectiong', () => {
     });
 
     it('Test all navbar links', () => {
-        browser.sleep(3000);
-        navbar.home_button_click();
-        navbar.drivers_button_click();
-        navbar.trips_button_click();
-        navbar.purchase_button_click();
+      browser.waitForAngular();
+      browser.sleep(3000);
+      navbar.home_button_click();
+      navbar.drivers_button_click();
+      navbar.trips_button_click();
+      navbar.purchase_button_click();
     });
 });
