@@ -4,25 +4,16 @@ import com.ventas.ventadepasajes.domain.model.entity.Trip;
 
 public class TripTestDataBuilder {
 
-    private long idTest;
-    private int seatsAvailableTest;
-    private int seatsSoldTest;
-    private String startCityTest;
-    private String endCityTest;
-    private String tripDateTest;
-    private long idDriverTest;
-    private double ticketAmountTest;
+     private long idTest = 1;
+     private int seatsAvailableTest = 50;
+     private int seatsSoldTest = 0;
+     private String startCityTest = "Medellín";
+     private String endCityTest = "Bogotá";
+     private String tripDateTest = "2020-10-20";
+     private int idDriverTest = 1;
+     private double ticketAmountTest = 2000;
 
-    public TripTestDataBuilder(){
-        this.idTest = 1;
-        this.seatsAvailableTest = 10;
-        this.seatsSoldTest = 0;
-        this.startCityTest = "Medellín";
-        this.endCityTest = "Bogotá";
-        this.tripDateTest = "2020-10-20";
-        this.idDriverTest = 1;
-        this.ticketAmountTest = 2000;
-    }
+    public TripTestDataBuilder(){}
 
     public void withoutSeatsAvailable(){
         this.seatsAvailableTest = 0;
@@ -54,6 +45,22 @@ public class TripTestDataBuilder {
 
     public Trip build(){return new Trip(this.idTest, this.seatsAvailableTest, this.startCityTest, this.endCityTest, this.idDriverTest, this.tripDateTest, this.ticketAmountTest); }
 
-    public Trip buildWithoutId(){return new Trip(this.seatsAvailableTest, this.seatsSoldTest, this.startCityTest, this.endCityTest, this.idDriverTest, this.tripDateTest, this.ticketAmountTest); }
+    public Trip buildWithoutId(){return new Trip(this.seatsAvailableTest, this.startCityTest, this.endCityTest, this.idDriverTest, this.tripDateTest, this.ticketAmountTest); }
+
+    public Trip buildMonday(){
+        String tripDate = "2020-01-06";
+        return new Trip(this.seatsAvailableTest, this.startCityTest, this.endCityTest, this.idDriverTest, tripDate, this.ticketAmountTest);
+    }
+
+    public Trip buildThursday(){
+        String tripDate = "2020-01-09";
+        return new Trip(this.seatsAvailableTest, this.startCityTest, this.endCityTest, this.idDriverTest, tripDate, this.ticketAmountTest);
+    }
+
+    public Trip buildFriday(){
+        String tripDate = "2020-01-10";
+        return new Trip(this.seatsAvailableTest, this.startCityTest, this.endCityTest, this.idDriverTest, tripDate, this.ticketAmountTest);
+    }
+
 
 }

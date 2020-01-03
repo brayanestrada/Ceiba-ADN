@@ -53,7 +53,7 @@ public class ServiceCreatePurchase {
         if( numberPurchasedTickets >= 4 ) {
             discountPercentage+=10;
         }
-        if( weekDay<=4 ) {
+        if( weekDay>=2 && weekDay<=5 ) {
             discountPercentage+=10;
         }
         return  discountPercentage;

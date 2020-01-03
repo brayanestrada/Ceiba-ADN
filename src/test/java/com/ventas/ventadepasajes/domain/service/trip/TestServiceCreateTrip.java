@@ -1,6 +1,7 @@
 package com.ventas.ventadepasajes.domain.service.trip;
 
 import com.ventas.ventadepasajes.domain.model.entity.Trip;
+import com.ventas.ventadepasajes.domain.port.repository.RepositoryDriver;
 import com.ventas.ventadepasajes.domain.port.repository.RepositoryTrip;
 import com.ventas.ventadepasajes.domain.testdatabuilder.TripTestDataBuilder;
 import org.junit.jupiter.api.Test;
@@ -10,17 +11,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestServiceCreateTrip {
 
+    private RepositoryDriver repoDriverMock = Mockito.mock(RepositoryDriver.class);
+    private RepositoryTrip repositoryTrip = Mockito.mock(RepositoryTrip.class);
+
     @Test
     public void createTrip(){
         Trip trip = new TripTestDataBuilder().build();
         RepositoryTrip repoMocked = Mockito.mock(RepositoryTrip.class);
         Mockito.when(repoMocked.createTrip(trip)).thenReturn(trip);
-        Trip tripSaved = repoMocked.createTrip(trip);
-        assertEquals(trip.getSeatsAvailable(), tripSaved.getSeatsAvailable());
-        assertEquals(trip.getStartCity(), tripSaved.getStartCity());
-        assertEquals(trip.getEndCity(), tripSaved.getEndCity());
-        assertEquals(trip.getTicketAmount(), tripSaved.getTicketAmount());
-        assertEquals(trip.getTripDate(), tripSaved.getTripDate());
-        assertEquals(trip.getIdDriver(), tripSaved.getIdDriver());
+        ServiceCreateTrip serviceCreateTrip = new ServiceCreateTrip(repositoryTrip, repoDriverMock);
+        serviceCreateTrip.run(trip);
     }
 }
