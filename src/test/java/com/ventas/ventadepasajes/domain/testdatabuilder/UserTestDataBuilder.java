@@ -13,7 +13,7 @@ public class UserTestDataBuilder {
         this.email = "brayan@ceiba.com.co";
         this.phone = "3013439323";
         this.role = 1;
-        this.password = "asdasd";
+        this.password = "passwordasd";
     }
 
     public void withoutName(){ this.name = null; }

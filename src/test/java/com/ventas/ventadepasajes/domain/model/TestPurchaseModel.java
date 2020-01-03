@@ -1,9 +1,11 @@
 package com.ventas.ventadepasajes.domain.model;
 
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
+import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.testdatabuilder.PurchaseTestDataBuilder;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestPurchaseModel {
@@ -92,6 +94,18 @@ public class TestPurchaseModel {
     public void minimalWithoutIdBuildMinimumPurchasedTickets(){
         dataBuilder.minimumPurchasedTickets();
         assertThrows(ExceptionGeneral.class, () -> dataBuilder.minimalBuildWithoutId(), "Error: Min number of tickets to purchase are 0");
+    }
+
+    @Test
+    public void testGetterMethods(){
+        Purchase purchase = dataBuilder.build();
+        assertEquals(2, purchase.getNumberPurchasedTickets());
+        assertEquals(5000, purchase.getTicketAmount());
+        assertEquals(0, purchase.getDiscountPercentage());
+        assertEquals(25000, purchase.getTotalPurchaseAmount());
+        assertEquals(1, purchase.getIdTrip());
+        assertEquals("2020-01-01", purchase.getPurchaseDate());
+        assertEquals("2020-01-01", purchase.getTripDate());
     }
 
 }

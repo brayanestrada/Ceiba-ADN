@@ -2,7 +2,6 @@ package com.ventas.ventadepasajes.aplication.command.handler.purchase;
 
 import com.ventas.ventadepasajes.aplication.command.factory.FactoryPurchase;
 import com.ventas.ventadepasajes.aplication.command.handler.command.CommandPurchase;
-import com.ventas.ventadepasajes.domain.exceptions.ExceptionParsing;
 import com.ventas.ventadepasajes.domain.model.entity.Purchase;
 import com.ventas.ventadepasajes.domain.service.purchase.ServiceCreatePurchase;
 import org.springframework.stereotype.Component;

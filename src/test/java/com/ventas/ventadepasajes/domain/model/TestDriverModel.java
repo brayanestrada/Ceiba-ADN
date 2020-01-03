@@ -5,6 +5,7 @@ import com.ventas.ventadepasajes.domain.model.entity.Driver;
 import com.ventas.ventadepasajes.domain.testdatabuilder.DriverTestDataBuilder;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestDriverModel {
@@ -66,7 +67,10 @@ public class TestDriverModel {
     }
 
     @Test
-    public void testSetName(){
-
+    public void testGetterMethods(){
+        Driver driver = dataBuilder.build();
+        assertEquals("Brayan", driver.getName());
+        assertEquals("Driver", driver.getLastName());
+        assertEquals("1017275353", driver.getIdentification());
     }
 }

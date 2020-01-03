@@ -1,9 +1,11 @@
 package com.ventas.ventadepasajes.domain.model;
 
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
+import com.ventas.ventadepasajes.domain.model.entity.Role;
 import com.ventas.ventadepasajes.domain.testdatabuilder.RoleTestDataBuilder;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestRoleModel {
@@ -46,5 +48,10 @@ public class TestRoleModel {
         assertThrows(ExceptionGeneral.class, () -> dataBuilder.build(), "Error: Name characters must be between 2 and 35 characters");
     }
 
+    @Test
+    public void testGetterMethods(){
+        Role role = dataBuilder.build();
+        assertEquals("Administrator", role.getName());
+    }
 
 }

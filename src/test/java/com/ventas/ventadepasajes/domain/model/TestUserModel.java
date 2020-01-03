@@ -1,9 +1,11 @@
 package com.ventas.ventadepasajes.domain.model;
 
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
+import com.ventas.ventadepasajes.domain.model.entity.User;
 import com.ventas.ventadepasajes.domain.testdatabuilder.UserTestDataBuilder;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestUserModel {
@@ -92,5 +94,17 @@ public class TestUserModel {
     public void validateLongPassword(){
         dataBuilder.longPassword();
         assertThrows(ExceptionGeneral.class, () -> dataBuilder.build(), "Phone must have max 30 characters");
+    }
+
+    @Test
+    public void testGetterMethods(){
+        User user = dataBuilder.build();
+        assertEquals("Brayan", user.getName());
+        assertEquals("User", user.getLastName());
+        assertEquals("brayan@ceiba.com.co", user.getEmail());
+        assertEquals("3013439323", user.getPhone());
+        assertEquals(1, user.getRole());
+        assertEquals("passwordasd", user.getPassword());
+
     }
 }

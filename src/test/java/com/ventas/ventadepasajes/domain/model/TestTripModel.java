@@ -1,9 +1,11 @@
 package com.ventas.ventadepasajes.domain.model;
 
 import com.ventas.ventadepasajes.domain.exceptions.ExceptionGeneral;
+import com.ventas.ventadepasajes.domain.model.entity.Trip;
 import com.ventas.ventadepasajes.domain.testdatabuilder.TripTestDataBuilder;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestTripModel {
@@ -79,5 +81,16 @@ public class TestTripModel {
     public void testTripDateFormatWithoutId(){
         dataBuilder.validateTripDateFormat();
         assertThrows(ExceptionGeneral.class, () -> dataBuilder.buildWithoutId(), "Error: Date format is not correct, it must be dd-MM-yyyy");
+    }
+
+    @Test
+    public void testTripGetters(){
+        Trip trip = dataBuilder.build();
+        assertEquals(50, trip.getSeatsAvailable());
+        assertEquals("Medellín", trip.getStartCity());
+        assertEquals("Bogotá", trip.getEndCity());
+        assertEquals(1, trip.getIdDriver());
+        assertEquals( "2020-10-20", trip.getTripDate());
+        assertEquals( 2000, trip.getTicketAmount());
     }
 }
